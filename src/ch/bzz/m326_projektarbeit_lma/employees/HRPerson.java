@@ -34,7 +34,7 @@ public class HRPerson extends Person{
         return pwd;
     }
 
-    public void writeLoyEntry(int action, Person person) {
+    public void writeLogEntry(int action, Person person) {
         UserAction ua = new UserAction(this, person, action);
         LogBook log = LogBook.getBookInstance();
         String entry = ua.getEntry();
