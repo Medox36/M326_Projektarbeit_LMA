@@ -4,6 +4,7 @@ import ch.bzz.m326_projektarbeit_lma.employees.HRPerson;
 import ch.bzz.m326_projektarbeit_lma.employees.Person;
 
 /**
+ * A class for generating Strings for the LogBook
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.05.18
