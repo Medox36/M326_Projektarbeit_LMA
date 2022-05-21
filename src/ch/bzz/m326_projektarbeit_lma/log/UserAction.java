@@ -3,6 +3,9 @@ package ch.bzz.m326_projektarbeit_lma.log;
 import ch.bzz.m326_projektarbeit_lma.employees.HRPerson;
 import ch.bzz.m326_projektarbeit_lma.employees.Person;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * A class for generating Strings for the LogBook
  *
@@ -27,13 +30,14 @@ public class UserAction {
      * @param action that was made
      */
     public UserAction(HRPerson hrPerson, Person person, int action) {
-        entry = "HRPerson: " + hrPerson.getFirstName() + " " + hrPerson.getLastName();
+        entry = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
+        entry += " | " + hrPerson.getFirstName() + " " + hrPerson.getLastName();
 
         if (action >= 0 && action < actionDescription.length) {
             entry += " " + actionDescription[action];
-            entry += " on Person: " + person.getFirstName() + " " + person.getLastName();
+            entry += " " + person.getFirstName() + " " + person.getLastName();
         } else {
-            entry += " made action: unknown action";
+            entry += " made unknown action";
         }
     }
 
