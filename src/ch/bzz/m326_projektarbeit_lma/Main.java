@@ -12,6 +12,7 @@ public class Main {
         Person person = new Person("Bob", "Parker", null);
 
         hrPerson.writeLogEntry(UserAction.CREATE_PERSON, person);
+        hrPerson.writeLogEntry(UserAction.DELETE_PERSON, person);
 
         LogBook.getBookInstance().logBookClose();
     }

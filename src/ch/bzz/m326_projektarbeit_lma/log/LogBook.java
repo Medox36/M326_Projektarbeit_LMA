@@ -18,7 +18,7 @@ public class LogBook {
     private File file;
     private BufferedReader reader;
     private BufferedWriter writer;
-    private boolean fileWritingEnabled = false;
+    private boolean fileWritingEnabled;
 
     /**
      * creates a LogBook
@@ -32,7 +32,7 @@ public class LogBook {
                 readFile();
                 reader.close();
             }
-            writer = new BufferedWriter(new FileWriter(file));
+            writer = new BufferedWriter(new FileWriter(file, true));
             fileWritingEnabled = true;
         } catch (IOException e) {
             throw new RuntimeException(e);
