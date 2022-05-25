@@ -8,6 +8,13 @@ public class Person {
     private String lastName;
     private Participation participation;
 
+    // constructor to match LogTest.java
+    public Person(String firstName, String lastName) {
+        setFirstName(firstName);
+        setLastName(lastName);
+    }
+
+    // constructor according to class diagram
     public Person(String firstName, String lastName, Image photo) {
         setFirstName(firstName);
         setLastName(lastName);

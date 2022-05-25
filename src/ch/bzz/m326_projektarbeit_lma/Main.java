@@ -14,6 +14,6 @@ public class Main {
         hrPerson.writeLogEntry(UserAction.CREATE_PERSON, person);
         hrPerson.writeLogEntry(UserAction.DELETE_PERSON, person);
 
-        LogBook.getBookInstance().logBookClose();
+        LogBook.getLogBookInstance().logBookClose();
     }
 }

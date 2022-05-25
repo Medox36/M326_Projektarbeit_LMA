@@ -9,6 +9,12 @@ public class HRPerson extends Person{
     private int modus;
     private String pwd;
 
+    // constructor to match LogTest.java
+    public HRPerson(String firstName, String lastName) {
+        super(firstName, lastName);
+    }
+
+    // constructor according to class diagram
     public HRPerson(String firstName, String lastName, Image photo, int modus) {
         super(firstName, lastName, photo);
         setModus(modus);
@@ -34,9 +40,19 @@ public class HRPerson extends Person{
         return pwd;
     }
 
+    // method according to class diagram
     public void writeLogEntry(int action, Person person) {
         UserAction ua = new UserAction(this, person, action);
-        LogBook log = LogBook.getBookInstance();
+        LogBook log = LogBook.getLogBookInstance();
+        String entry = ua.getEntry();
+
+        log.addEntry(entry);
+    }
+
+    // method to match LogTest.java
+    public void writeLogEntry(Person person, int action) {
+        UserAction ua = new UserAction(this, person, action);
+        LogBook log = LogBook.getLogBookInstance();
         String entry = ua.getEntry();
 
         log.addEntry(entry);

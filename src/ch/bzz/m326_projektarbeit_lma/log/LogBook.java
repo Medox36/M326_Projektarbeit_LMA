@@ -8,7 +8,7 @@ import java.util.Vector;
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.05.18
- * @version 1.0
+ * @version 1.1
  */
 public class LogBook {
 
@@ -45,7 +45,7 @@ public class LogBook {
      *
      * @return instance of the logBook
      */
-    public static LogBook getBookInstance() {
+    public static LogBook getLogBookInstance() {
         if (instance == null) {
             instance = new LogBook();
         }
@@ -124,6 +124,13 @@ public class LogBook {
     private void readFile() throws IOException {
         while (reader.ready()) {
             entries.add(reader.readLine());
+        }
+    }
+
+    // method to match LogTest.java
+    public void printLog() {
+        for (String str : entries) {
+            System.out.println(str);
         }
     }
 }

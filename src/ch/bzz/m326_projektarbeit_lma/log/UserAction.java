@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.05.18
- * @version 1.0
+ * @version 1.1
  */
 public class UserAction {
     public static int CREATE_PERSON = 0;
@@ -30,14 +30,14 @@ public class UserAction {
      * @param action that was made
      */
     public UserAction(HRPerson hrPerson, Person person, int action) {
-        entry = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
-        entry += " | " + hrPerson.getFirstName() + " " + hrPerson.getLastName();
+        entry = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+        entry += " : " + hrPerson.getFirstName() + " " + hrPerson.getLastName() + " do";
 
         if (action >= 0 && action < actionDescription.length) {
             entry += " " + actionDescription[action];
-            entry += " " + person.getFirstName() + " " + person.getLastName();
+            entry += " for " + person.getFirstName() + " " + person.getLastName() + ";";
         } else {
-            entry += " made unknown action";
+            entry += " unknown action";
         }
     }
 
