@@ -127,7 +127,9 @@ public class LogBook {
         }
     }
 
-    // method to match LogTest.java
+    /**
+     * prints out all te log book entries
+     */
     public void printLog() {
         for (String str : entries) {
             System.out.println(str);
