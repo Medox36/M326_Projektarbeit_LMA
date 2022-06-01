@@ -44,4 +44,8 @@ public class Person {
     public Image getPhoto() {
         return photo;
     }
+
+    public Participation getParticipation() {
+        return participation;
+    }
 }
