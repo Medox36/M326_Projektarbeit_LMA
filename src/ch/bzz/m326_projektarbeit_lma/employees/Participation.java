@@ -3,6 +3,13 @@ package ch.bzz.m326_projektarbeit_lma.employees;
 import ch.bzz.m326_projektarbeit_lma.company.JobFunctions;
 import ch.bzz.m326_projektarbeit_lma.company.Teams;
 
+/**
+ *
+ *
+ * @author Lorenzo Giuntini (Medox36)
+ * @since 2022.05.18
+ * @version 1.0
+ */
 public class Participation {
 
     private JobFunctions function;

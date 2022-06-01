@@ -5,6 +5,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ *
+ *
+ * @author Lorenzo Giuntini (Medox36)
+ * @since 2022.06.01
+ * @version 1.0
+ */
 public class Company {
 
     private String name;
