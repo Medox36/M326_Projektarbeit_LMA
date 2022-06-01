@@ -12,12 +12,12 @@ public class Person {
     public Person(String firstName, String lastName) {
         setFirstName(firstName);
         setLastName(lastName);
+        participation = new Participation();
     }
 
     // constructor according to class diagram
     public Person(String firstName, String lastName, Image photo) {
-        setFirstName(firstName);
-        setLastName(lastName);
+        this(firstName, lastName);
         setPhoto(photo);
     }
 
