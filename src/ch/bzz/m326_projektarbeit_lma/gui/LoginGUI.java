@@ -19,26 +19,21 @@ public class LoginGUI extends JFrame {
         setTitle("Authentifizierung");
         setSize(350, 170);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new BorderLayout(0,0));
+        getContentPane().setLayout(new BorderLayout(5,5));
         //Panels erstelln inkl. Layouts
-        JPanel buttonPanelUp = new JPanel(new GridLayout(1,2,0,0));
-        JPanel buttonPaneldown = new JPanel(new GridLayout(1,2,0,0));
-        JPanel abbWeiterPanel = new JPanel(new GridLayout(1,2,0,0));
-        JPanel mainLoginGUI = new JPanel(new BorderLayout(2,2));
-        JPanel bigLoginGUI = new JPanel(new BorderLayout(2,2));
+        JPanel loginPanel = new JPanel(new GridLayout(2,2,5,5));
+        JPanel downPanel = new JPanel(new GridLayout(1,2,5,5));
+        JPanel mainPanel = new JPanel(new BorderLayout(5,5));
         //zusammenbauen
-        buttonPanelUp.add(nameLabel);
-        buttonPanelUp.add(nameCombox);
-        buttonPaneldown.add(codeLabel);
-        buttonPaneldown.add(codeField);
-        abbWeiterPanel.add(abbrechenButton);
-        abbWeiterPanel.add(weiterButton);
-        mainLoginGUI.add(buttonPanelUp, BorderLayout.NORTH);
-        mainLoginGUI.add(buttonPaneldown, BorderLayout.SOUTH);
-        bigLoginGUI.add(mainLoginGUI, BorderLayout.CENTER);
-        bigLoginGUI.add(abbWeiterPanel, BorderLayout.SOUTH);
-        getContentPane().add(bigLoginGUI, BorderLayout.CENTER);
-
+        loginPanel.add(nameLabel);
+        loginPanel.add(nameCombox);
+        loginPanel.add(codeLabel);
+        loginPanel.add(codeField);
+        downPanel.add(abbrechenButton);
+        downPanel.add(weiterButton);
+        mainPanel.add(loginPanel, BorderLayout.NORTH);
+        mainPanel.add(downPanel, BorderLayout.SOUTH);
+        getContentPane().add(mainPanel, BorderLayout.CENTER);
         //Sichtbarkeit
         setVisible(true);
     }
