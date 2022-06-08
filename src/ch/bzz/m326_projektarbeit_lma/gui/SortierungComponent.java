@@ -15,7 +15,7 @@ public class SortierungComponent extends JFrame {
         TitledBorder titledBorder = BorderFactory.createTitledBorder("Sortierung:");
         sortierungPanel.setBorder(titledBorder);
 
-        sortierungPanel.setLayout(new GridLayout(3,1));
+        sortierungPanel.setLayout(new GridLayout(3,1,1,1));
 
         JRadioButton r1 = new JRadioButton("keine");
         JRadioButton r2 = new JRadioButton("A-Z");

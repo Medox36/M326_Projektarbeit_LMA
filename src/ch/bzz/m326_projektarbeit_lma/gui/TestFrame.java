@@ -17,8 +17,11 @@ public class TestFrame extends JFrame {
 
         //Panel 1 für die Übersicht
         JPanel panel1 = new JPanel();
+
+        JLabel uebersicht = new JLabel("Übersicht:");
         JPanel detailPanel = new JPanel();
         JPanel overviewPanel = new JPanel();
+
         String names[] = {
                 "Benak Alexander","Giuntini Lorenzo", "Hawi Moustafa",
                 "Jadyn Esquivel","Alondra Wren","Tara Richter","Roxanna Jack","Laci Barrera",
@@ -32,6 +35,7 @@ public class TestFrame extends JFrame {
         scrollPane.setPreferredSize(new Dimension(150,200));
         scrollPane.setVerticalScrollBarPolicy(22); //Always on
         scrollPane.setHorizontalScrollBarPolicy(31); //Never
+        overviewPanel.add(uebersicht);
         overviewPanel.add(scrollPane);
         panel1.add(overviewPanel);
 
