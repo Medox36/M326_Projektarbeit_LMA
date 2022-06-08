@@ -15,6 +15,7 @@ public class Teams {
 
     public Teams() {
         designations = new Vector<>();
+
     }
 
     public void addTeam(String team) {

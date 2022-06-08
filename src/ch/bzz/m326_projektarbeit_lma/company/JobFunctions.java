@@ -15,6 +15,7 @@ public class JobFunctions {
 
     public JobFunctions() {
         designations = new Vector<>();
+
     }
 
     public void addJobFunction(String function) {
