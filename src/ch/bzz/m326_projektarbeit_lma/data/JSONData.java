@@ -13,6 +13,7 @@ import java.nio.file.Paths;
 
 /**
  *
+ *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.06.08
  * @version 1.0
@@ -52,7 +53,7 @@ public class JSONData {
         }
     }
 
-    private void writeBookJSON() {
+    private void writeCompanyJSON() {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
         FileOutputStream fileOutputStream;
