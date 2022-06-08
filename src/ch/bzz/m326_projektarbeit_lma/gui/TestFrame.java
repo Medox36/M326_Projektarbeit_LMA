@@ -17,21 +17,40 @@ public class TestFrame extends JFrame {
 
         //Panel 1 für die Übersicht
         JPanel panel1 = new JPanel();
-
+        JPanel detailPanel = new JPanel();
+        JPanel overviewPanel = new JPanel();
         String names[] = {
                 "Benak Alexander","Giuntini Lorenzo", "Hawi Moustafa",
                 "Jadyn Esquivel","Alondra Wren","Tara Richter","Roxanna Jack","Laci Barrera",
                 "Karina Matheny","Tyson Stringer","Devontae Lombardo","Kailey Wiles","Adrian Swift"
         };
+
         JList nameList = new JList(names);
         nameList.setLayoutOrientation(JList.VERTICAL);
+
         JScrollPane scrollPane = new JScrollPane(nameList);
         scrollPane.setPreferredSize(new Dimension(150,200));
         scrollPane.setVerticalScrollBarPolicy(22); //Always on
         scrollPane.setHorizontalScrollBarPolicy(31); //Never
-        panel1.add(scrollPane);
+        overviewPanel.add(scrollPane);
+        panel1.add(overviewPanel);
 
+        TitledBorder title1 = BorderFactory.createTitledBorder("Person:");
+        panel1.setBorder(title1);
+
+        TitledBorder title2 = BorderFactory.createTitledBorder("Detail:");
+        detailPanel.setBorder(title2);
+        JLabel nameLabel = new JLabel("Name:");
+        JTextField nameTextField = new JTextField("Benak Alexander");
+        nameTextField.setEditable(false);
+
+
+        //Panel2 für die Zuordnung
         JPanel panel2 = new JPanel();
+
+        JLabel testLabel = new JLabel("TEXT");
+        panel2.add(testLabel);
+
         JPanel panel3 = new JPanel();
         JPanel panel4 = new JPanel();
         JPanel panel5 = new JPanel();
@@ -42,9 +61,6 @@ public class TestFrame extends JFrame {
         navbar.add("Personen",panel3);
         navbar.add("Stammdaten",panel4);
         navbar.add("Logbuch",panel5);
-
-        TitledBorder title = BorderFactory.createTitledBorder("Person");
-        panel1.setBorder(title);
 
         getContentPane().add(navbar);
 
