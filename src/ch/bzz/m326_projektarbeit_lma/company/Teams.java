@@ -37,4 +37,8 @@ public class Teams {
     public int getSize() {
         return designations.size();
     }
+
+    public Vector<String> getAllTeams() {
+        return designations;
+    }
 }

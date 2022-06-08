@@ -37,6 +37,10 @@ public class Company {
         departements.add(departement);
     }
 
+    public Vector<Departement> getAllDepartments() {
+        return departements;
+    }
+
     public Departement getDepartement(int index) {
         return departements.get(index);
     }
@@ -45,20 +49,20 @@ public class Company {
         return departements.get(index).getName();
     }
 
-    public String getDepartmentsName() {
+    public Vector<String> getDepartmentsName() {
+        Vector<String> names = new Vector<>();
+
         Iterator<Departement> it = departements.iterator();
         if (! it.hasNext()) {
-            return "";
+            return names;
         }
 
-        StringBuilder sb = new StringBuilder();
         for (;;) {
             Departement d = it.next();
-            sb.append(d);
+            names.add(d.getName());
             if (!it.hasNext()) {
-                return sb.toString();
+                return names;
             }
-            sb.append(",");
         }
     }
 
@@ -70,47 +74,19 @@ public class Company {
         departements.remove(index);
     }
 
+    public void removeDepartment(Departement departement) {
+        departements.remove(departement);
+    }
+
     public int getNumberOfDepartments() {
         return departements.size();
     }
 
-    public void addFunction(String function) {
-        functions.addJobFunction(function);
+    public JobFunctions getFunctions() {
+        return functions;
     }
 
-    public String getFunction(int index) {
-        return functions.getJobFunction(index);
-    }
-
-    public void removeFunction(int index) {
-        functions.removeJobFunction(index);
-    }
-
-    public void removeFunction(String function) {
-        teams.removeTeam(function);
-    }
-
-    public int getNumberOfFunctions() {
-        return functions.getSize();
-    }
-
-    public void addTeam(String team) {
-        teams.addTeam(team);
-    }
-
-    public String getTeam(int index) {
-        return teams.getTeam(index);
-    }
-
-    public void removeTeam(int index) {
-        teams.removeTeam(index);
-    }
-
-    public void removeTeam(String team) {
-        teams.removeTeam(team);
-    }
-
-    public int getNumberOfTeams() {
-        return teams.getSize();
+    public Teams getTeams() {
+        return teams;
     }
 }

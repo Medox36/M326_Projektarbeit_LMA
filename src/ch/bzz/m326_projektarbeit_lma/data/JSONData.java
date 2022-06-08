@@ -68,11 +68,11 @@ public class JSONData {
         }
     }
 
-    private Company getCompany() {
+    public Company getCompany() {
         return company;
     }
 
-    public JSONData getInstance() {
+    public static JSONData getInstance() {
         if (instance == null) {
             instance = new JSONData();
         }

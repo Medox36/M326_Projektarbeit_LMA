@@ -43,4 +43,8 @@ public class Departement {
     public int getNumberOfMembers() {
         return members.size();
     }
+
+    public Vector<Person> getAllMembers() {
+        return members;
+    }
 }

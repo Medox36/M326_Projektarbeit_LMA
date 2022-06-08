@@ -37,4 +37,8 @@ public class JobFunctions {
     public int getSize() {
         return designations.size();
     }
+
+    public Vector<String> getAllFunctions() {
+        return designations;
+    }
 }

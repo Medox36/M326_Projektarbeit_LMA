@@ -35,6 +35,10 @@ public class Participation {
         this.function.remove(function);
     }
 
+    public Vector<String> getAllFunctions() {
+        return function;
+    }
+
     public void addTeam(String team) {
         teams.add(team);
     }
@@ -53,5 +57,9 @@ public class Participation {
 
     public int getNumberOfTeams() {
         return teams.size();
+    }
+
+    public Vector<String> getAllTeams() {
+        return teams;
     }
 }
