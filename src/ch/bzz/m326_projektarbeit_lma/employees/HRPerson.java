@@ -5,6 +5,13 @@ import ch.bzz.m326_projektarbeit_lma.log.UserAction;
 
 import java.awt.*;
 
+/**
+ *
+ *
+ * @author Lorenzo Giuntini (Medox36)
+ * @since 2022.05.18
+ * @version 1.0
+ */
 public class HRPerson extends Person{
     private int modus;
     private String pwd;

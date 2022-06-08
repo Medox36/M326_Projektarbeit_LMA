@@ -2,6 +2,13 @@ package ch.bzz.m326_projektarbeit_lma.company;
 
 import java.util.Vector;
 
+/**
+ *
+ *
+ * @author Lorenzo Giuntini (Medox36)
+ * @since 2022.06.01
+ * @version 1.0
+ */
 public class Teams {
 
     private Vector<String> designations;

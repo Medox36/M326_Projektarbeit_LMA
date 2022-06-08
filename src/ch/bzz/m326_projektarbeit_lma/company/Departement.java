@@ -4,6 +4,13 @@ import ch.bzz.m326_projektarbeit_lma.employees.Person;
 
 import java.util.Vector;
 
+/**
+ *
+ *
+ * @author Lorenzo Giuntini (Medox36)
+ * @since 2022.06.01
+ * @version 1.0
+ */
 public class Departement {
 
     private String name;

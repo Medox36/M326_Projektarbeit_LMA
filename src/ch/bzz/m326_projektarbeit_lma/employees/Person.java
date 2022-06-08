@@ -2,6 +2,13 @@ package ch.bzz.m326_projektarbeit_lma.employees;
 
 import java.awt.*;
 
+/**
+ *
+ *
+ * @author Lorenzo Giuntini (Medox36)
+ * @since 2022.05.18
+ * @version 1.0
+ */
 public class Person {
     private Image photo;
     private String firstName;
