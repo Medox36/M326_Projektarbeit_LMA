@@ -95,11 +95,11 @@ public class Facade {
         return null;
     }
 
-    public void addPerson(Person person, String departmentName) {
-        getDepartmentByName(departmentName).removeMember(person);
+    private void addPersonToDepartment(Person person, String departmentName) {
+        getDepartmentByName(departmentName).addMember(person);
     }
 
-    public void removePerson(Person person) {
+    private void removePersonFromDepartment(Person person) {
         getDepartmentOfPerson(person).removeMember(person);
     }
 
@@ -108,8 +108,8 @@ public class Facade {
         person.setFirstName(firstAndLastName[0]);
         person.setLastName(firstAndLastName[1]);
 
-        getDepartmentOfPerson(person).removeMember(person);
-        getDepartmentByName(department).addMember(person);
+        removePersonFromDepartment(person);
+        addPersonToDepartment(person, department);
     }
 
     public static Facade getInstance() {
