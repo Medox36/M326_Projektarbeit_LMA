@@ -1,0 +1,53 @@
+{
+  "name" : "Nukufel GmbH",
+  "departments" : [ {
+    "name" : "Nufukel IT",
+    "members" : [ {
+      "type" : "Person",
+      "firstName" : "Max",
+      "lastName" : "Musterman",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "IT Guy" ],
+        "teams" : [ "IT" ],
+        "allFunctions" : [ "IT Guy" ],
+        "allTeams" : [ "IT" ]
+      }
+    }, {
+      "type" : "Person",
+      "firstName" : "Joe",
+      "lastName" : "Wilkinson",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Abacus Guy" ],
+        "teams" : [ "Abacus" ],
+        "allFunctions" : [ "Abacus Guy" ],
+        "allTeams" : [ "Abacus" ]
+      }
+    } ]
+  }, {
+    "name" : "Nufukel Abacuuus",
+    "members" : [ {
+      "type" : "HRPerson",
+      "firstName" : "Jimmy",
+      "lastName" : "Carr",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Abacus Guy" ],
+        "teams" : [ "IT" ],
+        "allFunctions" : [ "Abacus Guy" ],
+        "allTeams" : [ "IT" ]
+      },
+      "modus" : 0,
+      "pwd" : null
+    } ]
+  } ],
+  "functions" : {
+    "designations" : [ "IT Guy", "Abacus Guy" ],
+    "allFunctions" : [ "IT Guy", "Abacus Guy" ]
+  },
+  "teams" : {
+    "designations" : [ "IT", "Abacus" ],
+    "allTeams" : [ "IT", "Abacus" ]
+  }
+}
