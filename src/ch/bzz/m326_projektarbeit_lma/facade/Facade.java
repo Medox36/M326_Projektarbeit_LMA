@@ -9,6 +9,13 @@ import ch.bzz.m326_projektarbeit_lma.employees.Person;
 import java.awt.*;
 import java.util.Vector;
 
+/**
+ *
+ *
+ * @author Lorenzo Giuntini (Medox36)
+ * @since 2022.06.08
+ * @version 1.2
+ */
 public class Facade {
     private static Facade instance;
     private Company company;
