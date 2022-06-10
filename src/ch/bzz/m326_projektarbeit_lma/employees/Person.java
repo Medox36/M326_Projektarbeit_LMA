@@ -1,5 +1,8 @@
 package ch.bzz.m326_projektarbeit_lma.employees;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import java.awt.*;
 
 /**
@@ -9,6 +12,11 @@ import java.awt.*;
  * @since 2022.05.18
  * @version 1.0
  */
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = HRPerson.class, name = "HRPerson")})
 public class Person {
     private Image photo;
     private String firstName;
@@ -46,6 +54,10 @@ public class Person {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
     }
 
     public Image getPhoto() {

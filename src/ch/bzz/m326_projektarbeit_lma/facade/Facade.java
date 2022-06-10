@@ -3,6 +3,7 @@ package ch.bzz.m326_projektarbeit_lma.facade;
 import ch.bzz.m326_projektarbeit_lma.company.Company;
 import ch.bzz.m326_projektarbeit_lma.company.Departement;
 import ch.bzz.m326_projektarbeit_lma.data.JSONData;
+import ch.bzz.m326_projektarbeit_lma.employees.HRPerson;
 import ch.bzz.m326_projektarbeit_lma.employees.Person;
 
 import java.util.Vector;
@@ -21,6 +22,47 @@ public class Facade {
             persons.addAll(departement.getAllMembers());
         }
         return persons;
+    }
+
+    public Person getPersonByName(String fullName) {
+        for (Person p : getAllPersons()) {
+            if (p.getFullName().equals(fullName)) {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public void addNewPerson(String fullName, String department) {
+        String[] firstAndLastName = fullName.split(" ");
+        Person person = new Person(firstAndLastName[0], firstAndLastName[1]);
+        getDepartmentByName(department).addMember(person);
+    }
+
+    public void addNewHRPerson(String fullName, String department, int modus, String pwd) {
+        String[] firstAndLastName = fullName.split(" ");
+        HRPerson hrPerson = new HRPerson(firstAndLastName[0], firstAndLastName[1]);
+        hrPerson.setModus(modus);
+        hrPerson.setPwd(pwd);
+
+        getDepartmentByName(department).addMember(hrPerson);
+    }
+
+    public boolean isHRPerson(Person person) {
+        return person instanceof HRPerson;
+    }
+
+    public boolean checkPassword(String fullName, String pwd) {
+        return checkPassword(getPersonByName(fullName), pwd);
+    }
+
+    private boolean checkPassword(Person person, String pwd) {
+        if (isHRPerson(person)) {
+            HRPerson hrPerson = (HRPerson) person;
+            return hrPerson.getPwd().equals(pwd);
+        } else {
+            return false;
+        }
     }
 
     public Vector<Departement> getAllDepartments() {

@@ -3,6 +3,7 @@ package ch.bzz.m326_projektarbeit_lma.data;
 import ch.bzz.m326_projektarbeit_lma.company.Company;
 
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
@@ -47,6 +48,7 @@ public class JSONData {
         try {
             byte[] jsonData = Files.readAllBytes(Paths.get(PATH));
             ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             company = objectMapper.readValue(jsonData, Company.class);
         } catch (IOException ex) {
             ex.printStackTrace();
