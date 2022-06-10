@@ -1,5 +1,9 @@
 package ch.bzz.m326_projektarbeit_lma.employees;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Vector;
 
 /**
@@ -9,6 +13,8 @@ import java.util.Vector;
  * @since 2022.05.18
  * @version 1.1
  */
+@Getter
+@Setter
 public class Participation {
 
     private Vector<String> function;
@@ -23,6 +29,7 @@ public class Participation {
         this.function.add(function);
     }
 
+    @JsonIgnore
     public int getNumberOfFunctions() {
         return function.size();
     }
@@ -55,6 +62,7 @@ public class Participation {
         teams.remove(team);
     }
 
+    @JsonIgnore
     public int getNumberOfTeams() {
         return teams.size();
     }

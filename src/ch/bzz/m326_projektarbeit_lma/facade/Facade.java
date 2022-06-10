@@ -1,11 +1,12 @@
 package ch.bzz.m326_projektarbeit_lma.facade;
 
 import ch.bzz.m326_projektarbeit_lma.company.Company;
-import ch.bzz.m326_projektarbeit_lma.company.Departement;
+import ch.bzz.m326_projektarbeit_lma.company.Department;
 import ch.bzz.m326_projektarbeit_lma.data.JSONData;
 import ch.bzz.m326_projektarbeit_lma.employees.HRPerson;
 import ch.bzz.m326_projektarbeit_lma.employees.Person;
 
+import java.awt.*;
 import java.util.Vector;
 
 public class Facade {
@@ -18,8 +19,8 @@ public class Facade {
 
     public Vector<Person> getAllPersons() {
         Vector<Person> persons = new Vector<>();
-        for (Departement departement : getAllDepartments()) {
-            persons.addAll(departement.getAllMembers());
+        for (Department department : getAllDepartments()) {
+            persons.addAll(department.getAllMembers());
         }
         return persons;
     }
@@ -33,16 +34,15 @@ public class Facade {
         return null;
     }
 
-    public void addNewPerson(String fullName, String department) {
+    public void addNewPerson(String fullName, String department, Image image) {
         String[] firstAndLastName = fullName.split(" ");
-        Person person = new Person(firstAndLastName[0], firstAndLastName[1]);
+        Person person = new Person(firstAndLastName[0], firstAndLastName[1], image);
         getDepartmentByName(department).addMember(person);
     }
 
-    public void addNewHRPerson(String fullName, String department, int modus, String pwd) {
+    public void addNewHRPerson(String fullName, String department, Image image, int modus, String pwd) {
         String[] firstAndLastName = fullName.split(" ");
-        HRPerson hrPerson = new HRPerson(firstAndLastName[0], firstAndLastName[1]);
-        hrPerson.setModus(modus);
+        HRPerson hrPerson = new HRPerson(firstAndLastName[0], firstAndLastName[1], image, modus);
         hrPerson.setPwd(pwd);
 
         getDepartmentByName(department).addMember(hrPerson);
@@ -65,7 +65,7 @@ public class Facade {
         }
     }
 
-    public Vector<Departement> getAllDepartments() {
+    public Vector<Department> getAllDepartments() {
         return company.getAllDepartments();
     }
 
@@ -73,17 +73,17 @@ public class Facade {
         return company.getDepartmentsName();
     }
 
-    public Departement getDepartmentByName(String name) {
-        for (Departement departement : getAllDepartments()) {
-            if (departement.getName().equals(name)) {
-                return departement;
+    public Department getDepartmentByName(String name) {
+        for (Department department : getAllDepartments()) {
+            if (department.getName().equals(name)) {
+                return department;
             }
         }
         return null;
     }
 
     public void addDepartment(String name) {
-        company.addDepartment(new Departement(name));
+        company.addDepartment(new Department(name));
     }
 
     public void removeDepartment(String name) {
@@ -126,11 +126,11 @@ public class Facade {
         return getDepartmentOfPerson(person).getName();
     }
 
-    public Departement getDepartmentOfPerson(Person person) {
-        for (Departement departement : company.getAllDepartments()) {
-            for (Person person1 : departement.getAllMembers()) {
+    public Department getDepartmentOfPerson(Person person) {
+        for (Department department : company.getAllDepartments()) {
+            for (Person person1 : department.getAllMembers()) {
                 if (person1.equals(person)) {
-                    return departement;
+                    return department;
                 }
             }
         }

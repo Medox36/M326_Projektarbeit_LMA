@@ -3,6 +3,10 @@ package ch.bzz.m326_projektarbeit_lma.employees;
 import ch.bzz.m326_projektarbeit_lma.log.LogBook;
 import ch.bzz.m326_projektarbeit_lma.log.UserAction;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.awt.*;
 
 /**
@@ -12,17 +16,17 @@ import java.awt.*;
  * @since 2022.05.18
  * @version 1.0
  */
+@Getter
+@Setter
 public class HRPerson extends Person{
     private int modus;
     private String pwd;
 
-    // constructor to match LogTest.java
-    public HRPerson(String firstName, String lastName) {
-        super(firstName, lastName);
-    }
-
-    // constructor according to class diagram
-    public HRPerson(String firstName, String lastName, Image photo, int modus) {
+    public HRPerson(
+            @JsonProperty("firstName") String firstName,
+            @JsonProperty("lastName") String lastName,
+            @JsonProperty("photo") Image photo,
+            @JsonProperty("modus") int modus) {
         super(firstName, lastName, photo);
         setModus(modus);
     }

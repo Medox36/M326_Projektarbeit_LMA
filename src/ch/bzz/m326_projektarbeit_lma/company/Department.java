@@ -2,6 +2,11 @@ package ch.bzz.m326_projektarbeit_lma.company;
 
 import ch.bzz.m326_projektarbeit_lma.employees.Person;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Vector;
 
 /**
@@ -11,12 +16,14 @@ import java.util.Vector;
  * @since 2022.06.01
  * @version 1.0
  */
-public class Departement {
+@Getter
+@Setter
+public class Department {
 
     private String name;
     private Vector<Person> members;
 
-    public Departement(String name) {
+    public Department(@JsonProperty("name") String name) {
         this.name = name;
         members = new Vector<>();
     }
@@ -40,10 +47,12 @@ public class Departement {
         members.remove(person);
     }
 
+    @JsonIgnore
     public int getNumberOfMembers() {
         return members.size();
     }
 
+    @JsonIgnore
     public Vector<Person> getAllMembers() {
         return members;
     }

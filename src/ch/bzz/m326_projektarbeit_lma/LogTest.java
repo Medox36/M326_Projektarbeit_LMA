@@ -8,8 +8,8 @@ import ch.bzz.m326_projektarbeit_lma.log.UserAction;
 public class LogTest {
 
     public static void main(String[]args){
-        HRPerson hrp = new HRPerson("Max", "Muster");
-        Person pe = new Person("Maila", "Maurer");
+        HRPerson hrp = new HRPerson("Max", "Muster", null, 0);
+        Person pe = new Person("Maila", "Maurer", null);
 
         hrp.writeLogEntry(pe, UserAction.CREATE_PERSON);
         hrp.writeLogEntry(pe, UserAction.SET_ASSIGNMENT);

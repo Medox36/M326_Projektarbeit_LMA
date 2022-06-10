@@ -1,5 +1,9 @@
 package ch.bzz.m326_projektarbeit_lma.company;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Vector;
 
 /**
@@ -9,6 +13,8 @@ import java.util.Vector;
  * @since 2022.06.01
  * @version 1.0
  */
+@Getter
+@Setter
 public class Teams {
 
     private Vector<String> designations;
@@ -34,6 +40,7 @@ public class Teams {
         designations.remove(team);
     }
 
+    @JsonIgnore
     public int getSize() {
         return designations.size();
     }

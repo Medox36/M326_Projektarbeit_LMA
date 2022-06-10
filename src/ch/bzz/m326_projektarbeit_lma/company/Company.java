@@ -1,5 +1,10 @@
 package ch.bzz.m326_projektarbeit_lma.company;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,53 +17,59 @@ import java.util.Vector;
  * @since 2022.06.01
  * @version 1.1
  */
+@Getter
+@Setter
 public class Company {
 
     private String name;
-    private Vector<Departement> departements;
+    private Vector<Department> departments;
     private JobFunctions functions;
     private Teams teams;
 
     public Company() {
     }
 
-    public Company(String name) {
+    public Company(@JsonProperty("name") String name) {
         this.name = name;
-        departements = new Vector<>();
+        departments = new Vector<>();
         functions = new JobFunctions();
         teams = new Teams();
     }
 
+    @JsonIgnore
     public String getCompanyName() {
         return name;
     }
 
-    public void addDepartment(Departement departement) {
-        departements.add(departement);
+    public void addDepartment(Department department) {
+        departments.add(department);
     }
 
-    public Vector<Departement> getAllDepartments() {
-        return departements;
+    @JsonIgnore
+    public Vector<Department> getAllDepartments() {
+        return departments;
     }
 
-    public Departement getDepartement(int index) {
-        return departements.get(index);
+    public Department getDepartement(int index) {
+        return departments.get(index);
     }
 
+    @JsonIgnore
     public String getDepartmentName(int index) {
-        return departements.get(index).getName();
+        return departments.get(index).getName();
     }
 
+    @JsonIgnore
     public Vector<String> getDepartmentsName() {
         Vector<String> names = new Vector<>();
 
-        Iterator<Departement> it = departements.iterator();
+        Iterator<Department> it = departments.iterator();
         if (! it.hasNext()) {
             return names;
         }
 
         for (;;) {
-            Departement d = it.next();
+            Department d = it.next();
             names.add(d.getName());
             if (!it.hasNext()) {
                 return names;
@@ -66,20 +77,22 @@ public class Company {
         }
     }
 
-    public List<Departement> getDepartmentsNameList() {
-        return new ArrayList<>(departements);
+    @JsonIgnore
+    public List<Department> getDepartmentsNameList() {
+        return new ArrayList<>(departments);
     }
 
     public void removeDepartment(int index) {
-        departements.remove(index);
+        departments.remove(index);
     }
 
-    public void removeDepartment(Departement departement) {
-        departements.remove(departement);
+    public void removeDepartment(Department department) {
+        departments.remove(department);
     }
 
+    @JsonIgnore
     public int getNumberOfDepartments() {
-        return departements.size();
+        return departments.size();
     }
 
     public JobFunctions getFunctions() {

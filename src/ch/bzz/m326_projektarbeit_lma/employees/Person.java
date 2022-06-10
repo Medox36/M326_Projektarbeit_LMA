@@ -1,7 +1,11 @@
 package ch.bzz.m326_projektarbeit_lma.employees;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.awt.*;
 
@@ -12,6 +16,8 @@ import java.awt.*;
  * @since 2022.05.18
  * @version 1.0
  */
+@Getter
+@Setter
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         property = "type")
@@ -23,17 +29,15 @@ public class Person {
     private String lastName;
     private Participation participation;
 
-    // constructor to match LogTest.java
-    public Person(String firstName, String lastName) {
+    public Person(
+            @JsonProperty("firstName") String firstName,
+            @JsonProperty("lastName") String lastName,
+            @JsonProperty("photo") Image photo
+    ) {
         setFirstName(firstName);
         setLastName(lastName);
-        participation = new Participation();
-    }
-
-    // constructor according to class diagram
-    public Person(String firstName, String lastName, Image photo) {
-        this(firstName, lastName);
         setPhoto(photo);
+        participation = new Participation();
     }
 
     public void setFirstName(String firstName) {
@@ -56,6 +60,7 @@ public class Person {
         return lastName;
     }
 
+    @JsonIgnore
     public String getFullName() {
         return firstName + " " + lastName;
     }
