@@ -18,7 +18,7 @@ import java.awt.*;
  */
 @Getter
 @Setter
-public class HRPerson extends Person{
+public class HRPerson extends Person {
     private int modus;
     private String pwd;
 
