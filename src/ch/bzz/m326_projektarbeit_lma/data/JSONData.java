@@ -8,12 +8,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
 import java.io.*;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Objects;
 
 /**
  *
@@ -23,17 +20,6 @@ import java.util.Objects;
  * @version 1.0
  */
 public class JSONData {
-    /*
-    private static final URI PATH;
-
-    static {
-        try {
-            PATH = Objects.requireNonNull(JSONData.class.getResource("../../../../data/json/data.json")).toURI();
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
-    }
-     */
 
     private static JSONData instance;
 
@@ -46,7 +32,6 @@ public class JSONData {
 
     private void checkFile() {
         try {
-            //File file = new File(String.valueOf(JSONData.class.getResource("../../../../data/json/data.json")));
             File file = new File("data.json");
             if (!file.createNewFile()) {
                 readCompanyJSON();
@@ -60,10 +45,6 @@ public class JSONData {
 
     public void readCompanyJSON() {
         try {
-            /*
-            String path = Paths.get(PATH).toString();
-            byte[] jsonData = Files.readAllBytes(Paths.get(path));
-            */
             byte[] jsonData = Files.readAllBytes(Paths.get("data.json"));
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -80,7 +61,6 @@ public class JSONData {
         Writer fileWriter;
 
         try {
-            //fileOutputStream = new FileOutputStream(PATH.getPath());
             fileOutputStream = new FileOutputStream("data.json");
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
             objectWriter.writeValue(fileWriter, company);
