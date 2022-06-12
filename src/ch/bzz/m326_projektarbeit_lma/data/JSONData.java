@@ -40,7 +40,6 @@ public class JSONData {
     private Company company;
 
     private JSONData() {
-        company = new Company();
         checkFile();
     }
 
