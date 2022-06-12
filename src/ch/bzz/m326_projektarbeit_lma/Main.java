@@ -19,18 +19,18 @@ public class Main {
         company.getTeams().addTeam("IT");
         company.getTeams().addTeam("Abacus");
 
-        company.getDepartement(0).addMember(new Person("Max", "Musterman", null));
-        company.getDepartement(0).addMember(new Person("Joe", "Wilkinson", null));
-        company.getDepartement(1).addMember(new HRPerson("Jimmy", "Carr", null, 0));
+        company.getDepartment(0).addMember(new Person("Max", "Musterman", null));
+        company.getDepartment(0).addMember(new Person("Joe", "Wilkinson", null));
+        company.getDepartment(1).addMember(new HRPerson("Jimmy", "Carr", null, 0));
 
-        company.getDepartement(0).getMember(0).getParticipation().addFunction(company.getFunctions().getJobFunction(0));
-        company.getDepartement(0).getMember(1).getParticipation().addFunction(company.getFunctions().getJobFunction(1));
+        company.getDepartment(0).getMember(0).getParticipation().addFunction(company.getFunctions().getJobFunction(0));
+        company.getDepartment(0).getMember(1).getParticipation().addFunction(company.getFunctions().getJobFunction(1));
 
-        company.getDepartement(0).getMember(0).getParticipation().addTeam(company.getTeams().getTeam(0));
-        company.getDepartement(0).getMember(1).getParticipation().addTeam(company.getTeams().getTeam(1));
+        company.getDepartment(0).getMember(0).getParticipation().addTeam(company.getTeams().getTeam(0));
+        company.getDepartment(0).getMember(1).getParticipation().addTeam(company.getTeams().getTeam(1));
 
-        company.getDepartement(1).getMember(0).getParticipation().addFunction(company.getFunctions().getJobFunction(1));
-        company.getDepartement(1).getMember(0).getParticipation().addTeam(company.getTeams().getTeam(0));
+        company.getDepartment(1).getMember(0).getParticipation().addFunction(company.getFunctions().getJobFunction(1));
+        company.getDepartment(1).getMember(0).getParticipation().addTeam(company.getTeams().getTeam(0));
 
         JSONData jsonData = JSONData.getInstance();
         jsonData.setCompany(company);
