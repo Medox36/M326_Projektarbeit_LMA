@@ -25,48 +25,104 @@ public class Participation {
         teams = new Vector<>();
     }
 
+    /**
+     * adds a new function
+     *
+     * @param function to be added
+     */
     public void addFunction(String function) {
         this.function.add(function);
     }
 
+    /**
+     * gets the number of functions
+     *
+     * @return number of functions
+     */
     @JsonIgnore
     public int getNumberOfFunctions() {
         return function.size();
     }
 
+    /**
+     * removes a function at a given index
+     *
+     * @param index of the function
+     */
     public void removeJobFunction(int index) {
         function.remove(index);
     }
 
+    /**
+     * removes a function that matches a given String
+     *
+     * @param function name of the function
+     */
     public void removeJobFunction(String function) {
         this.function.remove(function);
     }
 
+    /**
+     * gets all the functions
+     *
+     * @return all functions in Vector of type String
+     */
     public Vector<String> getAllFunctions() {
         return function;
     }
 
+    /**
+     * adds a team
+     *
+     * @param team to be added
+     */
     public void addTeam(String team) {
         teams.add(team);
     }
 
+    /**
+     * gets the name of a team at a given index
+     *
+     * @param index of the team
+     * @return name of the team
+     */
     public String getTeamName(int index) {
         return teams.get(index);
     }
 
+    /**
+     * removes a team at a given index
+     *
+     * @param index of the team
+     */
     public void removeTeam(int index) {
         teams.remove(index);
     }
 
+    /**
+     * removes a team that matches a given String
+     *
+     * @param team name of the team
+     */
     public void removeTeam(String team) {
         teams.remove(team);
     }
 
+    /**
+     * gets the number of teams
+     *
+     * @return number of teams
+     */
     @JsonIgnore
     public int getNumberOfTeams() {
         return teams.size();
     }
 
+    /**
+     * gets all the teams
+     *
+     * @return all teams in Vector of type String
+     */
     public Vector<String> getAllTeams() {
         return teams;
     }

@@ -29,6 +29,13 @@ public class Person {
     private String lastName;
     private Participation participation;
 
+    /**
+     * constructor
+     *
+     * @param firstName of the Person
+     * @param lastName of the Person
+     * @param photo of the Person
+     */
     public Person(
             @JsonProperty("firstName") String firstName,
             @JsonProperty("lastName") String lastName,
@@ -40,35 +47,75 @@ public class Person {
         participation = new Participation();
     }
 
+    /**
+     * sets the first name
+     *
+     * @param firstName to be set
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * sets the last name
+     *
+     * @param lastName to be set
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     * sets the photo
+     *
+     * @param photo to be set
+     */
     public void setPhoto(Image photo) {
         this.photo = photo;
     }
 
+    /**
+     * gets the first name
+     *
+     * @return first name
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * gets the last name
+     *
+     * @return last name
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * gets the full name
+     *
+     * @return full name
+     */
     @JsonIgnore
     public String getFullName() {
         return firstName + " " + lastName;
     }
 
+    /**
+     * gets the photo
+     *
+     * @return photo
+     */
     public Image getPhoto() {
         return photo;
     }
 
+    /**
+     * gets the participation
+     *
+     * @return participation
+     */
     public Participation getParticipation() {
         return participation;
     }

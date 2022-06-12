@@ -26,9 +26,11 @@ public class Company {
     private JobFunctions functions;
     private Teams teams;
 
-    public Company() {
-    }
-
+    /**
+     * constructor
+     *
+     * @param name of the company
+     */
     public Company(@JsonProperty("name") String name) {
         this.name = name;
         departments = new Vector<>();
@@ -36,29 +38,61 @@ public class Company {
         teams = new Teams();
     }
 
+    /**
+     * gets the name
+     *
+     * @return the name
+     */
     @JsonIgnore
     public String getCompanyName() {
         return name;
     }
 
+    /**
+     * adds a given department
+     *
+     * @param department to be added
+     */
     public void addDepartment(Department department) {
         departments.add(department);
     }
 
+    /**
+     * gets all departments
+     *
+     * @return all departments in Vector type Department
+     */
     @JsonIgnore
     public Vector<Department> getAllDepartments() {
         return departments;
     }
 
-    public Department getDepartement(int index) {
+    /**
+     * gets a department at a given index
+     *
+     * @param index of the department
+     * @return the department
+     */
+    public Department getDepartment(int index) {
         return departments.get(index);
     }
 
+    /**
+     * gets the dame of a department at a given index
+     *
+     * @param index of the department
+     * @return the name of the department
+     */
     @JsonIgnore
     public String getDepartmentName(int index) {
         return departments.get(index).getName();
     }
 
+    /**
+     * gets all names of all departments
+     *
+     * @return all names of all departments in Vector of type String
+     */
     @JsonIgnore
     public Vector<String> getDepartmentsName() {
         Vector<String> names = new Vector<>();
@@ -77,28 +111,58 @@ public class Company {
         }
     }
 
+    /**
+     * gets all the names of all departments
+     *
+     * @return all the names of all departments in Vector of type String
+     */
     @JsonIgnore
     public List<Department> getDepartmentsNameList() {
         return new ArrayList<>(departments);
     }
 
+    /**
+     * removes a department at a given index
+     *
+     * @param index of the department
+     */
     public void removeDepartment(int index) {
         departments.remove(index);
     }
 
+    /**
+     * removes the given department
+     *
+     * @param department to be removed
+     */
     public void removeDepartment(Department department) {
         departments.remove(department);
     }
 
+    /**
+     * gets the number of departments
+     *
+     * @return number of departments
+     */
     @JsonIgnore
     public int getNumberOfDepartments() {
         return departments.size();
     }
 
+    /**
+     * gets the job functions
+     *
+     * @return job functions
+     */
     public JobFunctions getFunctions() {
         return functions;
     }
 
+    /**
+     * gets the teams
+     *
+     * @return teams
+     */
     public Teams getTeams() {
         return teams;
     }
