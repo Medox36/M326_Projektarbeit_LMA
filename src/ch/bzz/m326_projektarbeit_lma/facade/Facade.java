@@ -32,35 +32,22 @@ public class Facade {
         return persons;
     }
 
-    public Person getPersonByName(String fullName) {
-        for (Person p : getAllPersons()) {
-            if (p.getFullName().equals(fullName)) {
-                return p;
-            }
-        }
-        return null;
-    }
-
-    public void addNewPerson(String fullName, String department, Image image) {
+    public void addNewPerson(String fullName, Department department, Image image) {
         String[] firstAndLastName = fullName.split(" ");
         Person person = new Person(firstAndLastName[0], firstAndLastName[1], image);
-        getDepartmentByName(department).addMember(person);
+        department.addMember(person);
     }
 
-    public void addNewHRPerson(String fullName, String department, Image image, int modus, String pwd) {
+    public void addNewHRPerson(String fullName, Department department, Image image, int modus, String pwd) {
         String[] firstAndLastName = fullName.split(" ");
         HRPerson hrPerson = new HRPerson(firstAndLastName[0], firstAndLastName[1], image, modus);
         hrPerson.setPwd(pwd);
 
-        getDepartmentByName(department).addMember(hrPerson);
+        department.addMember(hrPerson);
     }
 
     public boolean isHRPerson(Person person) {
         return person instanceof HRPerson;
-    }
-
-    public boolean checkPassword(String fullName, String pwd) {
-        return checkPassword(getPersonByName(fullName), pwd);
     }
 
     private boolean checkPassword(Person person, String pwd) {
@@ -80,15 +67,6 @@ public class Facade {
         return company.getDepartmentsName();
     }
 
-    public Department getDepartmentByName(String name) {
-        for (Department department : getAllDepartments()) {
-            if (department.getName().equals(name)) {
-                return department;
-            }
-        }
-        return null;
-    }
-
     public Department getDepartment(int index) {
         return getAllDepartments().get(index);
     }
@@ -97,8 +75,8 @@ public class Facade {
         company.addDepartment(new Department(name));
     }
 
-    public void removeDepartment(String name) {
-        company.removeDepartment(getDepartmentByName(name));
+    public void removeDepartment(Department department) {
+        company.removeDepartment(department);
     }
 
     public Vector<String> getAllFunctions() {
@@ -141,12 +119,36 @@ public class Facade {
         return person.getParticipation().getFunctionName(index);
     }
 
-    public String getTeamOfPerson(Person person, int index) {
-        return person.getParticipation().getTeamName(index);
+    public void addFunctionToPerson(Person person, String function) {
+        person.getParticipation().addFunction(function);
+    }
+
+    public void removeFunctionOfPerson(Person person, String function) {
+        person.getParticipation().removeJobFunction(function);
+    }
+
+    public void removeFunctionOfPerson(Person person, int index) {
+        person.getParticipation().removeJobFunction(index);
     }
 
     public Vector<String> getTeamsOfPerson (Person person) {
         return person.getParticipation().getAllTeams();
+    }
+
+    public String getTeamOfPerson(Person person, int index) {
+        return person.getParticipation().getTeamName(index);
+    }
+
+    public void addTeamToPerson(Person person, String team) {
+        person.getParticipation().addTeam(team);
+    }
+
+    public void removeTeamOfPerson(Person person, int index) {
+        person.getParticipation().removeTeam(index);
+    }
+
+    public void removeTeamOfPerson(Person person, String team) {
+        person.getParticipation().removeTeam(team);
     }
 
     public String getDepartmentNameOfPerson(Person person) {
@@ -164,21 +166,21 @@ public class Facade {
         return null;
     }
 
-    private void addPersonToDepartment(Person person, String departmentName) {
-        getDepartmentByName(departmentName).addMember(person);
+    private void addPersonToDepartment(Person person, Department departmentName) {
+        departmentName.addMember(person);
     }
 
     private void removePersonFromDepartment(Person person) {
         getDepartmentOfPerson(person).removeMember(person);
     }
 
-    public void updatePerson(Person person, String fullName, String department) {
-        String[] firstAndLastName = fullName.split(" ");
+    public void updatePerson(Person person, String newFullName, Department newDepartment) {
+        String[] firstAndLastName = newFullName.split(" ");
         person.setFirstName(firstAndLastName[0]);
         person.setLastName(firstAndLastName[1]);
 
         removePersonFromDepartment(person);
-        addPersonToDepartment(person, department);
+        addPersonToDepartment(person, newDepartment);
     }
 
     public static Facade getInstance() {
