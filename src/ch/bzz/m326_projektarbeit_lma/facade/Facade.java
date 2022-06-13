@@ -68,7 +68,7 @@ public class Facade {
     }
 
     public Department getDepartment(int index) {
-        return getAllDepartments().get(index);
+        return company.getDepartment(index);
     }
 
     public void addDepartment(String name) {
