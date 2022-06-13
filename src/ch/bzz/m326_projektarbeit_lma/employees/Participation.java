@@ -62,6 +62,10 @@ public class Participation {
         this.function.remove(function);
     }
 
+    public String getFunctionName(int index) {
+        return function.get(index);
+    }
+
     /**
      * gets all the functions
      *

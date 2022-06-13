@@ -89,6 +89,10 @@ public class Facade {
         return null;
     }
 
+    public Department getDepartment(int index) {
+        return getAllDepartments().get(index);
+    }
+
     public void addDepartment(String name) {
         company.addDepartment(new Department(name));
     }
@@ -109,6 +113,10 @@ public class Facade {
         company.getFunctions().removeJobFunction(name);
     }
 
+    public String getFunction(int index) {
+        return company.getFunctions().getJobFunction(index);
+    }
+
     public Vector<String> getAllTeams() {
         return company.getTeams().getAllTeams();
     }
@@ -121,8 +129,20 @@ public class Facade {
         company.getTeams().removeTeam(name);
     }
 
+    public String getTeam(int index) {
+        return company.getTeams().getTeam(index);
+    }
+
     public Vector<String> getFunctionsOfPerson(Person person) {
         return person.getParticipation().getAllFunctions();
+    }
+
+    public String getFunctionOfPerson(Person person, int index) {
+        return person.getParticipation().getFunctionName(index);
+    }
+
+    public String getTeamOfPerson(Person person, int index) {
+        return person.getParticipation().getTeamName(index);
     }
 
     public Vector<String> getTeamsOfPerson (Person person) {
