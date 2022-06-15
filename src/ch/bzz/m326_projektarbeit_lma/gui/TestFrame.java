@@ -1,5 +1,6 @@
 package ch.bzz.m326_projektarbeit_lma.gui;
 
+import ch.bzz.m326_projektarbeit_lma.company.Company;
 import ch.bzz.m326_projektarbeit_lma.employees.Person;
 
 import javax.swing.*;
@@ -47,6 +48,9 @@ public class TestFrame extends JFrame {
         JLabel nameLabel = new JLabel("Name:");
         JTextField nameTextField = new JTextField("Benak Alexander");
         nameTextField.setEditable(false);
+        detailPanel.add(nameLabel);
+        detailPanel.add(nameTextField);
+        panel1.add(detailPanel);
 
 
         //Panel2 für die Zuordnung

@@ -10,7 +10,7 @@ public class LoginGUI extends JFrame {
     String comboBoxListe[] = {"Person wählen","Muster Max", "Trulli Theo", "Arpagaus Carla", "Rodriguez Joe", "Radic Illia", "Moro Valeria", "Müller Petra","Grifith Malcom", "Marchese Luigi", "Bolgar Beda", "Rast Anna" };
     JComboBox nameCombox = new JComboBox(comboBoxListe);
     JTextField codeField = new JTextField("Code eingeben");
-    JButton abbrechenButton = new JButton("Abbrchen");
+    JButton abbrechenButton = new JButton("Abbrechen");
     JButton weiterButton = new JButton("Weiter");
 
     //Konstruktor
