@@ -79,6 +79,16 @@ public class Facade {
         company.removeDepartment(department);
     }
 
+    public Vector<Department> searchDepartments(String filter) {
+        Vector<Department> departments = new Vector<>();
+        for (Department department : getAllDepartments()) {
+            if (department.getName().contains(filter)) {
+                departments.add(department);
+            }
+        }
+        return departments;
+    }
+
     public Vector<String> getAllFunctions() {
         return company.getFunctions().getAllFunctions();
     }
@@ -95,6 +105,16 @@ public class Facade {
         return company.getFunctions().getJobFunction(index);
     }
 
+    public Vector<String> searchFunctions(String filter) {
+        Vector<String > departments = new Vector<>();
+        for (String s : getAllFunctions()) {
+            if (s.contains(filter)) {
+                departments.add(s);
+            }
+        }
+        return departments;
+    }
+
     public Vector<String> getAllTeams() {
         return company.getTeams().getAllTeams();
     }
@@ -109,6 +129,16 @@ public class Facade {
 
     public String getTeam(int index) {
         return company.getTeams().getTeam(index);
+    }
+
+    public Vector<String> searchTeams(String filter) {
+        Vector<String > departments = new Vector<>();
+        for (String s : getAllTeams()) {
+            if (s.contains(filter)) {
+                departments.add(s);
+            }
+        }
+        return departments;
     }
 
     public Vector<String> getFunctionsOfPerson(Person person) {
@@ -152,7 +182,11 @@ public class Facade {
     }
 
     public String getDepartmentNameOfPerson(Person person) {
-        return getDepartmentOfPerson(person).getName();
+        Department department = getDepartmentOfPerson(person);
+        if (department == null) {
+            return null;
+        }
+        return department.getName();
     }
 
     public Department getDepartmentOfPerson(Person person) {
