@@ -36,7 +36,7 @@ public class JSONData {
             if (!file.createNewFile()) {
                 readCompanyJSON();
             } else {
-                company = new Company("");
+                setCompany(new Company("default"));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -48,7 +48,7 @@ public class JSONData {
             byte[] jsonData = Files.readAllBytes(Paths.get("data.json"));
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-            company = objectMapper.readValue(jsonData, Company.class);
+            setCompany(objectMapper.readValue(jsonData, Company.class));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -63,7 +63,7 @@ public class JSONData {
         try {
             fileOutputStream = new FileOutputStream("data.json");
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
-            objectWriter.writeValue(fileWriter, company);
+            objectWriter.writeValue(fileWriter, getCompany());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
