@@ -16,17 +16,17 @@ import java.util.Vector;
  * @since 2022.06.08
  * @version 1.2
  */
-public class Facade {
-    private static Facade instance;
+public class PersonFacade {
+    private static PersonFacade instance;
     private Company company;
 
-    private Facade() {
+    private PersonFacade() {
         company = JSONData.getInstance().getCompany();
     }
 
     public Vector<Person> getAllPersons() {
         Vector<Person> persons = new Vector<>();
-        for (Department department : getAllDepartments()) {
+        for (Department department : DepartmentFacade.getInstance().getAllDepartments()) {
             persons.addAll(department.getAllMembers());
         }
         return persons;
@@ -38,9 +38,21 @@ public class Facade {
         department.addMember(person);
     }
 
+    public void addNewPerson(String firstName, String lastName, Department department, Image image) {
+        Person person = new Person(firstName, lastName, image);
+        department.addMember(person);
+    }
+
     public void addNewHRPerson(String fullName, Department department, Image image, int modus, String pwd) {
         String[] firstAndLastName = fullName.split(" ");
         HRPerson hrPerson = new HRPerson(firstAndLastName[0], firstAndLastName[1], image, modus);
+        hrPerson.setPwd(pwd);
+
+        department.addMember(hrPerson);
+    }
+
+    public void addNewHRPerson(String firstName, String lastName, Department department, Image image, int modus, String pwd) {
+        HRPerson hrPerson = new HRPerson(firstName, lastName, image, modus);
         hrPerson.setPwd(pwd);
 
         department.addMember(hrPerson);
@@ -57,88 +69,6 @@ public class Facade {
         } else {
             return false;
         }
-    }
-
-    public Vector<Department> getAllDepartments() {
-        return company.getAllDepartments();
-    }
-
-    public Vector<String> getAllDepartmentNames() {
-        return company.getDepartmentsName();
-    }
-
-    public Department getDepartment(int index) {
-        return company.getDepartment(index);
-    }
-
-    public void addDepartment(String name) {
-        company.addDepartment(new Department(name));
-    }
-
-    public void removeDepartment(Department department) {
-        company.removeDepartment(department);
-    }
-
-    public Vector<Department> searchDepartments(String filter) {
-        Vector<Department> departments = new Vector<>();
-        for (Department department : getAllDepartments()) {
-            if (department.getName().contains(filter)) {
-                departments.add(department);
-            }
-        }
-        return departments;
-    }
-
-    public Vector<String> getAllFunctions() {
-        return company.getFunctions().getAllFunctions();
-    }
-
-    public void addFunction(String name) {
-        company.getFunctions().addJobFunction(name);
-    }
-
-    public void removeFunction(String name) {
-        company.getFunctions().removeJobFunction(name);
-    }
-
-    public String getFunction(int index) {
-        return company.getFunctions().getJobFunction(index);
-    }
-
-    public Vector<String> searchFunctions(String filter) {
-        Vector<String > departments = new Vector<>();
-        for (String s : getAllFunctions()) {
-            if (s.contains(filter)) {
-                departments.add(s);
-            }
-        }
-        return departments;
-    }
-
-    public Vector<String> getAllTeams() {
-        return company.getTeams().getAllTeams();
-    }
-
-    public void addTeam(String name) {
-        company.getTeams().addTeam(name);
-    }
-
-    public void removeTeam(String name) {
-        company.getTeams().removeTeam(name);
-    }
-
-    public String getTeam(int index) {
-        return company.getTeams().getTeam(index);
-    }
-
-    public Vector<String> searchTeams(String filter) {
-        Vector<String > departments = new Vector<>();
-        for (String s : getAllTeams()) {
-            if (s.contains(filter)) {
-                departments.add(s);
-            }
-        }
-        return departments;
     }
 
     public Vector<String> getFunctionsOfPerson(Person person) {
@@ -217,9 +147,17 @@ public class Facade {
         addPersonToDepartment(person, newDepartment);
     }
 
-    public static Facade getInstance() {
+    public void updatePerson(Person person, String newFirstName, String newLastName, Department newDepartment) {
+        person.setFirstName(newFirstName);
+        person.setLastName(newLastName);
+
+        removePersonFromDepartment(person);
+        addPersonToDepartment(person, newDepartment);
+    }
+
+    public static PersonFacade getInstance() {
         if (instance != null) {
-            instance = new Facade();
+            instance = new PersonFacade();
         }
         return instance;
     }
