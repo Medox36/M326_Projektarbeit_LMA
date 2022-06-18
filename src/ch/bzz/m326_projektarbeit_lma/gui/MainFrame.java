@@ -57,9 +57,24 @@ public class MainFrame extends JFrame {
         panel2.add(testLabel);
 
         JPanel panel3 = new JPanel();
-        JPanel panel4 = new JPanel();
-        JPanel panel5 = new JPanel();
+        //TODO
 
+        JPanel panel4 = new JPanel();
+        //TODO
+
+        //Panel 5 für das Logbuch
+        JPanel panel5 = new JPanel();
+        JTextArea logText = new JTextArea(Logbuch_View.testText);
+        logText.setLineWrap(true);
+        logText.setEditable(false);
+
+        JScrollPane logBookScrollpane = new JScrollPane(logText);
+        logBookScrollpane.setPreferredSize(new Dimension(580,6800));
+        logBookScrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        panel5.add(logBookScrollpane);
+
+        //Das Menü
         JTabbedPane navbar = new JTabbedPane();
         navbar.add("Übersicht",panel1);
         navbar.add("Zuordnung",panel2);
