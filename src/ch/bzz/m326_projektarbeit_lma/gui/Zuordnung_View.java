@@ -21,15 +21,15 @@ public class Zuordnung_View extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500,500);
 
-        JPanel panel1 = new JPanel();
-        JPanel panel2 = new JPanel();
+        JPanel mainPanel = new JPanel(new GridLayout(2,2));
+        JPanel subPanel = new JPanel();
 
         JPanel uebersichtPanel = new JPanel(new GridLayout(2,1));
 
         TitledBorder title1 = BorderFactory.createTitledBorder("Personen bearbeiten:");
-        panel1.setBorder(title1);
+        mainPanel.setBorder(title1);
         TitledBorder title2 = BorderFactory.createTitledBorder("Detail:");
-        panel2.setBorder(title2);
+        subPanel.setBorder(title2);
 
         JList nameList = new JList(names);
         nameList.setLayoutOrientation(JList.VERTICAL);
@@ -42,15 +42,8 @@ public class Zuordnung_View extends JFrame {
         uebersichtPanel.add(uebersichtLabel);
         uebersichtPanel.add(scrollPane);
 
-        JButton button1 = new JButton("X");
-        JButton button2 = new JButton("X");
-        JButton button3 = new JButton("X");
-        JPanel buttonPanel = new JPanel(new GridLayout(1,3));
-        buttonPanel.add(button1);
-        buttonPanel.add(button2);
-        buttonPanel.add(button3);
+        mainPanel.add(uebersichtPanel, BorderLayout.WEST);
 
-        panel1.add(uebersichtPanel, BorderLayout.WEST);
 
         ///////////////////////////////////////
 
@@ -59,7 +52,7 @@ public class Zuordnung_View extends JFrame {
         JTextField nameTextField = new JTextField();
         namePanel.add(nameLabel);
         namePanel.add(nameTextField);
-        panel2.add(namePanel, BorderLayout.NORTH);
+        subPanel.add(namePanel, BorderLayout.NORTH);
 
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("img.png"));
         Image image = imageIcon.getImage();
@@ -67,10 +60,35 @@ public class Zuordnung_View extends JFrame {
         imageIcon = new ImageIcon(newimg);
         JLabel imageLabel = new JLabel(imageIcon);
 
-        panel2.add(imageLabel);
-        panel1.add(panel2, BorderLayout.CENTER);
+        subPanel.add(imageLabel);
+        mainPanel.add(subPanel, BorderLayout.CENTER);
 
-        getContentPane().add(panel1);
+        /////////////////////////////////////////////
+
+        JPanel auswahlPanel = new JPanel(new GridLayout(2,2));
+        JLabel hrMitarbeiter = new JLabel("HR-Mitarbeiter:");
+        JLabel administration = new JLabel("Administration:");
+        JCheckBox checkBox1 = new JCheckBox();
+        JCheckBox checkBox2 = new JCheckBox();
+        auswahlPanel.add(hrMitarbeiter);
+        auswahlPanel.add(checkBox1);
+        auswahlPanel.add(administration);
+        auswahlPanel.add(checkBox2);
+        subPanel.add(auswahlPanel);
+
+        /////////////////////////////////////////////
+
+        JButton button1 = new JButton("X");
+        JButton button2 = new JButton("X");
+        JButton button3 = new JButton("X");
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        buttonPanel.add(button1);
+        buttonPanel.add(button2);
+        buttonPanel.add(button3);
+        mainPanel.add(buttonPanel, BorderLayout.WEST);
+        
+
+        getContentPane().add(mainPanel);
         setVisible(true);
 
     }
