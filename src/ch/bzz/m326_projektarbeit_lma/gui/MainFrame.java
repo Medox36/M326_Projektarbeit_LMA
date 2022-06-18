@@ -1,16 +1,13 @@
 package ch.bzz.m326_projektarbeit_lma.gui;
 
-import ch.bzz.m326_projektarbeit_lma.company.Company;
-import ch.bzz.m326_projektarbeit_lma.employees.Person;
-
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 
-public class TestFrame extends JFrame {
+public class MainFrame extends JFrame {
 
-    public TestFrame(){
+    public MainFrame(){
 
         setTitle("I am looking for");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -78,7 +75,7 @@ public class TestFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        new TestFrame();
+        new MainFrame();
     }
 
 }

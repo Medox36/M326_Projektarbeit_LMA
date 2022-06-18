@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
-public class Zuordnung_View extends JFrame {
+public class Person_bearbeiten extends JFrame {
 
     String names[] = {
             "Benak Alexander","Giuntini Lorenzo", "Hawi Moustafa",
@@ -12,21 +12,14 @@ public class Zuordnung_View extends JFrame {
             "Karina Matheny","Tyson Stringer","Devontae Lombardo","Kailey Wiles","Adrian Swift"
     };
 
-    String funktionList[] = {
-            "Funktion wählen", "HR", "Mitarbeiter", "Praktikant", "Lehrling"
-    };
-
-    String teamList[] = {
-            "Team wählen", "Innovation Team", "Logistik Team",
-    };
-
-    public Zuordnung_View(){
+    public Person_bearbeiten(){
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(550,550);
+        setSize(500,500);
 
-        JPanel mainPanel = new JPanel(new GridLayout(1,2));
+        JPanel mainPanel = new JPanel(new GridLayout(2,2));
         JPanel subPanel = new JPanel();
+        subPanel.setLayout(new BoxLayout(subPanel,BoxLayout.PAGE_AXIS));
 
         JPanel uebersichtPanel = new JPanel(new GridLayout(2,1));
 
@@ -48,17 +41,16 @@ public class Zuordnung_View extends JFrame {
 
         mainPanel.add(uebersichtPanel, BorderLayout.WEST);
 
+
         ///////////////////////////////////////
 
         JPanel namePanel = new JPanel(new GridLayout(1,2));
-        namePanel.setMaximumSize(new Dimension(260,30));
         JLabel nameLabel = new JLabel("Name:");
         JTextField nameTextField = new JTextField();
+        //nameTextField.setPreferredSize(new Dimension(100,20));
         namePanel.add(nameLabel);
         namePanel.add(nameTextField);
-
-        subPanel.add(namePanel);
-        subPanel.setLayout(new GridLayout(3,1,0,15));
+        subPanel.add(namePanel, BorderLayout.NORTH);
 
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("img.png"));
         Image image = imageIcon.getImage();
@@ -67,42 +59,40 @@ public class Zuordnung_View extends JFrame {
         JLabel imageLabel = new JLabel(imageIcon);
 
         subPanel.add(imageLabel);
-
-        /////////////////////////////////////////////
-
-        JPanel infosPanel = new JPanel(new GridLayout(3,2));
-
-        JLabel abteilung = new JLabel("Abteilung:");
-        JLabel funktion = new JLabel("Funktion:");
-        JLabel teams = new JLabel("Teams:");
-        JTextField abteilungTextField = new JTextField("Finance");
-        JComboBox funktionCombo = new JComboBox<>(funktionList);
-        JComboBox teamCombo = new JComboBox<>(teamList);
-
-        infosPanel.add(abteilung);
-        infosPanel.add(abteilungTextField);
-        infosPanel.add(funktion);
-        infosPanel.add(funktionCombo);
-        infosPanel.add(teams);
-        infosPanel.add(teamCombo);
-
-        subPanel.add(infosPanel);
-
-        /////////////////////////////////////////////
-
         mainPanel.add(subPanel, BorderLayout.CENTER);
+
+        /////////////////////////////////////////////
+
+        JPanel auswahlPanel = new JPanel(new GridLayout(2,2));
+        JLabel hrMitarbeiter = new JLabel("HR-Mitarbeiter:");
+        JLabel administration = new JLabel("Administration:");
+        JCheckBox checkBox1 = new JCheckBox();
+        JCheckBox checkBox2 = new JCheckBox();
+        auswahlPanel.add(hrMitarbeiter);
+        auswahlPanel.add(checkBox1);
+        auswahlPanel.add(administration);
+        auswahlPanel.add(checkBox2);
+        subPanel.add(auswahlPanel);
+
+        /////////////////////////////////////////////
+
+        JButton button1 = new JButton("+");
+        JButton button2 = new JButton("X");
+        JButton button3 = new JButton("/");
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        buttonPanel.add(button1);
+        buttonPanel.add(button2);
+        buttonPanel.add(button3);
+        mainPanel.add(buttonPanel, BorderLayout.WEST);
+        
+
         getContentPane().add(mainPanel);
         setVisible(true);
 
     }
 
     public static void main(String[] args) {
-        new Zuordnung_View();
+        new Person_bearbeiten();
     }
 
-
 }
-
-
-
-
