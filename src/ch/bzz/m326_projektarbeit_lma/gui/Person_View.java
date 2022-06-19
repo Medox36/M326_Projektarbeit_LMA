@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
-public class Person_bearbeiten extends JFrame {
+public class Person_View extends JFrame {
 
     String names[] = {
             "Benak Alexander","Giuntini Lorenzo", "Hawi Moustafa",
@@ -12,7 +12,7 @@ public class Person_bearbeiten extends JFrame {
             "Karina Matheny","Tyson Stringer","Devontae Lombardo","Kailey Wiles","Adrian Swift"
     };
 
-    public Person_bearbeiten(){
+    public Person_View(){
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500,500);
@@ -91,7 +91,7 @@ public class Person_bearbeiten extends JFrame {
     }
 
     public static void main(String[] args) {
-        new Person_bearbeiten();
+        new Person_View();
     }
 
     public JPanel createView(){

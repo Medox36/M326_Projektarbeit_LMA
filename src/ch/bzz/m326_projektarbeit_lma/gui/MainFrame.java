@@ -4,20 +4,20 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
-import static ch.bzz.m326_projektarbeit_lma.gui.Logbuch_View.testText;
-
 
 public class MainFrame extends JFrame {
 
-    Person_bearbeiten personBearbeiten = new Person_bearbeiten();
+    Person_View personView = new Person_View();
     Zuordnung_View zuordnungView = new Zuordnung_View();
     Logbuch_View logbuchView = new Logbuch_View();
+    Uebersicht_View uebersichtView = new Uebersicht_View();
 
     public MainFrame(){
 
-        personBearbeiten.setVisible(false);
+        personView.setVisible(false);
         zuordnungView.setVisible(false);
         logbuchView.setVisible(false);
+        uebersichtView.setVisible(false);
 
         setTitle("I am looking for");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,39 +25,7 @@ public class MainFrame extends JFrame {
 
         //Panel 1 für die Übersicht
         JPanel panel1 = new JPanel();
-
-        JLabel uebersicht = new JLabel("Übersicht:");
-        JPanel detailPanel = new JPanel();
-        JPanel overviewPanel = new JPanel();
-
-        String names[] = {
-                "Benak Alexander","Giuntini Lorenzo", "Hawi Moustafa",
-                "Jadyn Esquivel","Alondra Wren","Tara Richter","Roxanna Jack","Laci Barrera",
-                "Karina Matheny","Tyson Stringer","Devontae Lombardo","Kailey Wiles","Adrian Swift"
-        };
-
-        JList nameList = new JList(names);
-        nameList.setLayoutOrientation(JList.VERTICAL);
-
-        JScrollPane scrollPane = new JScrollPane(nameList);
-        scrollPane.setPreferredSize(new Dimension(150,200));
-        scrollPane.setVerticalScrollBarPolicy(22); //Always on
-        scrollPane.setHorizontalScrollBarPolicy(31); //Never
-        overviewPanel.add(uebersicht);
-        overviewPanel.add(scrollPane);
-        panel1.add(overviewPanel);
-
-        TitledBorder title1 = BorderFactory.createTitledBorder("Person:");
-        panel1.setBorder(title1);
-
-        TitledBorder title2 = BorderFactory.createTitledBorder("Detail:");
-        detailPanel.setBorder(title2);
-        JLabel nameLabel = new JLabel("Name:");
-        JTextField nameTextField = new JTextField("Benak Alexander");
-        nameTextField.setEditable(false);
-        detailPanel.add(nameLabel);
-        detailPanel.add(nameTextField);
-        panel1.add(detailPanel);
+        panel1.add(uebersichtView.createView());
 
 
         //Panel2 für die Zuordnung
@@ -65,7 +33,7 @@ public class MainFrame extends JFrame {
         panel2.add(zuordnungView.createView());
 
         JPanel panel3 = new JPanel();
-        panel3.add(personBearbeiten.createView());
+        panel3.add(personView.createView());
 
         JPanel panel4 = new JPanel();
         //TODO
