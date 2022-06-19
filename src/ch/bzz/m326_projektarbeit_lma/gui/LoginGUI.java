@@ -24,6 +24,9 @@ public class LoginGUI extends JFrame {
         JPanel loginPanel = new JPanel(new GridLayout(2,2,5,5));
         JPanel downPanel = new JPanel(new GridLayout(1,2,5,5));
         JPanel mainPanel = new JPanel(new BorderLayout(5,5));
+        JPanel bigPanel = new JPanel(new BorderLayout(5,5));
+
+
         //zusammenbauen
         loginPanel.add(nameLabel);
         loginPanel.add(nameCombox);
@@ -33,7 +36,12 @@ public class LoginGUI extends JFrame {
         downPanel.add(weiterButton);
         mainPanel.add(loginPanel, BorderLayout.NORTH);
         mainPanel.add(downPanel, BorderLayout.SOUTH);
-        getContentPane().add(mainPanel, BorderLayout.CENTER);
+        bigPanel.add(mainPanel, BorderLayout.CENTER);
+
+        Border blackline = BorderFactory.createLineBorder(Color.black);
+        bigPanel.setBorder(blackline);
+
+        getContentPane().add(bigPanel, BorderLayout.CENTER);
         //Sichtbarkeit
         setVisible(true);
     }
