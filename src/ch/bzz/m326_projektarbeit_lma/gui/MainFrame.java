@@ -4,14 +4,24 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
+import static ch.bzz.m326_projektarbeit_lma.gui.Logbuch_View.testText;
+
 
 public class MainFrame extends JFrame {
 
+    Person_bearbeiten personBearbeiten = new Person_bearbeiten();
+    Zuordnung_View zuordnungView = new Zuordnung_View();
+    Logbuch_View logbuchView = new Logbuch_View();
+
     public MainFrame(){
+
+        personBearbeiten.setVisible(false);
+        zuordnungView.setVisible(false);
+        logbuchView.setVisible(false);
 
         setTitle("I am looking for");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600,700);
+        setSize(550,550);
 
         //Panel 1 für die Übersicht
         JPanel panel1 = new JPanel();
@@ -52,27 +62,17 @@ public class MainFrame extends JFrame {
 
         //Panel2 für die Zuordnung
         JPanel panel2 = new JPanel();
-
-        JLabel testLabel = new JLabel("TEXT");
-        panel2.add(testLabel);
+        panel2.add(zuordnungView.createView());
 
         JPanel panel3 = new JPanel();
-        //TODO
+        panel3.add(personBearbeiten.createView());
 
         JPanel panel4 = new JPanel();
         //TODO
 
         //Panel 5 für das Logbuch
         JPanel panel5 = new JPanel();
-        JTextArea logText = new JTextArea(Logbuch_View.testText);
-        logText.setLineWrap(true);
-        logText.setEditable(false);
-
-        JScrollPane logBookScrollpane = new JScrollPane(logText);
-        logBookScrollpane.setPreferredSize(new Dimension(580,6800));
-        logBookScrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
-        panel5.add(logBookScrollpane);
+        panel5.add(logbuchView.createView());
 
         //Das Menü
         JTabbedPane navbar = new JTabbedPane();

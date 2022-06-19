@@ -1,6 +1,7 @@
 package ch.bzz.m326_projektarbeit_lma.gui;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Logbuch_View extends JFrame {
 
@@ -50,13 +51,13 @@ public class Logbuch_View extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(550,500);
 
-        JTextArea logText = new JTextArea(testText);
-        logText.setLineWrap(true);
-        logText.setEditable(false);
+        JTextArea textArea = new JTextArea(testText);
+        textArea.setEditable(false);
+        textArea.setLineWrap(true);
 
-        JScrollPane scrollPane = new JScrollPane(logText);
+        JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
+        scrollPane.setMaximumSize(new Dimension(550,500));
 
         getContentPane().add(scrollPane);
         setVisible(true);
@@ -65,6 +66,20 @@ public class Logbuch_View extends JFrame {
 
     public static void main(String[] args) {
         new Logbuch_View();
+    }
+
+    public JScrollPane createView(){
+
+        JTextArea textArea = new JTextArea(testText);
+        textArea.setEditable(false);
+        textArea.setLineWrap(true);
+
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setMaximumSize(new Dimension(550,500));
+
+        return scrollPane;
+
     }
 
 }
