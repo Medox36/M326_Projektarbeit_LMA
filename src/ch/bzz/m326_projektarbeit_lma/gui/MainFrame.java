@@ -29,7 +29,6 @@ public class MainFrame extends JFrame {
         JPanel panel1 = new JPanel();
         panel1.add(uebersichtView.createView());
 
-
         //Panel2 für die Zuordnung
         JPanel panel2 = new JPanel();
         panel2.add(zuordnungView.createView());

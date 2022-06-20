@@ -103,6 +103,7 @@ public class Stammdaten_View extends JFrame {
     public JPanel createView(){
 
         stammDatenPanel.setPreferredSize(new Dimension(550,500));
+        stammDatenPanel.setMaximumSize(new Dimension(550,500));
 
         stammDatenPanel = new JPanel(new GridLayout(4,1, 50,20));
         springLayout = new SpringLayout();
