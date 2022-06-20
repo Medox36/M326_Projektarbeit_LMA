@@ -43,7 +43,6 @@ public class MainFrame extends JFrame {
         detailPanel.add(nameTextField);
         panel1.add(detailPanel);
 
-
         //Panel2 für die Zuordnung
         JPanel panel2 = new JPanel();
 
