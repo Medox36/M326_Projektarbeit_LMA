@@ -1,0 +1,12 @@
+{
+  "name" : "default",
+  "departments" : [ ],
+  "functions" : {
+    "designations" : [ ],
+    "allFunctions" : [ ]
+  },
+  "teams" : {
+    "designations" : [ ],
+    "allTeams" : [ ]
+  }
+}
