@@ -14,7 +14,7 @@ import java.util.Vector;
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.06.01
- * @version 1.0
+ * @version 1.1
  */
 @Getter
 @Setter
@@ -97,5 +97,10 @@ public class Department {
     @JsonIgnore
     public Vector<Person> getAllMembers() {
         return members;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

@@ -14,7 +14,7 @@ import java.awt.*;
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.05.18
- * @version 1.0
+ * @version 1.1
  */
 @Getter
 @Setter
@@ -118,5 +118,10 @@ public class Person {
      */
     public Participation getParticipation() {
         return participation;
+    }
+
+    @Override
+    public String toString() {
+        return getFullName();
     }
 }
