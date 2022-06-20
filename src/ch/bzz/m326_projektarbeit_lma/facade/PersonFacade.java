@@ -318,7 +318,7 @@ public class PersonFacade {
     }
 
     public static PersonFacade getInstance() {
-        if (instance != null) {
+        if (instance == null) {
             instance = new PersonFacade();
         }
         return instance;

@@ -65,7 +65,7 @@ public class DepartmentFacade {
     }
 
     public static DepartmentFacade getInstance() {
-        if (instance != null) {
+        if (instance == null) {
             instance = new DepartmentFacade();
         }
         return instance;

@@ -71,7 +71,7 @@ public class JobFunctionFacade {
     }
 
     public static JobFunctionFacade getInstance() {
-        if (instance != null) {
+        if (instance == null) {
             instance = new JobFunctionFacade();
         }
         return instance;

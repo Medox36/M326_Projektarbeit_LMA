@@ -68,7 +68,7 @@ public class TeamFacade {
     }
 
     public static TeamFacade getInstance() {
-        if (instance != null) {
+        if (instance == null) {
             instance = new TeamFacade();
         }
         return instance;
