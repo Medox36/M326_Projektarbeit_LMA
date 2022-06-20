@@ -26,6 +26,7 @@ public class JSONData {
     private Company company;
 
     private JSONData() {
+        Runtime.getRuntime().addShutdownHook(new Thread(this::writeCompanyJSON, "Saving Data Shutdown-Thread"));
         checkFile();
     }
 
