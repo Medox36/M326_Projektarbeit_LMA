@@ -57,7 +57,7 @@ public class Logbuch_View extends JFrame {
 
         JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setMaximumSize(new Dimension(550,500));
+        //scrollPane.setMaximumSize(new Dimension(550,500));
 
         getContentPane().add(scrollPane);
         setVisible(true);
@@ -68,7 +68,9 @@ public class Logbuch_View extends JFrame {
         new Logbuch_View();
     }
 
-    public JScrollPane createView(){
+    public JPanel createView(){
+
+        JPanel logPanel = new JPanel(new BorderLayout());
 
         JTextArea textArea = new JTextArea(testText);
         textArea.setEditable(false);
@@ -76,9 +78,11 @@ public class Logbuch_View extends JFrame {
 
         JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setMaximumSize(new Dimension(550,500));
+        scrollPane.setPreferredSize(new Dimension(550,550));
 
-        return scrollPane;
+        logPanel.add(scrollPane, BorderLayout.CENTER);
+
+        return logPanel;
 
     }
 
