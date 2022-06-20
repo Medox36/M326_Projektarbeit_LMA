@@ -3,53 +3,67 @@ package ch.bzz.m326_projektarbeit_lma.gui;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Unsere Stammdaten-GUI für das Programm
+ */
 public class Stammdaten_View extends JFrame {
 
-    String names[] = {
-            "Benak Alexander","Giuntini Lorenzo", "Hawi Moustafa",
-            "Jadyn Esquivel","Alondra Wren","Tara Richter","Roxanna Jack","Laci Barrera",
-            "Karina Matheny","Tyson Stringer","Devontae Lombardo","Kailey Wiles","Adrian Swift"
+    String sampleList[] = {
+            "Beispiel", "Beispiel", "Beispiel", "Beispiel", "Beispiel"
     };
+
+    /**
+     * Komponenten für das StammdatenPanel
+     */
+    private JPanel stammDatenPanel;
+    private JPanel firmaPanel;
+    private JLabel firma;
+    private JTextField firmaField;
+    private SpringLayout springLayout;
+
+    private JPanel abteilungsPanel;
+    private JPanel abteilungsPanelBorder;
+    private JLabel abteilung;
+    private JList<String> abteilungsListe;
+    private JButton addAbteilung;
+    private JButton abteilungBearbeiten;
+    private JButton deleteAbteilung;
+    private JScrollPane scrollPane;
+    private JPanel buttonPanel;
 
     public Stammdaten_View(){
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500,500);
-        getContentPane().setLayout(new GridBagLayout());
+        setSize(new Dimension(550,500));
 
-        JPanel firmaPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.anchor = GridBagConstraints.NORTHWEST;
+        stammDatenPanel = new JPanel(new GridLayout(4,1, 50,20));
+        springLayout = new SpringLayout();
+        firma = new JLabel("Firma:");
+        firmaField = new JTextField("Text eingeben");
+        firmaPanel = new JPanel();
+        firmaPanel.setLayout(springLayout);
 
-        JLabel firmaLabel = new JLabel("Firma:");
-        JLabel abteilungLabel = new JLabel("Abteilung:");
-        JLabel funktionenLabel = new JLabel("Funktionen:");
-        JLabel teamsLabel = new JLabel("Teams:");
+        springLayout.putConstraint(SpringLayout.WEST, firma,5, SpringLayout.WEST, firmaPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, firma,50, SpringLayout.NORTH, firmaPanel);
+        springLayout.putConstraint(SpringLayout.WEST, firmaField, 250, SpringLayout.EAST, firma);
+        springLayout.putConstraint(SpringLayout.NORTH, firmaField, 50, SpringLayout.NORTH, firmaPanel);
 
-        JTextField firmaTextField = new JTextField("Firmenname");
-        firmaTextField.setEditable(false);
+        firmaField.setColumns(30);
+        firmaPanel.add(firma);
+        firmaPanel.add(firmaField);
 
-        JList<String> abteilungList = new JList<>(names);
+        firmaPanel.add(new JLabel());
+        firmaPanel.add(new JLabel());
+        firmaPanel.add(new JLabel());
+        firmaPanel.add(new JLabel());
 
-        JScrollPane scrollPane1 = new JScrollPane(abteilungList);
-        JScrollPane scrollPane2 = new JScrollPane(abteilungList);
-        JScrollPane scrollPane3 = new JScrollPane(abteilungList);
+        stammDatenPanel.add(firmaPanel);
+        createComponent("Abteilungen:");
+        createComponent("Funktionen:");
+        createComponent("Teams:");
 
-        JButton button1 = new JButton("X");
-        JButton button2 = new JButton("X");
-        JButton button3 = new JButton("X");
-        JPanel buttonPanel = new JPanel(new GridLayout(1,3));
-        buttonPanel.add(button1);
-        buttonPanel.add(button2);
-        buttonPanel.add(button3);
+        getContentPane().add(stammDatenPanel);
 
-        ////////////////////////////////////////////////
-
-        firmaPanel.add(firmaLabel);
-        firmaPanel.add(firmaTextField);
-
-
-        getContentPane().add(firmaPanel);
         setVisible(true);
 
     }
@@ -58,4 +72,67 @@ public class Stammdaten_View extends JFrame {
         new Stammdaten_View();
     }
 
+    public void createComponent(String name){
+
+        abteilungsPanel = new JPanel(new GridLayout(1,1, 0, 500));
+        abteilungsPanelBorder = new JPanel(new BorderLayout());
+        abteilung = new JLabel(name);
+        abteilungsListe = new JList(sampleList);
+
+        addAbteilung = new JButton("+");
+        deleteAbteilung = new JButton("X");
+        abteilungBearbeiten = new JButton("/");
+
+        buttonPanel = new JPanel(new GridLayout(1,3,5,5));
+        scrollPane = new JScrollPane(abteilungsListe, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        buttonPanel.add(addAbteilung);
+        buttonPanel.add(deleteAbteilung);
+        buttonPanel.add(abteilungBearbeiten);
+
+        abteilungsPanel.add(abteilung);
+        abteilungsPanel.add(abteilungsPanelBorder);
+
+        abteilungsPanelBorder.add(scrollPane, BorderLayout.CENTER);
+        abteilungsPanelBorder.add(buttonPanel, BorderLayout.SOUTH);
+
+        stammDatenPanel.add(abteilungsPanel);
+
+    }
+
+    public JPanel createView(){
+
+        stammDatenPanel.setPreferredSize(new Dimension(550,500));
+
+        stammDatenPanel = new JPanel(new GridLayout(4,1, 50,20));
+        springLayout = new SpringLayout();
+        firma = new JLabel("Firma:");
+        firmaField = new JTextField("Text eingeben");
+        firmaPanel = new JPanel();
+        firmaPanel.setLayout(springLayout);
+
+        springLayout.putConstraint(SpringLayout.WEST, firma,5, SpringLayout.WEST, firmaPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, firma,50, SpringLayout.NORTH, firmaPanel);
+        springLayout.putConstraint(SpringLayout.WEST, firmaField, 250, SpringLayout.EAST, firma);
+        springLayout.putConstraint(SpringLayout.NORTH, firmaField, 50, SpringLayout.NORTH, firmaPanel);
+
+        firmaField.setColumns(30);
+        firmaPanel.add(firma);
+        firmaPanel.add(firmaField);
+
+        firmaPanel.add(new JLabel());
+        firmaPanel.add(new JLabel());
+        firmaPanel.add(new JLabel());
+        firmaPanel.add(new JLabel());
+
+        stammDatenPanel.add(firmaPanel);
+        createComponent("Abteilungen:");
+        createComponent("Funktionen:");
+        createComponent("Teams:");
+
+        return stammDatenPanel;
+
+    }
 }
+
+

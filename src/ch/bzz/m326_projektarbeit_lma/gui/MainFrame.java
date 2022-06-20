@@ -11,6 +11,7 @@ public class MainFrame extends JFrame {
     Zuordnung_View zuordnungView = new Zuordnung_View();
     Logbuch_View logbuchView = new Logbuch_View();
     Uebersicht_View uebersichtView = new Uebersicht_View();
+    Stammdaten_View stammdatenView = new Stammdaten_View();
 
     public MainFrame(){
 
@@ -18,6 +19,7 @@ public class MainFrame extends JFrame {
         zuordnungView.setVisible(false);
         logbuchView.setVisible(false);
         uebersichtView.setVisible(false);
+        stammdatenView.setVisible(false);
 
         setTitle("I am looking for");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,7 +38,7 @@ public class MainFrame extends JFrame {
         panel3.add(personView.createView());
 
         JPanel panel4 = new JPanel();
-        //TODO
+        panel4.add(stammdatenView.createView());
 
         //Panel 5 für das Logbuch
         JPanel panel5 = new JPanel();

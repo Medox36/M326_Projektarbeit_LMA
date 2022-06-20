@@ -7,9 +7,9 @@ import java.awt.*;
 public class Zuordnung_View extends JFrame {
 
     String names[] = {
-            "Benak Alexander","Giuntini Lorenzo", "Hawi Moustafa",
-            "Jadyn Esquivel","Alondra Wren","Tara Richter","Roxanna Jack","Laci Barrera",
-            "Karina Matheny","Tyson Stringer","Devontae Lombardo","Kailey Wiles","Adrian Swift"
+            "Benak Alexander", "Giuntini Lorenzo", "Hawi Moustafa",
+            "Jadyn Esquivel", "Alondra Wren", "Tara Richter", "Roxanna Jack", "Laci Barrera",
+            "Karina Matheny", "Tyson Stringer", "Devontae Lombardo", "Kailey Wiles", "Adrian Swift"
     };
 
     String funktionList[] = {
@@ -33,31 +33,37 @@ public class Zuordnung_View extends JFrame {
     JTextField nameTextField;
     JLabel imageLabel;
     JPanel infosPanel;
+    JLabel abteilung;
+    JLabel funktion;
+    JLabel teams;
+    JTextField abteilungTextField;
+    JComboBox funktionCombo;
+    JComboBox teamCombo;
 
-    public Zuordnung_View(){
+    public Zuordnung_View() {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(550,550);
+        setSize(550, 550);
 
-        JPanel mainPanel = new JPanel(new GridLayout(1,2));
-        JPanel subPanel = new JPanel();
-        subPanel.setLayout(new BoxLayout(subPanel,BoxLayout.PAGE_AXIS));
+        mainPanel = new JPanel(new GridLayout(1, 2));
+        subPanel = new JPanel();
+        subPanel.setLayout(new BoxLayout(subPanel, BoxLayout.PAGE_AXIS));
 
-        JPanel uebersichtPanel = new JPanel(new GridLayout(2,1));
+        uebersichtPanel = new JPanel(new GridLayout(2, 1));
 
-        TitledBorder title1 = BorderFactory.createTitledBorder("Personen bearbeiten:");
+        title1 = BorderFactory.createTitledBorder("Personen bearbeiten:");
         mainPanel.setBorder(title1);
-        TitledBorder title2 = BorderFactory.createTitledBorder("Detail:");
+        title2 = BorderFactory.createTitledBorder("Detail:");
         subPanel.setBorder(title2);
 
-        JList nameList = new JList(names);
+        nameList = new JList(names);
         nameList.setLayoutOrientation(JList.VERTICAL);
-        JScrollPane scrollPane = new JScrollPane(nameList);
-        scrollPane.setPreferredSize(new Dimension(150,200));
+        scrollPane = new JScrollPane(nameList);
+        scrollPane.setPreferredSize(new Dimension(150, 200));
         scrollPane.setVerticalScrollBarPolicy(22); //Always on
         scrollPane.setHorizontalScrollBarPolicy(31); //Never
 
-        JLabel uebersichtLabel = new JLabel("Übersicht:");
+        uebersichtLabel = new JLabel("Übersicht:");
         uebersichtPanel.add(uebersichtLabel);
         uebersichtPanel.add(scrollPane);
 
@@ -65,34 +71,34 @@ public class Zuordnung_View extends JFrame {
 
         ///////////////////////////////////////
 
-        JPanel namePanel = new JPanel(new GridLayout(1,2));
-        namePanel.setMaximumSize(new Dimension(260,30));
-        JLabel nameLabel = new JLabel("Name:");
-        JTextField nameTextField = new JTextField();
+        namePanel = new JPanel(new GridLayout(1, 2));
+        namePanel.setMaximumSize(new Dimension(260, 30));
+        nameLabel = new JLabel("Name:");
+        nameTextField = new JTextField();
         namePanel.add(nameLabel);
         namePanel.add(nameTextField);
 
         subPanel.add(namePanel);
-        subPanel.setLayout(new GridLayout(3,1,0,15));
+        subPanel.setLayout(new GridLayout(3, 1, 0, 15));
 
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("img.png"));
         Image image = imageIcon.getImage();
         Image newimg = image.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH);
         imageIcon = new ImageIcon(newimg);
-        JLabel imageLabel = new JLabel(imageIcon);
+        imageLabel = new JLabel(imageIcon);
 
         subPanel.add(imageLabel);
 
         /////////////////////////////////////////////
 
-        JPanel infosPanel = new JPanel(new GridLayout(3,2));
+        infosPanel = new JPanel(new GridLayout(3, 2));
 
-        JLabel abteilung = new JLabel("Abteilung:");
-        JLabel funktion = new JLabel("Funktion:");
-        JLabel teams = new JLabel("Teams:");
-        JTextField abteilungTextField = new JTextField("Finance");
-        JComboBox funktionCombo = new JComboBox<>(funktionList);
-        JComboBox teamCombo = new JComboBox<>(teamList);
+        abteilung = new JLabel("Abteilung:");
+        funktion = new JLabel("Funktion:");
+        teams = new JLabel("Teams:");
+        abteilungTextField = new JTextField("Finance");
+        funktionCombo = new JComboBox<>(funktionList);
+        teamCombo = new JComboBox<>(teamList);
 
         infosPanel.add(abteilung);
         infosPanel.add(abteilungTextField);
@@ -115,13 +121,13 @@ public class Zuordnung_View extends JFrame {
         new Zuordnung_View();
     }
 
-    public JPanel createView(){
+    public JPanel createView() {
 
-        mainPanel = new JPanel(new GridLayout(1,2));
+        mainPanel = new JPanel(new GridLayout(1, 2));
         subPanel = new JPanel();
-        subPanel.setLayout(new BoxLayout(subPanel,BoxLayout.PAGE_AXIS));
+        subPanel.setLayout(new BoxLayout(subPanel, BoxLayout.PAGE_AXIS));
 
-        uebersichtPanel = new JPanel(new GridLayout(2,1));
+        uebersichtPanel = new JPanel(new GridLayout(2, 1));
 
         title1 = BorderFactory.createTitledBorder("Personen bearbeiten:");
         mainPanel.setBorder(title1);
@@ -131,7 +137,7 @@ public class Zuordnung_View extends JFrame {
         nameList = new JList(names);
         nameList.setLayoutOrientation(JList.VERTICAL);
         scrollPane = new JScrollPane(nameList);
-        scrollPane.setPreferredSize(new Dimension(150,200));
+        scrollPane.setPreferredSize(new Dimension(150, 200));
         scrollPane.setVerticalScrollBarPolicy(22); //Always on
         scrollPane.setHorizontalScrollBarPolicy(31); //Never
 
@@ -143,15 +149,15 @@ public class Zuordnung_View extends JFrame {
 
         ///////////////////////////////////////
 
-        namePanel = new JPanel(new GridLayout(1,2));
-        namePanel.setMaximumSize(new Dimension(260,30));
+        namePanel = new JPanel(new GridLayout(1, 2));
+        namePanel.setMaximumSize(new Dimension(260, 30));
         nameLabel = new JLabel("Name:");
         nameTextField = new JTextField();
         namePanel.add(nameLabel);
         namePanel.add(nameTextField);
 
         subPanel.add(namePanel);
-        subPanel.setLayout(new GridLayout(3,1,0,15));
+        subPanel.setLayout(new GridLayout(3, 1, 0, 15));
 
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("img.png"));
         Image image = imageIcon.getImage();
@@ -163,14 +169,14 @@ public class Zuordnung_View extends JFrame {
 
         /////////////////////////////////////////////
 
-        infosPanel = new JPanel(new GridLayout(3,2));
+        infosPanel = new JPanel(new GridLayout(3, 2));
 
-        JLabel abteilung = new JLabel("Abteilung:");
-        JLabel funktion = new JLabel("Funktion:");
-        JLabel teams = new JLabel("Teams:");
-        JTextField abteilungTextField = new JTextField("Finance");
-        JComboBox funktionCombo = new JComboBox<>(funktionList);
-        JComboBox teamCombo = new JComboBox<>(teamList);
+        abteilung = new JLabel("Abteilung:");
+        funktion = new JLabel("Funktion:");
+        teams = new JLabel("Teams:");
+        abteilungTextField = new JTextField("Finance");
+        funktionCombo = new JComboBox<>(funktionList);
+        teamCombo = new JComboBox<>(teamList);
 
         infosPanel.add(abteilung);
         infosPanel.add(abteilungTextField);
