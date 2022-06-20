@@ -20,6 +20,20 @@ public class Zuordnung_View extends JFrame {
             "Team wählen", "Innovation Team", "Logistik Team",
     };
 
+    JPanel mainPanel;
+    JPanel subPanel;
+    JPanel uebersichtPanel;
+    TitledBorder title1;
+    TitledBorder title2;
+    JList nameList;
+    JScrollPane scrollPane;
+    JLabel uebersichtLabel;
+    JPanel namePanel;
+    JLabel nameLabel;
+    JTextField nameTextField;
+    JLabel imageLabel;
+    JPanel infosPanel;
+
     public Zuordnung_View(){
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -103,25 +117,25 @@ public class Zuordnung_View extends JFrame {
 
     public JPanel createView(){
 
-        JPanel mainPanel = new JPanel(new GridLayout(1,2));
-        JPanel subPanel = new JPanel();
+        mainPanel = new JPanel(new GridLayout(1,2));
+        subPanel = new JPanel();
         subPanel.setLayout(new BoxLayout(subPanel,BoxLayout.PAGE_AXIS));
 
-        JPanel uebersichtPanel = new JPanel(new GridLayout(2,1));
+        uebersichtPanel = new JPanel(new GridLayout(2,1));
 
-        TitledBorder title1 = BorderFactory.createTitledBorder("Personen bearbeiten:");
+        title1 = BorderFactory.createTitledBorder("Personen bearbeiten:");
         mainPanel.setBorder(title1);
-        TitledBorder title2 = BorderFactory.createTitledBorder("Detail:");
+        title2 = BorderFactory.createTitledBorder("Detail:");
         subPanel.setBorder(title2);
 
-        JList nameList = new JList(names);
+        nameList = new JList(names);
         nameList.setLayoutOrientation(JList.VERTICAL);
-        JScrollPane scrollPane = new JScrollPane(nameList);
+        scrollPane = new JScrollPane(nameList);
         scrollPane.setPreferredSize(new Dimension(150,200));
         scrollPane.setVerticalScrollBarPolicy(22); //Always on
         scrollPane.setHorizontalScrollBarPolicy(31); //Never
 
-        JLabel uebersichtLabel = new JLabel("Übersicht:");
+        uebersichtLabel = new JLabel("Übersicht:");
         uebersichtPanel.add(uebersichtLabel);
         uebersichtPanel.add(scrollPane);
 
@@ -129,10 +143,10 @@ public class Zuordnung_View extends JFrame {
 
         ///////////////////////////////////////
 
-        JPanel namePanel = new JPanel(new GridLayout(1,2));
+        namePanel = new JPanel(new GridLayout(1,2));
         namePanel.setMaximumSize(new Dimension(260,30));
-        JLabel nameLabel = new JLabel("Name:");
-        JTextField nameTextField = new JTextField();
+        nameLabel = new JLabel("Name:");
+        nameTextField = new JTextField();
         namePanel.add(nameLabel);
         namePanel.add(nameTextField);
 
@@ -143,13 +157,13 @@ public class Zuordnung_View extends JFrame {
         Image image = imageIcon.getImage();
         Image newimg = image.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH);
         imageIcon = new ImageIcon(newimg);
-        JLabel imageLabel = new JLabel(imageIcon);
+        imageLabel = new JLabel(imageIcon);
 
         subPanel.add(imageLabel);
 
         /////////////////////////////////////////////
 
-        JPanel infosPanel = new JPanel(new GridLayout(3,2));
+        infosPanel = new JPanel(new GridLayout(3,2));
 
         JLabel abteilung = new JLabel("Abteilung:");
         JLabel funktion = new JLabel("Funktion:");

@@ -4,14 +4,21 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
+/**
+ * This class creates the "Übersicht" using a single Method -  the createView
+ */
 public class Uebersicht_View extends JFrame {
-
+    /**
+     * Filler data for the "Namen"
+     */
     String names[] = {
             "Benak Alexander","Giuntini Lorenzo", "Hawi Moustafa",
             "Jadyn Esquivel","Alondra Wren","Tara Richter","Roxanna Jack","Laci Barrera",
             "Karina Matheny","Tyson Stringer","Devontae Lombardo","Kailey Wiles","Adrian Swift"
     };
-
+    /**
+     * Filler data for the "Abteilungen"
+     */
     String abteilungList[] = {
             "Logistik", "Transport", "Verwaltung", "Buchhaltung", "IT"
     };
@@ -91,7 +98,16 @@ public class Uebersicht_View extends JFrame {
         detailPanel.add(nameLabel);
         detailPanel.add(nameTextField);
 
+        JPanel abteilungPanel = new JPanel(new GridLayout(1,2));
+        JLabel abteilungLabel1 = new JLabel("Abteilung:");
+        JTextField abteilungTextField = new JTextField("Finance");
+        abteilungTextField.setEditable(false);
+        abteilungPanel.add(abteilungLabel1);
+        abteilungPanel.add(abteilungTextField);
+
         ////////////////////////////////////
+
+        JPanel bottomPanel = new JPanel(new GridLayout(1,2));
 
         JPanel sortierungPanel = new JPanel();
         TitledBorder title3 = BorderFactory.createTitledBorder("Sortierung:");
@@ -112,6 +128,7 @@ public class Uebersicht_View extends JFrame {
         sortierungAuswahl.add(radioButton3);
 
         sortierungPanel.add(sortierungAuswahl);
+        bottomPanel.add(sortierungPanel);
 
         ///////////////////////////////////////////
 
@@ -134,10 +151,10 @@ public class Uebersicht_View extends JFrame {
         filterAuswahl.add(teamCombobox);
 
         filterPanel.add(filterAuswahl);
+        bottomPanel.add(filterPanel);
 
         mainPanel.add(detailPanel);
-        mainPanel.add(sortierungPanel);
-        mainPanel.add(filterPanel);
+        mainPanel.add(bottomPanel, BorderLayout.SOUTH);
 
 
         return mainPanel;
