@@ -7,42 +7,66 @@ import java.awt.*;
 
 public class MainFrame extends JFrame {
 
-    Person_View personView = new Person_View();
-    Zuordnung_View zuordnungView = new Zuordnung_View();
-    Logbuch_View logbuchView = new Logbuch_View();
-    Uebersicht_View uebersichtView = new Uebersicht_View();
-    Stammdaten_View stammdatenView = new Stammdaten_View();
-
     public MainFrame(){
-
-        personView.setVisible(false);
-        zuordnungView.setVisible(false);
-        logbuchView.setVisible(false);
-        uebersichtView.setVisible(false);
-        stammdatenView.setVisible(false);
 
         setTitle("I am looking for");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(550,550);
+        setSize(600,700);
 
         //Panel 1 für die Übersicht
         JPanel panel1 = new JPanel();
-        panel1.add(uebersichtView.createView());
+
+        JLabel uebersicht = new JLabel("Übersicht:");
+        JPanel detailPanel = new JPanel();
+        JPanel overviewPanel = new JPanel();
+
+        JList<Person> nameList = new JList<>(new PersonListModel());
+        nameList.setLayoutOrientation(JList.VERTICAL);
+
+        JScrollPane scrollPane = new JScrollPane(nameList);
+        scrollPane.setPreferredSize(new Dimension(150,200));
+        scrollPane.setVerticalScrollBarPolicy(22); //Always on
+        scrollPane.setHorizontalScrollBarPolicy(31); //Never
+        overviewPanel.add(uebersicht);
+        overviewPanel.add(scrollPane);
+        panel1.add(overviewPanel);
+
+        TitledBorder title1 = BorderFactory.createTitledBorder("Person:");
+        panel1.setBorder(title1);
+
+        TitledBorder title2 = BorderFactory.createTitledBorder("Detail:");
+        detailPanel.setBorder(title2);
+        JLabel nameLabel = new JLabel("Name:");
+        JTextField nameTextField = new JTextField("Benak Alexander");
+        nameTextField.setEditable(false);
+        detailPanel.add(nameLabel);
+        detailPanel.add(nameTextField);
+        panel1.add(detailPanel);
 
 
         //Panel2 für die Zuordnung
         JPanel panel2 = new JPanel();
-        panel2.add(zuordnungView.createView());
+
+        JLabel testLabel = new JLabel("TEXT");
+        panel2.add(testLabel);
 
         JPanel panel3 = new JPanel();
-        panel3.add(personView.createView());
+        //TODO
 
         JPanel panel4 = new JPanel();
-        panel4.add(stammdatenView.createView());
+        //TODO
 
         //Panel 5 für das Logbuch
         JPanel panel5 = new JPanel();
-        panel5.add(logbuchView.createView());
+        JTextArea logText = new JTextArea(Logbuch_View.testText);
+        logText.setLineWrap(true);
+        logText.setEditable(false);
+
+        JScrollPane logBookScrollpane = new JScrollPane(logText);
+        logBookScrollpane.setPreferredSize(new Dimension(580,6800));
+        logBookScrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        panel5.add(logBookScrollpane);
 
         //Das Menü
         JTabbedPane navbar = new JTabbedPane();

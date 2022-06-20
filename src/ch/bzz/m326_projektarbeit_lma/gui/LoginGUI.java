@@ -4,7 +4,8 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
-public class LoginGUI extends JFrame {
+public class LoginGUI extends JDialog {
+    private int counter = 0;
     JLabel nameLabel = new JLabel("Name:");
     JLabel codeLabel = new JLabel("Code:");
     String comboBoxListe[] = {"Person wählen","Muster Max", "Trulli Theo", "Arpagaus Carla", "Rodriguez Joe", "Radic Illia", "Moro Valeria", "Müller Petra","Grifith Malcom", "Marchese Luigi", "Bolgar Beda", "Rast Anna" };
@@ -14,7 +15,8 @@ public class LoginGUI extends JFrame {
     JButton weiterButton = new JButton("Weiter");
 
     //Konstruktor
-    public LoginGUI(){
+    public LoginGUI(MainFrame mainFrame){
+        super(mainFrame);
         //frame einstellen
         setTitle("Authentifizierung");
         setSize(350, 170);
@@ -38,6 +40,20 @@ public class LoginGUI extends JFrame {
         mainPanel.add(downPanel, BorderLayout.SOUTH);
         bigPanel.add(mainPanel, BorderLayout.CENTER);
 
+        //ActionLister adden
+        weiterButton.addActionListener(e -> {
+            if (counter <= 3) {
+                if (PersonFacade.getInstance().logInHRPerson((HRPerson) nameCombox.getSelectedItem())) {
+                    dispose();
+                } else {
+                    counter++;
+                    new ErrorGUI();
+                }
+            } else {
+                new CloseProjectGui();
+            }
+        });
+
         Border blackline = BorderFactory.createLineBorder(Color.black);
         bigPanel.setBorder(blackline);
 
@@ -46,7 +62,4 @@ public class LoginGUI extends JFrame {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new LoginGUI();
-    }
 }
