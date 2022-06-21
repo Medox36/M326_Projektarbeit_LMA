@@ -12,7 +12,7 @@ import javax.swing.*;
  * @since 2022.06.20
  * @version 1.0
  */
-public class HRPersonComboboxModel<E> extends AbstractListModel<HRPerson> implements ComboBoxModel<HRPerson> {
+public class HRPersonComboboxModel extends AbstractListModel<HRPerson> implements ComboBoxModel<HRPerson> {
 
     private HRPerson selection = null;
 
