@@ -2,10 +2,11 @@ package ch.bzz.m326_projektarbeit_lma.gui;
 
 import ch.bzz.m326_projektarbeit_lma.employees.Person;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import java.io.File;
-import java.net.MalformedURLException;
+import java.io.IOException;
 
 /**
  * This class can be used to change the Image of a Person by selecting the image file with the generated JFileChooser.
@@ -50,8 +51,8 @@ public class ImageFileChooserAndUpdater {
         int returnVal = fileChooser.showOpenDialog(mainFrame);
         if(returnVal == JFileChooser.APPROVE_OPTION) {
             try {
-                person.setPhoto(new ImageIcon(fileChooser.getSelectedFile().toURI().toURL()).getImage());
-            } catch (MalformedURLException e) {
+                person.setPhoto(ImageIO.read(fileChooser.getSelectedFile()));
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
