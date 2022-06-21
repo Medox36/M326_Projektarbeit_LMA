@@ -13,7 +13,9 @@ import ch.bzz.m326_projektarbeit_lma.log.UserAction;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 import java.util.Vector;
+import java.util.function.Predicate;
 
 /**
  *
@@ -96,6 +98,30 @@ public class PersonFacade {
             }
         }
         return hrPersons;
+    }
+
+    /**
+     * gets all Persons filtered by given filters of the name of the department, the function and the team
+     *
+     * if a parameter is an empty String that means the filter is set to all
+     *
+     * @param departmentName filter
+     * @param function filter
+     * @param team filter
+     * @return Vector of type Person with Persons who match the given filters
+     */
+    public Vector<Person> getAllPersonWithFilter(String departmentName, String function, String team) {
+        Vector<Person> persons = getAllPersons();
+        if (!Objects.equals(departmentName, "")) {
+            persons.removeIf(person -> getDepartmentNameOfPerson(person).equals(departmentName));
+        }
+        if (!Objects.equals(function, "")) {
+            persons.removeIf(person -> !getFunctionsOfPerson(person).contains(function));
+        }
+        if (!Objects.equals(team, "")) {
+            persons.removeIf(person -> !getTeamsOfPerson(person).contains(team));
+        }
+        return persons;
     }
 
     public int getNumberOfHRPersons() {
