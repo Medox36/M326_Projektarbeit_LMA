@@ -15,7 +15,7 @@ public class LoginGUI extends JDialog {
     private JComboBox<HRPerson> nameCombobox = new JComboBox<>(new HRPersonComboboxModel());
 
     //Konstruktor
-    public LoginGUI(MainFrame mainFrame, JTabbedPane tabbedPane){
+    public LoginGUI(MainFrame mainFrame, JTabbedPane tabbedPane, int newTabIndex){
         super(mainFrame, true);
         //frame einstellen
         setTitle("Authentifizierung");
@@ -52,14 +52,14 @@ public class LoginGUI extends JDialog {
                         (HRPerson) nameCombobox.getSelectedItem(),
                         String.valueOf(codeField.getPassword()))
                 ) {
+                    tabbedPane.setSelectedIndex(newTabIndex);
                     dispose();
                 } else {
                     counter++;
                     new ErrorGUI(this);
                 }
             } else {
-                new CloseProjectGui();
-                tabbedPane.setSelectedIndex(0);
+                new CloseProjectGui(this);
             }
         });
         abbrechenButton.addActionListener(e -> dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING)));
@@ -80,5 +80,4 @@ public class LoginGUI extends JDialog {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
 }

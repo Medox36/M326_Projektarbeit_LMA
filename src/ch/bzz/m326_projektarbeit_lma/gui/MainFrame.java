@@ -22,7 +22,9 @@ public class MainFrame extends JFrame {
         navbar.addChangeListener(e -> {
             if (!PersonFacade.getInstance().isAHRPersonLoggedIn()) {
                 if (((JTabbedPane) e.getSource()).getSelectedIndex() != 0) {
-                    new LoginGUI(this, navbar);
+                    int newTabIndex = navbar.getSelectedIndex();
+                    navbar.setSelectedIndex(0);
+                    new LoginGUI(this, navbar, newTabIndex);
                 }
             }
         });
