@@ -4,6 +4,7 @@ import ch.bzz.m326_projektarbeit_lma.company.Company;
 import ch.bzz.m326_projektarbeit_lma.company.Department;
 import ch.bzz.m326_projektarbeit_lma.data.JSONData;
 import ch.bzz.m326_projektarbeit_lma.gui.model.DepartmentComboboxModel;
+import ch.bzz.m326_projektarbeit_lma.gui.model.DepartmentListModel;
 
 import java.util.Vector;
 
@@ -18,10 +19,12 @@ public class DepartmentFacade {
     private static DepartmentFacade instance;
     private Company company;
     private Vector<DepartmentComboboxModel> departmentComboboxModels;
+    private Vector<DepartmentListModel> departmentListModels;
 
     private DepartmentFacade() {
         company = JSONData.getInstance().getCompany();
         departmentComboboxModels = new Vector<>();
+        departmentListModels = new Vector<>();
     }
 
     public void addDepartmentComboboxModel(DepartmentComboboxModel departmentComboboxModel) {
@@ -30,6 +33,14 @@ public class DepartmentFacade {
 
     public void removeDepartmentComboboxModel(DepartmentComboboxModel departmentComboboxModel) {
         departmentComboboxModels.remove(departmentComboboxModel);
+    }
+
+    public void addDepartmentListModel(DepartmentListModel departmentListModel) {
+        departmentListModels.add(departmentListModel);
+    }
+
+    public void removeDepartmentListModel(DepartmentListModel departmentListModel) {
+        departmentListModels.remove(departmentListModel);
     }
 
     public Vector<Department> getAllDepartments() {
@@ -50,17 +61,25 @@ public class DepartmentFacade {
 
     public void addDepartment(String name) {
         company.addDepartment(new Department(name));
-        fireChangesOnAllCompanyComboboxModels();
+        fireChangesOnAllDepartmentComboboxModels();
+        fireChangesOnAllDepartmentListModels();
     }
 
     public void removeDepartment(Department department) {
         company.removeDepartment(department);
-        fireChangesOnAllCompanyComboboxModels();
+        fireChangesOnAllDepartmentComboboxModels();
+        fireChangesOnAllDepartmentListModels();
     }
 
-    private void fireChangesOnAllCompanyComboboxModels() {
+    private void fireChangesOnAllDepartmentComboboxModels() {
         for (DepartmentComboboxModel departmentComboboxModel : departmentComboboxModels) {
             departmentComboboxModel.fireContentsChanged(this, 0, getNumberOfDepartments());
+        }
+    }
+
+    private void fireChangesOnAllDepartmentListModels() {
+        for (DepartmentListModel listModel : departmentListModels) {
+            listModel.fireContentsChanged(this, 0, getNumberOfDepartments());
         }
     }
 

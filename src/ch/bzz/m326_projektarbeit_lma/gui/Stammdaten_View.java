@@ -1,5 +1,9 @@
 package ch.bzz.m326_projektarbeit_lma.gui;
 
+import ch.bzz.m326_projektarbeit_lma.gui.model.DepartmentListModel;
+import ch.bzz.m326_projektarbeit_lma.gui.model.JobFunctionsListModel;
+import ch.bzz.m326_projektarbeit_lma.gui.model.TeamListModel;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,10 +11,6 @@ import java.awt.*;
  * Unsere Stammdaten-GUI für das Programm
  */
 public class Stammdaten_View extends JPanel {
-
-    String sampleList[] = {
-            "Beispiel", "Beispiel", "Beispiel", "Beispiel", "Beispiel"
-    };
 
     /**
      * Komponenten für das StammdatenPanel
@@ -44,18 +44,33 @@ public class Stammdaten_View extends JPanel {
         firmaPanel.add(new JLabel());
 
         stammDatenPanel.add(firmaPanel);
-        createComponent("Abteilungen:");
-        createComponent("Funktionen:");
-        createComponent("Teams:");
+        createComponent("Abteilungen:", 0);
+        createComponent("Funktionen:", 1);
+        createComponent("Teams:", 2);
 
         add(stammDatenPanel);
     }
 
-    public void createComponent(String name) {
+    public void createComponent(String name, int modelType) {
         JPanel abteilungsPanel = new JPanel(new GridLayout(1, 1, 0, 500));
         JPanel abteilungsPanelBorder = new JPanel(new BorderLayout());
         JLabel abteilung = new JLabel(name);
-        JList<String> abteilungsListe = new JList(sampleList);
+        JList<?> abteilungsListe;
+
+        switch (modelType) {
+            case 0:
+                abteilungsListe = new JList<>(new DepartmentListModel());
+                break;
+            case 1:
+                abteilungsListe = new JList<>(new JobFunctionsListModel());
+                break;
+            case 2:
+                abteilungsListe = new JList<>(new TeamListModel());
+                break;
+            default:
+                // default should never occur
+                abteilungsListe = new JList<>(new DefaultListModel<>());
+        }
 
         JButton addAbteilung = new JButton("+");
         JButton deleteAbteilung = new JButton("X");
@@ -77,5 +92,3 @@ public class Stammdaten_View extends JPanel {
         stammDatenPanel.add(abteilungsPanel);
     }
 }
-
-
