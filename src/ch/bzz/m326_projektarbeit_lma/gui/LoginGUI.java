@@ -12,29 +12,27 @@ import java.awt.event.WindowEvent;
 
 public class LoginGUI extends JDialog {
     private int counter = 0;
-    private JComboBox<HRPerson> nameCombox = new JComboBox<>(new HRPersonComboboxModel());
-    private JTabbedPane tabbedPane;
+    private JComboBox<HRPerson> nameCombobox = new JComboBox<>(new HRPersonComboboxModel());
 
     //Konstruktor
     public LoginGUI(MainFrame mainFrame, JTabbedPane tabbedPane){
-        super(mainFrame);
-        this.tabbedPane = tabbedPane;
+        super(mainFrame, true);
         //frame einstellen
         setTitle("Authentifizierung");
         setSize(350, 170);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new BorderLayout(5,5));
+
         //Panels erstelln inkl. Layouts
         JPanel loginPanel = new JPanel(new GridLayout(2,2,5,5));
         JPanel downPanel = new JPanel(new GridLayout(1,2,5,5));
         JPanel mainPanel = new JPanel(new BorderLayout(5,5));
         JPanel bigPanel = new JPanel(new BorderLayout(5,5));
 
-
         //zusammenbauen
         JLabel nameLabel = new JLabel("Name:");
         loginPanel.add(nameLabel);
-        loginPanel.add(nameCombox);
+        loginPanel.add(nameCombobox);
         JLabel codeLabel = new JLabel("Code:");
         loginPanel.add(codeLabel);
         JPasswordField codeField = new JPasswordField();
@@ -51,7 +49,7 @@ public class LoginGUI extends JDialog {
         weiterButton.addActionListener(e -> {
             if (counter <= 3) {
                 if (PersonFacade.getInstance().logInHRPerson(
-                        (HRPerson) nameCombox.getSelectedItem(),
+                        (HRPerson) nameCombobox.getSelectedItem(),
                         String.valueOf(codeField.getPassword()))
                 ) {
                     dispose();
@@ -64,6 +62,7 @@ public class LoginGUI extends JDialog {
                 tabbedPane.setSelectedIndex(0);
             }
         });
+        abbrechenButton.addActionListener(e -> dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING)));
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
