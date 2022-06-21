@@ -31,7 +31,6 @@ public class Stammdaten_View extends JFrame {
     private JScrollPane scrollPane;
     private JPanel buttonPanel;
 
-
     public Stammdaten_View() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(new Dimension(550,500));

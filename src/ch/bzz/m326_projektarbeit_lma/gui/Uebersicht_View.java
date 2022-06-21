@@ -69,6 +69,7 @@ public class Uebersicht_View extends JFrame {
         JList<Person> nameList = new JList<>(new PersonListModel());
         nameList.setLayoutOrientation(JList.VERTICAL);
 
+        //Uebersicht
         JScrollPane scrollPane1 = new JScrollPane(nameList);
         scrollPane1.setPreferredSize(new Dimension(150,200));
         scrollPane1.setVerticalScrollBarPolicy(22); //Always on
@@ -79,10 +80,10 @@ public class Uebersicht_View extends JFrame {
 
         TitledBorder title1 = BorderFactory.createTitledBorder("Person:");
         mainPanel.setBorder(title1);
-
         TitledBorder title2 = BorderFactory.createTitledBorder("Detail:");
         detailPanel.setBorder(title2);
 
+        //Name
         JPanel namePanel = new JPanel(new GridLayout(1,2));
         JLabel nameLabel = new JLabel("Name:");
         JTextField nameTextField = new JTextField("Benak Alexander");
@@ -91,6 +92,7 @@ public class Uebersicht_View extends JFrame {
         namePanel.add(nameTextField);
         detailPanel.add(namePanel);
 
+        //Empty image
         ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("img.png")));
         Image image = imageIcon.getImage();
         Image newimg = image.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH);
@@ -98,6 +100,7 @@ public class Uebersicht_View extends JFrame {
         JLabel imageLabel = new JLabel(imageIcon);
         detailPanel.add(imageLabel);
 
+        //Abteilung
         JPanel abteilungPanel = new JPanel(new GridLayout(1,2));
         JLabel abteilungLabel1 = new JLabel("Abteilung:");
         JTextField abteilungTextField = new JTextField("Finance");
@@ -107,10 +110,14 @@ public class Uebersicht_View extends JFrame {
         detailPanel.add(abteilungPanel);
 
         JPanel scrollPanel = new JPanel(new GridLayout(1,2));
+
+        //Funktion Scrollpane
         JScrollPane scrollPane2 = new JScrollPane(nameList);
         scrollPane2.setPreferredSize(new Dimension(150,200));
         scrollPane2.setVerticalScrollBarPolicy(22); //Always on
         scrollPane2.setHorizontalScrollBarPolicy(31); //Never
+
+        //Teams Scrollpane
         JScrollPane scrollPane3 = new JScrollPane(nameList);
         scrollPane3.setPreferredSize(new Dimension(150,200));
         scrollPane3.setVerticalScrollBarPolicy(22); //Always on
