@@ -1,5 +1,12 @@
 package ch.bzz.m326_projektarbeit_lma.gui;
 
+import ch.bzz.m326_projektarbeit_lma.company.Department;
+import ch.bzz.m326_projektarbeit_lma.employees.Person;
+import ch.bzz.m326_projektarbeit_lma.gui.model.DepartmentComboboxModel;
+import ch.bzz.m326_projektarbeit_lma.gui.model.JobFunctionsComboboxModel;
+import ch.bzz.m326_projektarbeit_lma.gui.model.PersonListModel;
+import ch.bzz.m326_projektarbeit_lma.gui.model.TeamComboboxModel;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
@@ -8,38 +15,15 @@ import java.awt.*;
  * This class creates the "Übersicht" using a single Method -  the createView
  */
 public class Uebersicht_View extends JFrame {
-    /**
-     * Filler data for the "Namen"
-     */
-    String names[] = {
-            "Benak Alexander","Giuntini Lorenzo", "Hawi Moustafa",
-            "Jadyn Esquivel","Alondra Wren","Tara Richter","Roxanna Jack","Laci Barrera",
-            "Karina Matheny","Tyson Stringer","Devontae Lombardo","Kailey Wiles","Adrian Swift"
-    };
-    /**
-     * Filler data for the "Abteilungen"
-     */
-    String abteilungList[] = {
-            "Logistik", "Transport", "Verwaltung", "Buchhaltung", "IT"
-    };
-
-    String funktionList[] = {
-            "- alle -", "HR", "Mitarbeiter", "Praktikant", "Lehrling"
-    };
-
-    String teamList[] = {
-            "Next Facility", "Innovation Team", "Logistik Team",
-    };
 
     public Uebersicht_View(){
-
         JPanel mainPanel = new JPanel();
 
         JLabel uebersicht = new JLabel("Übersicht:");
         JPanel detailPanel = new JPanel();
         JPanel overviewPanel = new JPanel();
 
-        JList nameList = new JList(names);
+        JList<Person> nameList = new JList<>(new PersonListModel());
         nameList.setLayoutOrientation(JList.VERTICAL);
 
         JScrollPane scrollPane = new JScrollPane(nameList);
@@ -60,22 +44,20 @@ public class Uebersicht_View extends JFrame {
         nameTextField.setEditable(false);
         detailPanel.add(nameLabel);
         detailPanel.add(nameTextField);
-
     }
 
     public static void main(String[] args) {
         new Uebersicht_View();
     }
 
-    public JPanel createView(){
-
+    public JPanel createView() {
         JPanel mainPanel = new JPanel();
 
         JLabel uebersicht = new JLabel("Übersicht:");
         JPanel detailPanel = new JPanel();
         JPanel uebersichtPanel = new JPanel();
 
-        JList nameList = new JList(names);
+        JList<Person> nameList = new JList<>(new PersonListModel());
         nameList.setLayoutOrientation(JList.VERTICAL);
 
         JScrollPane scrollPane = new JScrollPane(nameList);
@@ -140,9 +122,9 @@ public class Uebersicht_View extends JFrame {
         JLabel abteilungLabel = new JLabel("Abteilung:");
         JLabel funktionLabel = new JLabel("Funktion:");
         JLabel teamLabel = new JLabel("Team:");
-        JComboBox abteilungCombobox = new JComboBox<>(abteilungList);
-        JComboBox funktionCombobox = new JComboBox<>(funktionList);
-        JComboBox teamCombobox = new JComboBox<>(teamList);
+        JComboBox<Department> abteilungCombobox = new JComboBox<>(new DepartmentComboboxModel());
+        JComboBox<String> funktionCombobox = new JComboBox<>(new JobFunctionsComboboxModel());
+        JComboBox<String> teamCombobox = new JComboBox<>(new TeamComboboxModel());
         filterAuswahl.add(abteilungLabel);
         filterAuswahl.add(abteilungCombobox);
         filterAuswahl.add(funktionLabel);
@@ -156,9 +138,6 @@ public class Uebersicht_View extends JFrame {
         mainPanel.add(detailPanel);
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
 
-
         return mainPanel;
-
     }
-
 }

@@ -2,6 +2,7 @@ package ch.bzz.m326_projektarbeit_lma.facade;
 
 import ch.bzz.m326_projektarbeit_lma.company.Company;
 import ch.bzz.m326_projektarbeit_lma.data.JSONData;
+import ch.bzz.m326_projektarbeit_lma.gui.model.TeamComboboxModel;
 import ch.bzz.m326_projektarbeit_lma.gui.model.TeamListModel;
 
 import java.util.Vector;
@@ -17,10 +18,12 @@ public class TeamFacade {
     private static TeamFacade instance;
     private Company company;
     private Vector<TeamListModel> teamListModels;
+    private Vector<TeamComboboxModel> teamComboboxModels;
 
     private TeamFacade() {
         company = JSONData.getInstance().getCompany();
         teamListModels = new Vector<>();
+        teamComboboxModels = new Vector<>();
     }
 
     public void addTeamListModel(TeamListModel teamListModel) {
@@ -29,6 +32,14 @@ public class TeamFacade {
 
     public void removeTeamListModel(TeamListModel teamListModel) {
         teamListModels.remove(teamListModel);
+    }
+
+    public void addTeamComboboxModel(TeamComboboxModel teamComboboxModel) {
+        teamComboboxModels.add(teamComboboxModel);
+    }
+
+    public void removeTeamComboboxModel(TeamComboboxModel teamComboboxModel) {
+        teamComboboxModels.remove(teamComboboxModel);
     }
 
     public Vector<String> getAllTeams() {
@@ -41,10 +52,12 @@ public class TeamFacade {
 
     public void addTeam(String name) {
         company.getTeams().addTeam(name);
+        fireChangesOnAllTeamListModels();
     }
 
     public void removeTeam(String name) {
         company.getTeams().removeTeam(name);
+        fireChangesOnAllTeamListModels();
     }
 
     public String getTeam(int index) {
@@ -64,6 +77,12 @@ public class TeamFacade {
     private void fireChangesOnAllTeamListModels() {
         for (TeamListModel listModel : teamListModels) {
             listModel.fireContentsChanged(this, 0, getNumberOfTeams());
+        }
+    }
+
+    private void fireChangesOnAllTeamComboboxModels() {
+        for (TeamComboboxModel comboboxModel : teamComboboxModels) {
+            comboboxModel.fireContentsChanged(this, 0, getNumberOfTeams());
         }
     }
 

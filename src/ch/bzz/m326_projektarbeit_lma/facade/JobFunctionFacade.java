@@ -2,6 +2,7 @@ package ch.bzz.m326_projektarbeit_lma.facade;
 
 import ch.bzz.m326_projektarbeit_lma.company.Company;
 import ch.bzz.m326_projektarbeit_lma.data.JSONData;
+import ch.bzz.m326_projektarbeit_lma.gui.model.JobFunctionsComboboxModel;
 import ch.bzz.m326_projektarbeit_lma.gui.model.JobFunctionsListModel;
 
 import java.util.Vector;
@@ -16,12 +17,14 @@ import java.util.Vector;
 public class JobFunctionFacade {
     private static JobFunctionFacade instance;
     private Vector<JobFunctionsListModel> jobFunctionsListModels;
+    private Vector<JobFunctionsComboboxModel> jobFunctionsComboboxModels;
 
     private Company company;
 
     public JobFunctionFacade() {
         company = JSONData.getInstance().getCompany();
         jobFunctionsListModels = new Vector<>();
+        jobFunctionsComboboxModels = new Vector<>();
     }
 
     public void addJobFunctionListModel(JobFunctionsListModel jobFunctionsListModel) {
@@ -30,6 +33,14 @@ public class JobFunctionFacade {
 
     public void removeJobFunctionListModel(JobFunctionsListModel jobFunctionsListModel) {
         jobFunctionsListModels.remove(jobFunctionsListModel);
+    }
+
+    public void addJobFunctionComboboxModel(JobFunctionsComboboxModel jobFunctionsComboboxModel) {
+        jobFunctionsComboboxModels.add(jobFunctionsComboboxModel);
+    }
+
+    public void removeJobFunctionComboboxModel(JobFunctionsComboboxModel jobFunctionsComboboxModel) {
+        jobFunctionsComboboxModels.remove(jobFunctionsComboboxModel);
     }
 
     public Vector<String> getAllFunctions() {
@@ -43,11 +54,13 @@ public class JobFunctionFacade {
     public void addFunction(String name) {
         company.getFunctions().addJobFunction(name);
         fireChangesOnAllJobFunctionListModels();
+        fireChangesOnAllJobFunctionComboboxModels();
     }
 
     public void removeFunction(String name) {
         company.getFunctions().removeJobFunction(name);
         fireChangesOnAllJobFunctionListModels();
+        fireChangesOnAllJobFunctionComboboxModels();
     }
 
     public String getFunction(int index) {
@@ -67,6 +80,12 @@ public class JobFunctionFacade {
     private void fireChangesOnAllJobFunctionListModels() {
         for (JobFunctionsListModel listModel : jobFunctionsListModels) {
             listModel.fireContentsChanged(this, 0, getNumberOfJobFunctions());
+        }
+    }
+
+    private void fireChangesOnAllJobFunctionComboboxModels() {
+        for (JobFunctionsComboboxModel comboboxModel : jobFunctionsComboboxModels) {
+            comboboxModel.fireContentsChanged(this, 0, getNumberOfJobFunctions());
         }
     }
 
