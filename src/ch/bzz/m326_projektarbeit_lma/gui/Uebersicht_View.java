@@ -17,6 +17,9 @@ import java.awt.*;
 public class Uebersicht_View extends JFrame {
 
     public Uebersicht_View(){
+
+        setSize(new Dimension(550,500));
+
         JPanel mainPanel = new JPanel();
 
         JLabel uebersicht = new JLabel("Übersicht:");
@@ -44,6 +47,10 @@ public class Uebersicht_View extends JFrame {
         nameTextField.setEditable(false);
         detailPanel.add(nameLabel);
         detailPanel.add(nameTextField);
+        mainPanel.add(detailPanel);
+
+        getContentPane().add(mainPanel);
+        //setVisible(true);
     }
 
     public static void main(String[] args) {

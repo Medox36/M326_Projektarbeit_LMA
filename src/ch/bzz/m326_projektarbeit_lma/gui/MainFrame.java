@@ -16,7 +16,7 @@ public class MainFrame extends JFrame {
         navbar.add("Übersicht", new Uebersicht_View().createView());
         navbar.add("Zuordnung", new Zuordnung_View());
         navbar.add("Personen", new Person_View());
-        navbar.add("Stammdaten", new Stammdaten_View());
+        navbar.add("Stammdaten", new Stammdaten_View().createView());
         navbar.add("Logbuch", new Logbuch_View());
 
         navbar.addChangeListener(e -> {
