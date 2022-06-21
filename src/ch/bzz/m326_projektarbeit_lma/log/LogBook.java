@@ -1,6 +1,7 @@
 package ch.bzz.m326_projektarbeit_lma.log;
 
 import java.io.*;
+import java.util.Iterator;
 import java.util.Vector;
 
 /**
@@ -79,6 +80,28 @@ public class LogBook {
             entry = null;
         }
         return entry;
+    }
+
+    public Vector<String> getAllEntries() {
+        return entries;
+    }
+
+    public String getEntries() {
+        StringBuilder sb = new StringBuilder();
+
+        Iterator<String> it = entries.iterator();
+        if (!it.hasNext()) {
+            return sb.toString();
+        }
+
+        for (;;) {
+            sb.append(it.next());
+            if (!it.hasNext()) {
+                return sb.toString();
+            } else {
+                sb.append("\n");
+            }
+        }
     }
 
     /**
