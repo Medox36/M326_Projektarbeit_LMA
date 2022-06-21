@@ -7,19 +7,18 @@ import ch.bzz.m326_projektarbeit_lma.gui.model.HRPersonComboboxModel;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class LoginGUI extends JDialog {
     private int counter = 0;
-    JLabel nameLabel = new JLabel("Name:");
-    JLabel codeLabel = new JLabel("Code:");
-    JComboBox<HRPerson> nameCombox = new JComboBox<>(new DefaultComboBoxModel<>());
-    JTextField codeField = new JTextField("Code eingeben");
-    JButton abbrechenButton = new JButton("Abbrechen");
-    JButton weiterButton = new JButton("Weiter");
+    private JComboBox<HRPerson> nameCombox = new JComboBox<>(new DefaultComboBoxModel<>());
+    private JTabbedPane tabbedPane;
 
     //Konstruktor
-    public LoginGUI(MainFrame mainFrame){
+    public LoginGUI(MainFrame mainFrame, JTabbedPane tabbedPane){
         super(mainFrame);
+        this.tabbedPane = tabbedPane;
         //frame einstellen
         setTitle("Authentifizierung");
         setSize(350, 170);
@@ -33,11 +32,16 @@ public class LoginGUI extends JDialog {
 
 
         //zusammenbauen
+        JLabel nameLabel = new JLabel("Name:");
         loginPanel.add(nameLabel);
         loginPanel.add(nameCombox);
+        JLabel codeLabel = new JLabel("Code:");
         loginPanel.add(codeLabel);
+        JTextField codeField = new JTextField("Code eingeben");
         loginPanel.add(codeField);
+        JButton abbrechenButton = new JButton("Abbrechen");
         downPanel.add(abbrechenButton);
+        JButton weiterButton = new JButton("Weiter");
         downPanel.add(weiterButton);
         mainPanel.add(loginPanel, BorderLayout.NORTH);
         mainPanel.add(downPanel, BorderLayout.SOUTH);
@@ -54,6 +58,15 @@ public class LoginGUI extends JDialog {
                 }
             } else {
                 new CloseProjectGui();
+                tabbedPane.setSelectedIndex(0);
+            }
+        });
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if (!PersonFacade.getInstance().isAHRPersonLoggedIn()) {
+                    tabbedPane.setSelectedIndex(0);
+                }
             }
         });
 

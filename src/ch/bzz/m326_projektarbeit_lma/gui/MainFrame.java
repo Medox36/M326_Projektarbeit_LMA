@@ -81,7 +81,7 @@ public class MainFrame extends JFrame {
 
         navbar.addChangeListener(e -> {
             if (!PersonFacade.getInstance().isAHRPersonLoggedIn()) {
-                new LoginGUI(this);
+                new LoginGUI(this, navbar);
             }
         });
 
