@@ -55,7 +55,7 @@ public class LoginGUI extends JDialog {
                     dispose();
                 } else {
                     counter++;
-                    new ErrorGUI();
+                    new ErrorGUI(this);
                 }
             } else {
                 new CloseProjectGui();

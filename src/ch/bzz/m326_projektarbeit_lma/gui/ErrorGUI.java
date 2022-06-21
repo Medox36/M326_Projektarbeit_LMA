@@ -2,12 +2,14 @@ package ch.bzz.m326_projektarbeit_lma.gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 
-public class ErrorGUI extends JFrame {
+public class ErrorGUI extends JDialog {
     JLabel label = new JLabel("Passwort nicht gültig");
     JButton wiederholenButton = new JButton("Wiederholen");
 
-    public ErrorGUI(){
+    public ErrorGUI(LoginGUI parent){
+        super(parent, true);
         setTitle("Error-Passwort falsch");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -22,10 +24,11 @@ public class ErrorGUI extends JFrame {
         mainPanel.add(gridPanel, BorderLayout.NORTH);
         getContentPane().add(mainPanel, BorderLayout.CENTER);
 
-        setVisible(true);
-    }
+        wiederholenButton.addActionListener(
+                e -> dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING))
+        );
 
-    public static void main(String[] args) {
-        new ErrorGUI();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 }
