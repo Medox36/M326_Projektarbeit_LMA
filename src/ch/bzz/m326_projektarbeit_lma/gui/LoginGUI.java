@@ -1,5 +1,9 @@
 package ch.bzz.m326_projektarbeit_lma.gui;
 
+import ch.bzz.m326_projektarbeit_lma.employees.HRPerson;
+import ch.bzz.m326_projektarbeit_lma.facade.PersonFacade;
+import ch.bzz.m326_projektarbeit_lma.gui.model.HRPersonComboboxModel;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -8,8 +12,7 @@ public class LoginGUI extends JDialog {
     private int counter = 0;
     JLabel nameLabel = new JLabel("Name:");
     JLabel codeLabel = new JLabel("Code:");
-    String comboBoxListe[] = {"Person wählen","Muster Max", "Trulli Theo", "Arpagaus Carla", "Rodriguez Joe", "Radic Illia", "Moro Valeria", "Müller Petra","Grifith Malcom", "Marchese Luigi", "Bolgar Beda", "Rast Anna" };
-    JComboBox nameCombox = new JComboBox(comboBoxListe);
+    JComboBox<HRPerson> nameCombox = new JComboBox<>(new DefaultComboBoxModel<>());
     JTextField codeField = new JTextField("Code eingeben");
     JButton abbrechenButton = new JButton("Abbrechen");
     JButton weiterButton = new JButton("Weiter");

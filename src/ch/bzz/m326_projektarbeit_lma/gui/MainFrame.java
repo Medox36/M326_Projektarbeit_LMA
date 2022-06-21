@@ -1,5 +1,9 @@
 package ch.bzz.m326_projektarbeit_lma.gui;
 
+import ch.bzz.m326_projektarbeit_lma.facade.PersonFacade;
+import ch.bzz.m326_projektarbeit_lma.gui.model.PersonListModel;
+import ch.bzz.m326_projektarbeit_lma.employees.Person;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
@@ -74,6 +78,12 @@ public class MainFrame extends JFrame {
         navbar.add("Personen",panel3);
         navbar.add("Stammdaten",panel4);
         navbar.add("Logbuch",panel5);
+
+        navbar.addChangeListener(e -> {
+            if (!PersonFacade.getInstance().isAHRPersonLoggedIn()) {
+                new LoginGUI(this);
+            }
+        });
 
         getContentPane().add(navbar);
 

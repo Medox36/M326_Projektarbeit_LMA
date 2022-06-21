@@ -89,4 +89,9 @@ public class HRPerson extends Person {
 
         log.addEntry(entry);
     }
+
+    @Override
+    public String toString() {
+        return getFullName();
+    }
 }
