@@ -9,9 +9,7 @@
       "photo" : null,
       "participation" : {
         "function" : [ "IT Guy" ],
-        "teams" : [ "IT" ],
-        "allFunctions" : [ "IT Guy" ],
-        "allTeams" : [ "IT" ]
+        "teams" : [ "IT" ]
       }
     }, {
       "type" : "Person",
@@ -20,9 +18,7 @@
       "photo" : null,
       "participation" : {
         "function" : [ "Abacus Guy" ],
-        "teams" : [ "Abacus" ],
-        "allFunctions" : [ "Abacus Guy" ],
-        "allTeams" : [ "Abacus" ]
+        "teams" : [ "Abacus" ]
       }
     } ]
   }, {
@@ -34,20 +30,16 @@
       "photo" : null,
       "participation" : {
         "function" : [ "Abacus Guy" ],
-        "teams" : [ "IT" ],
-        "allFunctions" : [ "Abacus Guy" ],
-        "allTeams" : [ "IT" ]
+        "teams" : [ "IT" ]
       },
       "modus" : 0,
       "pwd" : "1234"
     } ]
   } ],
   "functions" : {
-    "designations" : [ "IT Guy", "Abacus Guy" ],
-    "allFunctions" : [ "IT Guy", "Abacus Guy" ]
+    "designations" : [ "IT Guy", "Abacus Guy" ]
   },
   "teams" : {
-    "designations" : [ "IT", "Abacus" ],
-    "allTeams" : [ "IT", "Abacus" ]
+    "designations" : [ "IT", "Abacus" ]
   }
 }
