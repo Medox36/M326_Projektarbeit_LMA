@@ -12,7 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- *
+ * This class is responsible for managing the application data.
+ * It writes and reads the storage .json-file.
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.06.08
@@ -26,12 +27,20 @@ public class JSONData {
 
     private final String PATH = "data.json";
 
+    /**
+     * constructor
+     *
+     * adds a ShutdownHook that assures, the data is being saved when the program is closed
+     */
     private JSONData() {
         Runtime.getRuntime().addShutdownHook(new Thread(this::writeCompanyJSON, "Saving Data Shutdown-Thread"));
         checkFile();
     }
 
-
+    /**
+     * checks if the file containing the application data exists.
+     * If it doesn't exist it creates a default company so the program can still function
+     */
     private void checkFile() {
         try {
             File file = new File(PATH);
@@ -45,6 +54,9 @@ public class JSONData {
         }
     }
 
+    /**
+     * reads the data from the file
+     */
     public void readCompanyJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(Paths.get(PATH));
@@ -55,6 +67,9 @@ public class JSONData {
         }
     }
 
+    /**
+     * writes the data to the file
+     */
     public void writeCompanyJSON() {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
@@ -70,14 +85,29 @@ public class JSONData {
         }
     }
 
+    /**
+     * gets the company
+     *
+     * @return the company
+     */
     public Company getCompany() {
         return company;
     }
 
+    /**
+     * sets the company
+     *
+     * @param company to set
+     */
     public void setCompany(Company company) {
         this.company = company;
     }
 
+    /**
+     * returns the instance of the JSONData class according to the singleton pattern
+     *
+     * @return the instance
+     */
     public static JSONData getInstance() {
         if (instance == null) {
             instance = new JSONData();

@@ -5,7 +5,7 @@ import ch.bzz.m326_projektarbeit_lma.facade.JobFunctionFacade;
 import javax.swing.*;
 
 /**
- *
+ * A custom ListModel for visualizing JobFunctions
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.06.20
@@ -13,6 +13,9 @@ import javax.swing.*;
  */
 public class JobFunctionsListModel extends AbstractListModel<String> {
 
+    /**
+     * constructor
+     */
     public JobFunctionsListModel() {
         JobFunctionFacade.getInstance().addJobFunctionListModel(this);
     }
@@ -32,6 +35,12 @@ public class JobFunctionsListModel extends AbstractListModel<String> {
         super.fireContentsChanged(source, index0, index1);
     }
 
+    /**
+     * removes this model from the Facade register, so it stops getting fireContentsChanged notifications
+     * and can be safely deleted
+     *
+     * @apiNote this method should be called every time a model isn't used anymore
+     */
     public void remove() {
         JobFunctionFacade.getInstance().removeJobFunctionListModel(this);
     }

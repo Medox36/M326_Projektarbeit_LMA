@@ -6,7 +6,7 @@ import ch.bzz.m326_projektarbeit_lma.facade.PersonFacade;
 import javax.swing.*;
 
 /**
- *
+ * A custom ListModel for visualizing Persons
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.06.20
@@ -14,6 +14,9 @@ import javax.swing.*;
  */
 public class PersonListModel extends AbstractListModel<Person> {
 
+    /**
+     * constructor
+     */
     public PersonListModel() {
         PersonFacade.getInstance().addPersonListModel(this);
     }
@@ -33,6 +36,12 @@ public class PersonListModel extends AbstractListModel<Person> {
         super.fireContentsChanged(source, index0, index1);
     }
 
+    /**
+     * removes this model from the Facade register, so it stops getting fireContentsChanged notifications
+     * and can be safely deleted
+     *
+     * @apiNote this method should be called every time a model isn't used anymore
+     */
     public void remove() {
         PersonFacade.getInstance().removePersonListModel(this);
     }

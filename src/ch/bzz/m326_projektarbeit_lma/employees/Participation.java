@@ -7,7 +7,7 @@ import lombok.Setter;
 import java.util.Vector;
 
 /**
- *
+ * The Participation class stores every team and function participation of a Person
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.05.18
@@ -20,6 +20,9 @@ public class Participation {
     private Vector<String> function;
     private Vector<String> teams;
 
+    /**
+     * constructor
+     */
     public Participation() {
         function = new Vector<>();
         teams = new Vector<>();

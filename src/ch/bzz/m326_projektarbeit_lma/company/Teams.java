@@ -7,7 +7,7 @@ import lombok.Setter;
 import java.util.Vector;
 
 /**
- *
+ * The Teams class stores all the teams
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.06.01

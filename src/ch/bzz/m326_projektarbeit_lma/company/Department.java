@@ -10,7 +10,7 @@ import lombok.Setter;
 import java.util.Vector;
 
 /**
- *
+ * A Department has a name and multiple members of type Person.
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.06.01
@@ -99,6 +99,11 @@ public class Department {
         return members;
     }
 
+    /**
+     * overwrites the default toString method
+     *
+     * @return the name of the department
+     */
     @Override
     public String toString() {
         return getName();

@@ -7,7 +7,7 @@ import lombok.Setter;
 import java.util.Vector;
 
 /**
- *
+ * The JobFunctions class stores all the functions
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.06.01

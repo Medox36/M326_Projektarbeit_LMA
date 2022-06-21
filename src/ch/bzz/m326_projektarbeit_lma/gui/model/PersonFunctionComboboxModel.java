@@ -6,7 +6,7 @@ import ch.bzz.m326_projektarbeit_lma.facade.PersonFacade;
 import javax.swing.*;
 
 /**
- *
+ * A custom ComboboxModel for visualizing Functions of a Person
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.06.20
@@ -17,6 +17,11 @@ public class PersonFunctionComboboxModel extends AbstractListModel<String> imple
     private String selection = null;
     private Person person;
 
+    /**
+     * constructor
+     *
+     * @param person for which the model is for
+     */
     public PersonFunctionComboboxModel(Person person) {
         this.person = person;
         PersonFacade.getInstance().addPersonFunctionComboboxModel(this);
@@ -51,6 +56,12 @@ public class PersonFunctionComboboxModel extends AbstractListModel<String> imple
         return person;
     }
 
+    /**
+     * removes this model from the Facade register, so it stops getting fireContentsChanged notifications
+     * and can be safely deleted
+     *
+     * @apiNote this method should be called every time a model isn't used anymore
+     */
     public void remove() {
         PersonFacade.getInstance().removePersonFunctionComboboxModel(this);
     }

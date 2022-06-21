@@ -10,7 +10,8 @@ import lombok.Setter;
 import java.awt.*;
 
 /**
- *
+ * The HRPerson class stores everything the Person class stores and in addition it stores the mode and a password.
+ * A HRPerson has more rights than a Person and also can be an administrator.
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.05.18
@@ -77,6 +78,16 @@ public class HRPerson extends Person {
     }
 
     /**
+     * overwrites the default toString method
+     *
+     * @return the full name of the HRPerson
+     */
+    @Override
+    public String toString() {
+        return getFullName();
+    }
+
+    /**
      * writes a new log entry
      *
      * @param person on which the action was performed on
@@ -88,10 +99,5 @@ public class HRPerson extends Person {
         String entry = ua.getEntry();
 
         log.addEntry(entry);
-    }
-
-    @Override
-    public String toString() {
-        return getFullName();
     }
 }

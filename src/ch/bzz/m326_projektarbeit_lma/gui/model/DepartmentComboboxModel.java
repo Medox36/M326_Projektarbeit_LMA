@@ -6,7 +6,7 @@ import ch.bzz.m326_projektarbeit_lma.facade.DepartmentFacade;
 import javax.swing.*;
 
 /**
- *
+ * A custom ComboboxModel for visualizing Departments
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.06.20
@@ -16,6 +16,9 @@ public class DepartmentComboboxModel extends AbstractListModel<Department> imple
 
     private Department selection = null;
 
+    /**
+     * constructor
+     */
     public DepartmentComboboxModel() {
         DepartmentFacade.getInstance().addDepartmentComboboxModel(this);
     }
@@ -45,6 +48,12 @@ public class DepartmentComboboxModel extends AbstractListModel<Department> imple
         super.fireContentsChanged(source, index0, index1);
     }
 
+    /**
+     * removes this model from the Facade register, so it stops getting fireContentsChanged notifications
+     * and can be safely deleted
+     *
+     * @apiNote this method should be called every time a model isn't used anymore
+     */
     public void remove() {
         DepartmentFacade.getInstance().removeDepartmentComboboxModel(this);
     }

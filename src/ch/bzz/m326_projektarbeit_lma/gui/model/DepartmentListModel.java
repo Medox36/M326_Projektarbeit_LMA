@@ -6,7 +6,7 @@ import ch.bzz.m326_projektarbeit_lma.facade.DepartmentFacade;
 import javax.swing.*;
 
 /**
- *
+ * A custom ListModel for visualizing Departments
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.06.21
@@ -14,6 +14,9 @@ import javax.swing.*;
  */
 public class DepartmentListModel extends AbstractListModel<Department> {
 
+    /**
+     * constructor
+     */
     public DepartmentListModel() {
         DepartmentFacade.getInstance().addDepartmentListModel(this);
     }
@@ -33,6 +36,12 @@ public class DepartmentListModel extends AbstractListModel<Department> {
         super.fireContentsChanged(source, index0, index1);
     }
 
+    /**
+     * removes this model from the Facade register, so it stops getting fireContentsChanged notifications
+     * and can be safely deleted
+     *
+     * @apiNote this method should be called every time a model isn't used anymore
+     */
     public void remove() {
         DepartmentFacade.getInstance().removeDepartmentListModel(this);
     }

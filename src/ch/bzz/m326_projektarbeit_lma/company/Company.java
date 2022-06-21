@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Vector;
 
 /**
- *
+ * The company has a name and multiple departments. It also stores all the JobFunctions and Teams
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.06.01

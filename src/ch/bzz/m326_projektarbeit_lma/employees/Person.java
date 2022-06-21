@@ -10,7 +10,8 @@ import lombok.Setter;
 import java.awt.*;
 
 /**
- *
+ * The Person class represents a member of a company, storing the first and last name
+ * as well as a photo and the participation.
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.05.18
@@ -120,6 +121,11 @@ public class Person {
         return participation;
     }
 
+    /**
+     * overwrites the default toString method
+     *
+     * @return the full name of the Person
+     */
     @Override
     public String toString() {
         return getFullName();

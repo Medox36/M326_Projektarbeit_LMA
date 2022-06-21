@@ -6,7 +6,7 @@ import ch.bzz.m326_projektarbeit_lma.facade.PersonFacade;
 import javax.swing.*;
 
 /**
- *
+ * A custom ComboboxModel for visualizing HRPersons
  *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.06.20
@@ -16,6 +16,9 @@ public class HRPersonComboboxModel extends AbstractListModel<HRPerson> implement
 
     private HRPerson selection = null;
 
+    /**
+     * constructor
+     */
     public HRPersonComboboxModel() {
         PersonFacade.getInstance().addHRPersonComboboxModel(this);
     }
@@ -45,6 +48,12 @@ public class HRPersonComboboxModel extends AbstractListModel<HRPerson> implement
         super.fireContentsChanged(source, index0, index1);
     }
 
+    /**
+     * removes this model from the Facade register, so it stops getting fireContentsChanged notifications
+     * and can be safely deleted
+     *
+     * @apiNote this method should be called every time a model isn't used anymore
+     */
     public void remove() {
         PersonFacade.getInstance().removeHRPersonComboboxModel(this);
     }
