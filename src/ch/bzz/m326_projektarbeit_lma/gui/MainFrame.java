@@ -7,11 +7,13 @@ import javax.swing.*;
 public class MainFrame extends JFrame {
 
     public MainFrame(){
+
+        //Basic JFrame settings
         setTitle("I am looking for");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600,700);
 
-        //Das Menü
+        //The Menu
         JTabbedPane navbar = new JTabbedPane();
         navbar.add("Übersicht", new Uebersicht_View().createView());
         navbar.add("Zuordnung", new Zuordnung_View());
@@ -29,15 +31,13 @@ public class MainFrame extends JFrame {
             }
         });
 
+        //Add the whole content
         getContentPane().add(navbar);
 
+        //Let it appear on screen
         setLocationRelativeTo(null);
         setVisible(true);
 
-    }
-
-    public static void main(String[] args) {
-        new MainFrame();
     }
 
 }
