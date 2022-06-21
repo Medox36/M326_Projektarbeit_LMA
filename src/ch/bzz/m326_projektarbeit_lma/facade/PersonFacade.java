@@ -157,8 +157,8 @@ public class PersonFacade {
         }
     }
 
-    public boolean logInHRPerson(HRPerson hrPerson) {
-        if (checkPassword(hrPerson, hrPerson.getPwd())) {
+    public boolean logInHRPerson(HRPerson hrPerson, String pwd) {
+        if (checkPassword(hrPerson, pwd)) {
             loggedInHRPerson = hrPerson;
             return true;
         } else {
