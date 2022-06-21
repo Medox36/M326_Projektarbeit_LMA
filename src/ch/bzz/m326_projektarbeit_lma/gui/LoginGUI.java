@@ -12,7 +12,7 @@ import java.awt.event.WindowEvent;
 
 public class LoginGUI extends JDialog {
     private int counter = 0;
-    private JComboBox<HRPerson> nameCombox = new JComboBox<>(new HRPersonComboboxModel<HRPerson>());
+    private JComboBox<HRPerson> nameCombox = new JComboBox<>(new HRPersonComboboxModel());
     private JTabbedPane tabbedPane;
 
     //Konstruktor
