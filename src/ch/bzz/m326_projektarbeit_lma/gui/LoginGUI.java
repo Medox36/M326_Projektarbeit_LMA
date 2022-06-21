@@ -37,7 +37,7 @@ public class LoginGUI extends JDialog {
         loginPanel.add(nameCombox);
         JLabel codeLabel = new JLabel("Code:");
         loginPanel.add(codeLabel);
-        JTextField codeField = new JTextField("Code eingeben");
+        JPasswordField codeField = new JPasswordField();
         loginPanel.add(codeField);
         JButton abbrechenButton = new JButton("Abbrechen");
         downPanel.add(abbrechenButton);
@@ -50,7 +50,10 @@ public class LoginGUI extends JDialog {
         //ActionLister adden
         weiterButton.addActionListener(e -> {
             if (counter <= 3) {
-                if (PersonFacade.getInstance().logInHRPerson((HRPerson) nameCombox.getSelectedItem())) {
+                if (PersonFacade.getInstance().logInHRPerson(
+                        (HRPerson) nameCombox.getSelectedItem(),
+                        String.valueOf(codeField.getPassword()))
+                ) {
                     dispose();
                 } else {
                     counter++;
@@ -75,6 +78,7 @@ public class LoginGUI extends JDialog {
 
         getContentPane().add(bigPanel, BorderLayout.CENTER);
         //Sichtbarkeit
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
