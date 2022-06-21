@@ -1,5 +1,7 @@
 package ch.bzz.m326_projektarbeit_lma.log;
 
+import ch.bzz.m326_projektarbeit_lma.gui.Logbuch_View;
+
 import java.io.*;
 import java.util.Iterator;
 import java.util.Vector;
@@ -20,6 +22,8 @@ public class LogBook {
     private BufferedReader reader;
     private BufferedWriter writer;
     private boolean fileWritingEnabled;
+
+    private Logbuch_View logbuch_view;
 
     /**
      * creates a LogBook
@@ -64,6 +68,7 @@ public class LogBook {
         if (fileWritingEnabled) {
             writeFile(entry);
         }
+        logbuch_view.fireChanges();
     }
 
     /**
@@ -158,5 +163,9 @@ public class LogBook {
         for (String str : entries) {
             System.out.println(str);
         }
+    }
+
+    public void setLogbuch_view(Logbuch_View logbuch_view) {
+        this.logbuch_view = logbuch_view;
     }
 }

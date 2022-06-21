@@ -7,10 +7,12 @@ import java.awt.*;
 
 public class Logbuch_View extends JPanel {
 
+    private JTextArea textArea;
+
     public Logbuch_View() {
         JPanel logPanel = new JPanel(new BorderLayout());
 
-        JTextArea textArea = new JTextArea(LogBook.getLogBookInstance().getEntries());
+        textArea = new JTextArea(LogBook.getLogBookInstance().getEntries());
         textArea.setEditable(false);
         textArea.setLineWrap(true);
 
@@ -21,5 +23,9 @@ public class Logbuch_View extends JPanel {
         logPanel.add(scrollPane, BorderLayout.CENTER);
 
         add(logPanel);
+    }
+
+    public void fireChanges() {
+        SwingUtilities.invokeLater(() -> textArea.setText(LogBook.getLogBookInstance().getEntries()));
     }
 }
