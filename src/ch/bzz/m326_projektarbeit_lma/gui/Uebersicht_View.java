@@ -10,6 +10,7 @@ import ch.bzz.m326_projektarbeit_lma.gui.model.TeamComboboxModel;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.util.Objects;
 
 /**
  * This class creates the "Übersicht" using a single Method -  the createView
@@ -62,17 +63,18 @@ public class Uebersicht_View extends JFrame {
 
         JLabel uebersicht = new JLabel("Übersicht:");
         JPanel detailPanel = new JPanel();
+        detailPanel.setLayout(new BoxLayout(detailPanel,BoxLayout.PAGE_AXIS));
         JPanel uebersichtPanel = new JPanel();
 
         JList<Person> nameList = new JList<>(new PersonListModel());
         nameList.setLayoutOrientation(JList.VERTICAL);
 
-        JScrollPane scrollPane = new JScrollPane(nameList);
-        scrollPane.setPreferredSize(new Dimension(150,200));
-        scrollPane.setVerticalScrollBarPolicy(22); //Always on
-        scrollPane.setHorizontalScrollBarPolicy(31); //Never
+        JScrollPane scrollPane1 = new JScrollPane(nameList);
+        scrollPane1.setPreferredSize(new Dimension(150,200));
+        scrollPane1.setVerticalScrollBarPolicy(22); //Always on
+        scrollPane1.setHorizontalScrollBarPolicy(31); //Never
         uebersichtPanel.add(uebersicht);
-        uebersichtPanel.add(scrollPane);
+        uebersichtPanel.add(scrollPane1);
         mainPanel.add(uebersichtPanel);
 
         TitledBorder title1 = BorderFactory.createTitledBorder("Person:");
@@ -81,11 +83,20 @@ public class Uebersicht_View extends JFrame {
         TitledBorder title2 = BorderFactory.createTitledBorder("Detail:");
         detailPanel.setBorder(title2);
 
+        JPanel namePanel = new JPanel(new GridLayout(1,2));
         JLabel nameLabel = new JLabel("Name:");
         JTextField nameTextField = new JTextField("Benak Alexander");
         nameTextField.setEditable(false);
-        detailPanel.add(nameLabel);
-        detailPanel.add(nameTextField);
+        namePanel.add(nameLabel);
+        namePanel.add(nameTextField);
+        detailPanel.add(namePanel);
+
+        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("img.png")));
+        Image image = imageIcon.getImage();
+        Image newimg = image.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(newimg);
+        JLabel imageLabel = new JLabel(imageIcon);
+        detailPanel.add(imageLabel);
 
         JPanel abteilungPanel = new JPanel(new GridLayout(1,2));
         JLabel abteilungLabel1 = new JLabel("Abteilung:");
@@ -93,6 +104,20 @@ public class Uebersicht_View extends JFrame {
         abteilungTextField.setEditable(false);
         abteilungPanel.add(abteilungLabel1);
         abteilungPanel.add(abteilungTextField);
+        detailPanel.add(abteilungPanel);
+
+        JPanel scrollPanel = new JPanel(new GridLayout(1,2));
+        JScrollPane scrollPane2 = new JScrollPane(nameList);
+        scrollPane2.setPreferredSize(new Dimension(150,200));
+        scrollPane2.setVerticalScrollBarPolicy(22); //Always on
+        scrollPane2.setHorizontalScrollBarPolicy(31); //Never
+        JScrollPane scrollPane3 = new JScrollPane(nameList);
+        scrollPane3.setPreferredSize(new Dimension(150,200));
+        scrollPane3.setVerticalScrollBarPolicy(22); //Always on
+        scrollPane3.setHorizontalScrollBarPolicy(31); //Never
+        scrollPanel.add(scrollPane2);
+        scrollPanel.add(scrollPane3);
+        detailPanel.add(scrollPanel);
 
         ////////////////////////////////////
 
