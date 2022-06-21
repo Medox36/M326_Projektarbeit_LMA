@@ -11,6 +11,7 @@ import ch.bzz.m326_projektarbeit_lma.gui.model.PersonListModel;
 import ch.bzz.m326_projektarbeit_lma.gui.model.PersonTeamComboboxModel;
 import ch.bzz.m326_projektarbeit_lma.log.UserAction;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.Vector;
 
@@ -111,7 +112,7 @@ public class PersonFacade {
         department.addMember(person);
 
         loggedInHRPerson.writeLogEntry(person, UserAction.CREATE_PERSON);
-        fireChangesOnAllListModels();
+        fireChangesOnAllPersonListModels();
     }
 
     public void addNewPerson(String firstName, String lastName, Department department, Image image) {
@@ -119,7 +120,7 @@ public class PersonFacade {
         department.addMember(person);
 
         loggedInHRPerson.writeLogEntry(person, UserAction.CREATE_PERSON);
-        fireChangesOnAllListModels();
+        fireChangesOnAllPersonListModels();
     }
 
     public void addNewHRPerson(String fullName, Department department, Image image, int modus, String pwd) {
@@ -129,7 +130,7 @@ public class PersonFacade {
 
         department.addMember(hrPerson);
         loggedInHRPerson.writeLogEntry(hrPerson, UserAction.CREATE_PERSON);
-        fireChangesOnAllListModels();
+        fireChangesOnAllPersonListModels();
         fireChangesOnAllHRPersonComboboxModels();
     }
 
@@ -139,7 +140,7 @@ public class PersonFacade {
 
         department.addMember(hrPerson);
         loggedInHRPerson.writeLogEntry(hrPerson, UserAction.CREATE_PERSON);
-        fireChangesOnAllListModels();
+        fireChangesOnAllPersonListModels();
         fireChangesOnAllHRPersonComboboxModels();
     }
 
@@ -254,12 +255,12 @@ public class PersonFacade {
 
     private void addPersonToDepartment(Person person, Department departmentName) {
         departmentName.addMember(person);
-        fireChangesOnAllListModels();
+        fireChangesOnAllPersonListModels();
     }
 
     private void removePersonFromDepartment(Person person) {
         getDepartmentOfPerson(person).removeMember(person);
-        fireChangesOnAllListModels();
+        fireChangesOnAllPersonListModels();
     }
 
     public void updatePerson(Person person, String newFullName, Department newDepartment) {
@@ -271,7 +272,7 @@ public class PersonFacade {
         removePersonFromDepartment(person);
         addPersonToDepartment(person, newDepartment);
         loggedInHRPerson.writeLogEntry(person, UserAction.SET_ASSIGNMENT);
-        fireChangesOnAllListModels();
+        fireChangesOnAllPersonListModels();
     }
 
     public void updatePerson(Person person, String newFirstName, String newLastName, Department newDepartment) {
@@ -282,10 +283,43 @@ public class PersonFacade {
         removePersonFromDepartment(person);
         addPersonToDepartment(person, newDepartment);
         loggedInHRPerson.writeLogEntry(person, UserAction.SET_ASSIGNMENT);
-        fireChangesOnAllListModels();
+        fireChangesOnAllPersonListModels();
     }
 
-    private void fireChangesOnAllListModels() {
+    public void updateHRPerson(HRPerson person, String newFullName, Department newDepartment, int modus) {
+        String[] firstAndLastName = newFullName.split(" ");
+        person.setFirstName(firstAndLastName[0]);
+        person.setLastName(firstAndLastName[1]);
+        person.setModus(modus);
+        loggedInHRPerson.writeLogEntry(person, UserAction.CHANGE_VALUE);
+
+        removePersonFromDepartment(person);
+        addPersonToDepartment(person, newDepartment);
+        loggedInHRPerson.writeLogEntry(person, UserAction.SET_ASSIGNMENT);
+        fireChangesOnAllPersonListModels();
+        fireChangesOnAllHRPersonComboboxModels();
+    }
+
+    public void updateHRPerson(
+            HRPerson person,
+            String newFirstName,
+            String newLastName,
+            Department newDepartment,
+            int modus
+    ) {
+        person.setFirstName(newFirstName);
+        person.setLastName(newLastName);
+        person.setModus(modus);
+        loggedInHRPerson.writeLogEntry(person, UserAction.CHANGE_VALUE);
+
+        removePersonFromDepartment(person);
+        addPersonToDepartment(person, newDepartment);
+        loggedInHRPerson.writeLogEntry(person, UserAction.SET_ASSIGNMENT);
+        fireChangesOnAllPersonListModels();
+        fireChangesOnAllHRPersonComboboxModels();
+    }
+
+    private void fireChangesOnAllPersonListModels() {
         for (PersonListModel listModel : personListModels) {
             listModel.fireContentsChanged(this, 0, getNumberOfPersons());
         }
