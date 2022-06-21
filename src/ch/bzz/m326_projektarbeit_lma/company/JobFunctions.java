@@ -79,6 +79,7 @@ public class JobFunctions {
      *
      * @return all job functions in Vector of type String
      */
+    @JsonIgnore
     public Vector<String> getAllFunctions() {
         return designations;
     }

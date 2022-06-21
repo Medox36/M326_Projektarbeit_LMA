@@ -79,6 +79,7 @@ public class Teams {
      *
      * @return all teams in Vector of type String
      */
+    @JsonIgnore
     public Vector<String> getAllTeams() {
         return designations;
     }

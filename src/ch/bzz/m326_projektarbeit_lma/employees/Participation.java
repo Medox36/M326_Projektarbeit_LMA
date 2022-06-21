@@ -71,6 +71,7 @@ public class Participation {
      *
      * @return all functions in Vector of type String
      */
+    @JsonIgnore
     public Vector<String> getAllFunctions() {
         return function;
     }
@@ -127,6 +128,7 @@ public class Participation {
      *
      * @return all teams in Vector of type String
      */
+    @JsonIgnore
     public Vector<String> getAllTeams() {
         return teams;
     }
