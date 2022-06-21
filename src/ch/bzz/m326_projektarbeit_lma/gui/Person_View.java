@@ -1,61 +1,36 @@
 package ch.bzz.m326_projektarbeit_lma.gui;
 
+import ch.bzz.m326_projektarbeit_lma.employees.Person;
+import ch.bzz.m326_projektarbeit_lma.gui.model.PersonListModel;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.util.Objects;
 
 public class Person_View extends JPanel {
 
-    String names[] = {
-            "Benak Alexander","Giuntini Lorenzo", "Hawi Moustafa",
-            "Jadyn Esquivel","Alondra Wren","Tara Richter","Roxanna Jack","Laci Barrera",
-            "Karina Matheny","Tyson Stringer","Devontae Lombardo","Kailey Wiles","Adrian Swift"
-    };
-
-    JPanel mainPanel;
-    JPanel subPanel;
-    JPanel uebersichtPanel;
-    TitledBorder title1;
-    TitledBorder title2;
-    JList nameList;
-    JScrollPane scrollPane;
-    JLabel uebersichtLabel;
-    JPanel namePanel;
-    JLabel nameLabel;
-    JTextField nameTextField;
-    JLabel imageLabel;
-    JPanel auswahlPanel;
-    JLabel hrMitarbeiter;
-    JLabel administration;
-    JCheckBox checkBox1;
-    JCheckBox checkBox2;
-    JButton button1;
-    JButton button2;
-    JButton button3;
-    JPanel buttonPanel;
-
-
     public Person_View() {
-        mainPanel = new JPanel(new GridLayout(2,2));
-        subPanel = new JPanel();
+        JPanel mainPanel = new JPanel(new GridLayout(2,2));
+        JPanel subPanel = new JPanel();
         subPanel.setLayout(new BoxLayout(subPanel,BoxLayout.PAGE_AXIS));
 
-        uebersichtPanel = new JPanel(new GridLayout(2,1));
+        JPanel uebersichtPanel = new JPanel(new GridLayout(2,1));
 
-        title1 = BorderFactory.createTitledBorder("Personen bearbeiten:");
+        TitledBorder title1 = BorderFactory.createTitledBorder("Personen bearbeiten:");
         mainPanel.setBorder(title1);
 
-        title2 = BorderFactory.createTitledBorder("Detail:");
+        TitledBorder title2 = BorderFactory.createTitledBorder("Detail:");
         subPanel.setBorder(title2);
 
-        nameList = new JList(names);
+        JList<Person> nameList = new JList<>(new PersonListModel());
         nameList.setLayoutOrientation(JList.VERTICAL);
-        scrollPane = new JScrollPane(nameList);
+        JScrollPane scrollPane = new JScrollPane(nameList);
         scrollPane.setPreferredSize(new Dimension(150,200));
         scrollPane.setVerticalScrollBarPolicy(22); //Always on
         scrollPane.setHorizontalScrollBarPolicy(31); //Never
 
-        uebersichtLabel = new JLabel("Übersicht:");
+        JLabel uebersichtLabel = new JLabel("Übersicht:");
         uebersichtPanel.add(uebersichtLabel);
         uebersichtPanel.add(scrollPane);
 
@@ -63,30 +38,30 @@ public class Person_View extends JPanel {
 
         ///////////////////////////////////////
 
-        namePanel = new JPanel(new GridLayout(1,2));
-        nameLabel = new JLabel("Name:");
-        nameTextField = new JTextField();
+        JPanel namePanel = new JPanel(new GridLayout(1,2));
+        JLabel nameLabel = new JLabel("Name:");
+        JTextField nameTextField = new JTextField();
 
         namePanel.add(nameLabel);
         namePanel.add(nameTextField);
         subPanel.add(namePanel, BorderLayout.NORTH);
 
-        ImageIcon imageIcon = new ImageIcon(getClass().getResource("img.png"));
+        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("img.png")));
         Image image = imageIcon.getImage();
         Image newimg = image.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH);
         imageIcon = new ImageIcon(newimg);
-        imageLabel = new JLabel(imageIcon);
+        JLabel imageLabel = new JLabel(imageIcon);
 
         subPanel.add(imageLabel);
         mainPanel.add(subPanel, BorderLayout.CENTER);
 
         /////////////////////////////////////////////
 
-        auswahlPanel = new JPanel(new GridLayout(2,2));
-        hrMitarbeiter = new JLabel("HR-Mitarbeiter:");
-        administration = new JLabel("Administration:");
-        checkBox1 = new JCheckBox();
-        checkBox2 = new JCheckBox();
+        JPanel auswahlPanel = new JPanel(new GridLayout(2,2));
+        JLabel hrMitarbeiter = new JLabel("HR-Mitarbeiter:");
+        JLabel administration = new JLabel("Administration:");
+        JCheckBox checkBox1 = new JCheckBox();
+        JCheckBox checkBox2 = new JCheckBox();
         auswahlPanel.add(hrMitarbeiter);
         auswahlPanel.add(checkBox1);
         auswahlPanel.add(administration);
@@ -95,10 +70,10 @@ public class Person_View extends JPanel {
 
         /////////////////////////////////////////////
 
-        button1 = new JButton("+");
-        button2 = new JButton("X");
-        button3 = new JButton("/");
-        buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        JButton button1 = new JButton("+");
+        JButton button2 = new JButton("X");
+        JButton button3 = new JButton("/");
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         buttonPanel.add(button1);
         buttonPanel.add(button2);
         buttonPanel.add(button3);
