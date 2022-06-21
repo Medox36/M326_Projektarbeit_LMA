@@ -41,17 +41,21 @@ public class Zuordnung_View extends JPanel {
     JComboBox teamCombo;
 
     public Zuordnung_View() {
+
+        //The main panels with their layouts
         mainPanel = new JPanel(new GridLayout(1, 2));
         subPanel = new JPanel();
         subPanel.setLayout(new BoxLayout(subPanel, BoxLayout.PAGE_AXIS));
 
         uebersichtPanel = new JPanel(new GridLayout(2, 1));
 
+        //Creates the titled borders
         title1 = BorderFactory.createTitledBorder("Personen bearbeiten:");
         mainPanel.setBorder(title1);
         title2 = BorderFactory.createTitledBorder("Detail:");
         subPanel.setBorder(title2);
 
+        //Filler data that gets added to a scrollpane
         nameList = new JList(names);
         nameList.setLayoutOrientation(JList.VERTICAL);
         scrollPane = new JScrollPane(nameList);
@@ -65,8 +69,7 @@ public class Zuordnung_View extends JPanel {
 
         mainPanel.add(uebersichtPanel, BorderLayout.WEST);
 
-        ///////////////////////////////////////
-
+        //Creates the textfield for the name and a label
         namePanel = new JPanel(new GridLayout(1, 2));
         namePanel.setMaximumSize(new Dimension(260, 30));
         nameLabel = new JLabel("Name:");
@@ -77,6 +80,7 @@ public class Zuordnung_View extends JPanel {
         subPanel.add(namePanel);
         subPanel.setLayout(new GridLayout(3, 1, 0, 15));
 
+        //Creates the image by reformatting it
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("img.png"));
         Image image = imageIcon.getImage();
         Image newimg = image.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH);
@@ -85,10 +89,10 @@ public class Zuordnung_View extends JPanel {
 
         subPanel.add(imageLabel);
 
-        /////////////////////////////////////////////
-
+        //The infos that appear below the image
         infosPanel = new JPanel(new GridLayout(3, 2));
 
+        //The components of the infoPanel: Labels, a Textfield and Comboboxes
         abteilung = new JLabel("Abteilung:");
         funktion = new JLabel("Funktion:");
         teams = new JLabel("Teams:");
@@ -96,6 +100,7 @@ public class Zuordnung_View extends JPanel {
         funktionCombo = new JComboBox<>(funktionList);
         teamCombo = new JComboBox<>(teamList);
 
+        //Add everything to the panel
         infosPanel.add(abteilung);
         infosPanel.add(abteilungTextField);
         infosPanel.add(funktion);
@@ -105,10 +110,8 @@ public class Zuordnung_View extends JPanel {
 
         subPanel.add(infosPanel);
 
-        /////////////////////////////////////////////
-
+        //Merge everything together
         mainPanel.add(subPanel, BorderLayout.CENTER);
-
         add(mainPanel);
     }
 }

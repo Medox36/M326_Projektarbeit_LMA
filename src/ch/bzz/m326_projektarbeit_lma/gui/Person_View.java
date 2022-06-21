@@ -11,18 +11,21 @@ import java.util.Objects;
 public class Person_View extends JPanel {
 
     public Person_View() {
+
+        //The main panels with their layout
         JPanel mainPanel = new JPanel(new GridLayout(2,2));
         JPanel subPanel = new JPanel();
         subPanel.setLayout(new BoxLayout(subPanel,BoxLayout.PAGE_AXIS));
 
         JPanel uebersichtPanel = new JPanel(new GridLayout(2,1));
 
+        //Creates the titled borders
         TitledBorder title1 = BorderFactory.createTitledBorder("Personen bearbeiten:");
         mainPanel.setBorder(title1);
-
         TitledBorder title2 = BorderFactory.createTitledBorder("Detail:");
         subPanel.setBorder(title2);
 
+        //Creates a list and fills the data into a scrollpane
         JList<Person> nameList = new JList<>(new PersonListModel());
         nameList.setLayoutOrientation(JList.VERTICAL);
         JScrollPane scrollPane = new JScrollPane(nameList);
@@ -30,22 +33,22 @@ public class Person_View extends JPanel {
         scrollPane.setVerticalScrollBarPolicy(22); //Always on
         scrollPane.setHorizontalScrollBarPolicy(31); //Never
 
+        //Adds a label to the scrollpane
         JLabel uebersichtLabel = new JLabel("Übersicht:");
         uebersichtPanel.add(uebersichtLabel);
         uebersichtPanel.add(scrollPane);
 
         mainPanel.add(uebersichtPanel, BorderLayout.WEST);
 
-        ///////////////////////////////////////
-
+        //The textfield with a label
         JPanel namePanel = new JPanel(new GridLayout(1,2));
         JLabel nameLabel = new JLabel("Name:");
         JTextField nameTextField = new JTextField();
-
         namePanel.add(nameLabel);
         namePanel.add(nameTextField);
         subPanel.add(namePanel, BorderLayout.NORTH);
 
+        //Creates the image
         ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("img.png")));
         Image image = imageIcon.getImage();
         Image newimg = image.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH);
@@ -55,8 +58,7 @@ public class Person_View extends JPanel {
         subPanel.add(imageLabel);
         mainPanel.add(subPanel, BorderLayout.CENTER);
 
-        /////////////////////////////////////////////
-
+        //Creates the choices in the form of Checkboxes
         JPanel auswahlPanel = new JPanel(new GridLayout(2,2));
         JLabel hrMitarbeiter = new JLabel("HR-Mitarbeiter:");
         JLabel administration = new JLabel("Administration:");
@@ -68,8 +70,7 @@ public class Person_View extends JPanel {
         auswahlPanel.add(checkBox2);
         subPanel.add(auswahlPanel);
 
-        /////////////////////////////////////////////
-
+        //Creates the Buttons and its respective Panel
         JButton button1 = new JButton("+");
         JButton button2 = new JButton("X");
         JButton button3 = new JButton("/");
