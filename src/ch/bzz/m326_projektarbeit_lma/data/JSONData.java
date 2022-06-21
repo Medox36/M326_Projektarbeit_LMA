@@ -25,6 +25,8 @@ public class JSONData {
 
     private Company company;
 
+    private final String PATH = "data.json";
+
     private JSONData() {
         Runtime.getRuntime().addShutdownHook(new Thread(this::writeCompanyJSON, "Saving Data Shutdown-Thread"));
         checkFile();
@@ -33,7 +35,7 @@ public class JSONData {
 
     private void checkFile() {
         try {
-            File file = new File("data.json");
+            File file = new File(PATH);
             if (!file.createNewFile()) {
                 readCompanyJSON();
             } else {
@@ -46,7 +48,7 @@ public class JSONData {
 
     public void readCompanyJSON() {
         try {
-            byte[] jsonData = Files.readAllBytes(Paths.get("data.json"));
+            byte[] jsonData = Files.readAllBytes(Paths.get(PATH));
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             setCompany(objectMapper.readValue(jsonData, Company.class));
@@ -62,7 +64,7 @@ public class JSONData {
         Writer fileWriter;
 
         try {
-            fileOutputStream = new FileOutputStream("data.json");
+            fileOutputStream = new FileOutputStream(PATH);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
             objectWriter.writeValue(fileWriter, getCompany());
         } catch (IOException ex) {
