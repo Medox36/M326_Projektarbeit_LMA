@@ -22,6 +22,7 @@ public class TeamFacade {
 
     /**
      * constructor
+     * is private because of singleton pattern
      */
     private TeamFacade() {
         company = JSONData.getInstance().getCompany();

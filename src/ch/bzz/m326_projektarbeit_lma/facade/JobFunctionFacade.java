@@ -23,6 +23,7 @@ public class JobFunctionFacade {
 
     /**
      * constructor
+     * is private because of singleton pattern
      */
     public JobFunctionFacade() {
         company = JSONData.getInstance().getCompany();
