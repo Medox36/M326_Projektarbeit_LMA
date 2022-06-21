@@ -26,6 +26,7 @@ public class LogBook {
      * is private because of singleton pattern
      */
     private LogBook() {
+        Runtime.getRuntime().addShutdownHook(new Thread(this::logBookClose, "Saving  Log-Data Shutdown-Thread"));
         file = new File("logbook.log");
         try {
             if (!file.createNewFile()) {
