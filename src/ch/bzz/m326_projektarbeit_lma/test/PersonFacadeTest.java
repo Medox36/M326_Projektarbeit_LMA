@@ -154,8 +154,14 @@ public class PersonFacadeTest {
         assertTrue(isSortedDescending);
     }
 
-    private boolean emptyOreSize1(Vector<Person> persons) {
-        return persons.isEmpty() || persons.size() == 1;
+    /**
+     * checks if the given Vector is empty or of size 1
+     *
+     * @param vector to chack
+     * @return true if given vector is empty or of size 1 otherwise false;
+     */
+    private boolean emptyOreSize1(Vector<Person> vector) {
+        return vector.isEmpty() || vector.size() == 1;
     }
 
     /**
