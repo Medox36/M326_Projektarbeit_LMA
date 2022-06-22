@@ -5,10 +5,19 @@ import ch.bzz.m326_projektarbeit_lma.log.LogBook;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Creates the Logbook
+ * @Author Alexander Benak, Lorenzo Giuntini
+ * @Since 20.06.2022
+ * @Version 1.1
+ */
 public class Logbuch_View extends JPanel {
 
     private JTextArea textArea;
 
+    /**
+     * The constructor that creates the GUI, with all the components
+     */
     public Logbuch_View() {
         JPanel logPanel = new JPanel(new BorderLayout());
 
@@ -25,6 +34,9 @@ public class Logbuch_View extends JPanel {
         add(logPanel);
     }
 
+    /**
+     * Fire changes method to display the text
+     */
     public void fireChanges() {
         SwingUtilities.invokeLater(() -> textArea.setText(LogBook.getLogBookInstance().getEntries()));
     }
