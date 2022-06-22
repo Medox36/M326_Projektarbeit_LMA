@@ -20,7 +20,6 @@ public class Stammdaten_View extends JFrame {
     private JLabel firma;
     private JTextField firmaField;
     private SpringLayout springLayout;
-
     private JPanel scrollPanePanel;
     private JPanel scrollPaneBorder;
     private JLabel abteilung;

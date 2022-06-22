@@ -14,13 +14,23 @@ import java.util.Objects;
 
 /**
  * This class creates the "Übersicht" using a single Method -  the createView
+ * @Author Alexander Benak, Lorenzo Giuntini
+ * @Since 21.06.2022
+ * @Version 1.4
  */
 public class Uebersicht_View extends JFrame {
 
+    /**
+     * An empty constructor
+     */
     public Uebersicht_View(){
         //empty
     }
 
+    /**
+     * The createView method which holds all the components of the "Übersicht"
+     * @return mainPanel
+     */
     public JPanel createView() {
 
         JPanel mainPanel = new JPanel();

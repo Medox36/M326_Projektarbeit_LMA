@@ -10,6 +10,12 @@ import java.util.Objects;
 
 public class Person_View extends JPanel {
 
+    /**
+     * This class adds all the components into a JTabbedPane and formats it
+     * @Author Alexander Benak, Lorenzo Giuntini
+     * @Since 21.06.2022
+     * @Version 1.3
+     */
     public Person_View() {
 
         //The main panels with their layout
