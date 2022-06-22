@@ -10,6 +10,11 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+/**
+ * @author Moustafa Hawi
+ * @since 21.06.2022
+ * @version 1.0
+ */
 public class LoginGUI extends JDialog {
     private int counter = 0;
     private JComboBox<HRPerson> nameCombobox = new JComboBox<>(new HRPersonComboboxModel());
