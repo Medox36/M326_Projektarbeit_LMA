@@ -1,0 +1,244 @@
+{
+  "name" : "SuperTouperFullComputer",
+  "departments" : [ {
+    "name" : "IT",
+    "members" : [ {
+      "type" : "HRPerson",
+      "firstName" : "Alice",
+      "lastName" : "Porter",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Applikationsetnwicklung", "Abteilungsleiter*in" ],
+        "teams" : [ "Leiter", "Informatik" ]
+      },
+      "modus" : 1,
+      "pwd" : "1234"
+    },{
+      "type" : "HRPerson",
+      "firstName" : "Richard",
+      "lastName" : "Fox",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Systemunterhalt" ],
+        "teams" : [ "Leiter", "Informatik" ]
+      },
+      "modus" : 0,
+      "pwd" : "1234"
+    }, {
+      "type" : "Person",
+      "firstName" : "Max",
+      "lastName" : "Musterman",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Applikationsetnwicklung", "Fahrzeugunterhalt" ],
+        "teams" : [ "Informatik", "Garage" ]
+      }
+    }, {
+      "type" : "Person",
+      "firstName" : "Joe",
+      "lastName" : "Wilkinson",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Applikationsetnwicklung" ],
+        "teams" : [ "Informatik", "Interne Post" ]
+      }
+    }, {
+      "type" : "Person",
+      "firstName" : "Marianne",
+      "lastName" : "Meier",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Applikationsetnwicklung" ],
+        "teams" : [ "Informatik" ]
+      }
+    }, {
+      "type" : "Person",
+      "firstName" : "Mirko",
+      "lastName" : "Klausner",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Applikationsetnwicklung" ],
+        "teams" : [ "Informatik" ]
+      }
+    }, {
+      "type" : "Person",
+      "firstName" : "Peter",
+      "lastName" : "Muller",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Applikationsetnwicklung" ],
+        "teams" : [ "Informatik" ]
+      }
+    }, {
+      "type" : "Person",
+      "firstName" : "Hans",
+      "lastName" : "Muller",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Applikationsetnwicklung" ],
+        "teams" : [ "Informatik" ]
+      }
+    } ]
+  }, {
+    "name" : "Logistik",
+    "members" : [ {
+      "type" : "HRPerson",
+      "firstName" : "Bob",
+      "lastName" : "Maurer",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Inventarbeauftragte*r", "Abteilungsleiter*in" ],
+        "teams" : [ "Leiter", "Lager-Logistik", "Inventar" ]
+      },
+      "modus" : 0,
+      "pwd" : "1234"
+    }, {
+      "type" : "Person",
+      "firstName" : "Peter",
+      "lastName" : "Pettingrew",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Produktion" ],
+        "teams" : [ "Lager-Logistik", "Inventar" ]
+      }
+    }, {
+      "type" : "Person",
+      "firstName" : "Christine",
+      "lastName" : "Wilkinson",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Produktion", "Inventarbeauftragte*r" ],
+        "teams" : [ "Inventar", "Finanzen" ]
+      }
+    } ]
+  }, {
+    "name" : "Finanzen und Buchhaltung",
+    "members" : [ {
+      "type" : "HRPerson",
+      "firstName" : "Vanessa",
+      "lastName" : "Schweiger",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Abteilungsleiter*in", "Buchhalter*in", "Finanzbeauftrage*r" ],
+        "teams" : [ "Leiter", "Buchhaltung", "Finanzen" ]
+      },
+      "modus" : 0,
+      "pwd" : "1234"
+    }, {
+      "type" : "Person",
+      "firstName" : "Rebecca",
+      "lastName" : "Williams",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Buchhalter*in", "Finanzbeauftrage*r" ],
+        "teams" : [ "Buchhaltung", "Finanzen", "Interne Post" ]
+      }
+    }, {
+      "type" : "Person",
+      "firstName" : "Reto",
+      "lastName" : "Zucchero",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Buchhalter*in", "Finanzbeauftrage*r" ],
+        "teams" : [ "Buchhaltung", "Finanzen", "Garage" ]
+      }
+    }, {
+      "type" : "Person",
+      "firstName" : "Fabio",
+      "lastName" : "Wilkinson",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Buchhalter*in", "Finanzbeauftrage*r" ],
+        "teams" : [ "Buchhaltung", "Finanzen", "Produktion" ]
+      }
+    }, {
+      "type" : "Person",
+      "firstName" : "Abu",
+      "lastName" : "Jusef",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Buchhalter*in" ],
+        "teams" : [ "Buchhaltung", "Finanzen", "Reinigung" ]
+      }
+    }, {
+      "type" : "Person",
+      "firstName" : "Adnan",
+      "lastName" : "Jusef",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Buchhalter*in" ],
+        "teams" : [ "Buchhaltung", "Finanzen", "Reinigung" ]
+      }
+    } ]
+  }, {
+    "name" : "Interne Post",
+    "members" : [ {
+      "type" : "HRPerson",
+      "firstName" : "Hans",
+      "lastName" : "Pöstler",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Abteilungsleiter*in", "Postbeauftragte*r" ],
+        "teams" : [ "Interne Post", "Leiter" ]
+      },
+      "modus" : 0,
+      "pwd" : "1234"
+    }, {
+      "type" : "Person",
+      "firstName" : "Hellen",
+      "lastName" : "Reh",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Inventarbeauftragte*r", "Postbeauftragte*r" ],
+        "teams" : [ "Informatik", "Interne Post" ]
+      }
+    }, {
+      "type" : "Person",
+      "firstName" : "Petra",
+      "lastName" : "Bauer",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Postbeauftragte*r" ],
+        "teams" : [ "Garage", "Interne Post" ]
+      }
+    }, {
+      "type" : "Person",
+      "firstName" : "Abu",
+      "lastName" : "Jusef",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Postbeauftragte*r" ],
+        "teams" : [ "Interne Post", "Reinigung" ]
+      }
+    } ]
+  }, {
+    "name" : "Transport",
+    "members" : [ {
+      "type" : "HRPerson",
+      "firstName" : "Till",
+      "lastName" : "Lauter",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Abteilungsleiter*in", "Fahrzeugunterhalt" ],
+        "teams" : [ "Garage", "Leiter", "Versand-Logistik" ]
+      },
+      "modus" : 0,
+      "pwd" : "1234"
+    }, {
+      "type" : "Person",
+      "firstName" : "Tilo",
+      "lastName" : "Werner",
+      "photo" : null,
+      "participation" : {
+        "function" : [ "Fahrzeugunterhalt" ],
+        "teams" : [ "Garage", "Interne Post", "Versand-Logistik" ]
+      }
+    } ]
+  } ],
+  "functions" : {
+    "designations" : [ "Applikationsetnwicklung", "Buchhalter*in", "Finanzbeauftrage*r", "Systemunterhalt", "Postbeauftragte*r", "Produktion", "Maschienenunterhalt", "Inventarbeauftragte*r", "Abteilungsleiter*in", "Reinigungskraft", "Fahrzeugunterhalt" ]
+  },
+  "teams" : {
+    "designations" : [ "Lager-Logistik", "Versand-Logistik", "Buchhaltung", "Finanzen", "Interne Post", "Inventar", "Maschienenunterhalt", "Informatik", "Reinigung", "Garage", "Leiter" ]
+  }
+}
