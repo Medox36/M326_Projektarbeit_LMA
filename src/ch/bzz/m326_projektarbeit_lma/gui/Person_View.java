@@ -6,6 +6,8 @@ import ch.bzz.m326_projektarbeit_lma.gui.model.PersonListModel;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class Person_View extends JPanel {
@@ -94,6 +96,14 @@ public class Person_View extends JPanel {
         buttonPanel.add(button2);
         buttonPanel.add(button3);
         mainPanel.add(buttonPanel, BorderLayout.WEST);
+
+        //Actionlistener + button
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new AddPerson();
+            }
+        });
 
         add(mainPanel);
     }
