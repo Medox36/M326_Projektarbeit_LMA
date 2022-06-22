@@ -5,6 +5,12 @@ import ch.bzz.m326_projektarbeit_lma.employees.Person;
 import ch.bzz.m326_projektarbeit_lma.log.LogBook;
 import ch.bzz.m326_projektarbeit_lma.log.UserAction;
 
+/**
+ * Test class for testing the log book
+ *
+ * @apiNote might not work anymore, might trow NullPointerExceptions because
+ *          the GUI sets an attribute in the LogBook class
+ */
 public class LogTest {
 
     public static void main(String[]args){
