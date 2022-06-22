@@ -13,10 +13,7 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 /**
  * The base data
@@ -57,6 +54,37 @@ public class Stammdaten_View extends JPanel {
         createComponent("Funktionen:", 1);
         createComponent("Teams:", 2);
         add(stammDatenPanel);
+
+        CompanyFacade.getInstance().setCompanyNameField(firmaField);
+
+        firmaField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER){
+                    CompanyFacade.getInstance().setCompanyName(firmaField.getText());
+                    System.out.println("works typed");
+                } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    firmaField.setText(CompanyFacade.getInstance().getCompanyName());
+                }
+            }
+        });
+
+        firmaField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusLost(FocusEvent e) {
+                firmaField.setText(CompanyFacade.getInstance().getCompanyName());
+            }
+        });
     }
 
     /**
@@ -137,10 +165,14 @@ public class Stammdaten_View extends JPanel {
                 });
                 break;
             case 1:
-                JobFunctionFacade.getInstance().removeFunction((String) abteilungsListe.getSelectedValue());
+                deleteAbteilung.addActionListener(e -> {
+                    JobFunctionFacade.getInstance().removeFunction((String) abteilungsListe.getSelectedValue());
+                });
                 break;
             case 2:
-                TeamFacade.getInstance().removeTeam((String) abteilungsListe.getSelectedValue());
+                deleteAbteilung.addActionListener(e -> {
+                    TeamFacade.getInstance().removeTeam((String) abteilungsListe.getSelectedValue());
+                });
                 break;
             default:
                 // default should never occur

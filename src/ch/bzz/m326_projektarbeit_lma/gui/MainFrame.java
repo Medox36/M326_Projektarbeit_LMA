@@ -14,7 +14,7 @@ import javax.swing.*;
 public class MainFrame extends JFrame {
 
     /**
-     * constructor
+     * The constructor of the MainFrame which basically holds all the content
      */
     public MainFrame(){
         setTitle("I am looking for");
