@@ -71,7 +71,6 @@ public class LoginGUI extends JDialog {
                 }
             }
         });
-
         Border blackline = BorderFactory.createLineBorder(Color.black);
         bigPanel.setBorder(blackline);
 
