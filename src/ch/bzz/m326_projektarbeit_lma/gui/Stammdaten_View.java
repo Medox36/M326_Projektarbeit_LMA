@@ -13,13 +13,12 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Unsere Stammdaten-GUI für das Programm
+ * The base data
+ * @Author Alexander Benak, Moustafa Hawi, Lorenzo Giuntini
+ * @Since 22.06.2022
+ * @Version 1.5
  */
 public class Stammdaten_View extends JPanel {
-
-    /**
-     * Komponenten für das StammdatenPanel
-     */
     private JPanel stammDatenPanel;
 
     public Stammdaten_View() {
