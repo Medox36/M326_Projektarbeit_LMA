@@ -49,6 +49,16 @@ public class Company {
     }
 
     /**
+     * sets the name
+     *
+     * @param name to set
+     */
+    @JsonIgnore
+    public void setCompanyName(String name) {
+        this.name = name;
+    }
+
+    /**
      * adds a given department
      *
      * @param department to be added
