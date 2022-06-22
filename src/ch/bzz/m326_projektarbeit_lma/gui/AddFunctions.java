@@ -34,6 +34,14 @@ public class AddFunctions extends JDialog {
         bigPanel.add(mainPanel, BorderLayout.CENTER);
         getContentPane().add(bigPanel, BorderLayout.CENTER);
 
+        speichernButton.addActionListener(
+                e -> {DepartmentFacade.getInstance().addDepartment(textField.getText());
+                    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        });
+
+        abbrechenButton.addActionListener(e -> {
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        });
 
         setLocationRelativeTo(null);
         setVisible(true);
@@ -41,11 +49,5 @@ public class AddFunctions extends JDialog {
 
     public static void main(String[] args) {
         new AddFunctions();
-    }
-    public class ActionAddListener implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            DepartmentFacade.getInstance().addDepartment();
-        }
     }
 }

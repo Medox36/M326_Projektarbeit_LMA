@@ -44,6 +44,8 @@ public class Uebersicht_View extends JFrame {
         nameTextField.setEditable(false);
         detailPanel.add(nameLabel);
         detailPanel.add(nameTextField);
+
+
     }
 
     public static void main(String[] args) {
@@ -112,6 +114,7 @@ public class Uebersicht_View extends JFrame {
         sortierungPanel.add(sortierungAuswahl);
         bottomPanel.add(sortierungPanel);
 
+        radioButton1.addActionListener(e -> {new Uebersicht_View();});
         ///////////////////////////////////////////
 
         JPanel filterPanel = new JPanel();
@@ -137,6 +140,8 @@ public class Uebersicht_View extends JFrame {
 
         mainPanel.add(detailPanel);
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
+
+
 
         return mainPanel;
     }
