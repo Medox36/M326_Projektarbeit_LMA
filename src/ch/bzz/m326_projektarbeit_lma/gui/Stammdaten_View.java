@@ -98,13 +98,13 @@ public class Stammdaten_View extends JPanel {
 
         switch (modelType) {
             case 0:
-                addAbteilung.addActionListener(e -> {new AddDepartment();});
+                addAbteilung.addActionListener(e -> {new AddDepartment(0, (Department) abteilungsListe.getSelectedValue());});
                 break;
             case 1:
-                addAbteilung.addActionListener(e -> {new AddFunctions();});
+                addAbteilung.addActionListener(e -> {new AddFunctions(0, (String) abteilungsListe.getSelectedValue());});
                 break;
             case 2:
-                addAbteilung.addActionListener(e -> {new AddTeam();});
+                addAbteilung.addActionListener(e -> {new AddTeam(0, (String) abteilungsListe.getSelectedValue());});
                 break;
             default:
                 // default should never occur
@@ -112,13 +112,13 @@ public class Stammdaten_View extends JPanel {
         }
         switch (modelType) {
             case 0:
-                abteilungBearbeiten.addActionListener(e -> {new AddDepartment();});
+                abteilungBearbeiten.addActionListener(e -> {new AddDepartment(1, (Department) abteilungsListe.getSelectedValue());});
                 break;
             case 1:
-                abteilungBearbeiten.addActionListener(e -> {new AddFunctions();});
+                abteilungBearbeiten.addActionListener(e -> {new AddFunctions(1, (String) abteilungsListe.getSelectedValue());});
                 break;
             case 2:
-                abteilungBearbeiten.addActionListener(e -> {new AddTeam();});
+                abteilungBearbeiten.addActionListener(e -> {new AddTeam(1, (String) abteilungsListe.getSelectedValue());});
                 break;
             default:
                 // default should never occur
