@@ -70,6 +70,15 @@ public class Person_View extends JPanel {
         JLabel administration = new JLabel("Administration:");
         JCheckBox checkBox1 = new JCheckBox();
         JCheckBox checkBox2 = new JCheckBox();
+
+        //Add some logic to the checkboxes
+        if (checkBox1.isSelected()){
+            checkBox2.setEnabled(false);
+        } else if (checkBox2.isSelected()){
+            checkBox1.setEnabled(false);
+        }
+
+        //Add everthing to a panel
         auswahlPanel.add(hrMitarbeiter);
         auswahlPanel.add(checkBox1);
         auswahlPanel.add(administration);
