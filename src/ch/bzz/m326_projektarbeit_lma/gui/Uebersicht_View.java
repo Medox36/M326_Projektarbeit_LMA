@@ -10,59 +10,82 @@ import ch.bzz.m326_projektarbeit_lma.gui.model.TeamComboboxModel;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.util.Objects;
 
 /**
  * This class creates the "Übersicht" using a single Method -  the createView
+ * @Author Alexander Benak, Lorenzo Giuntini
+ * @Since 22.06.2022
+ * @Version 1.4
  */
 public class Uebersicht_View extends JFrame {
 
+    JPanel mainPanel;
+    JLabel uebersicht;
+    JPanel detailPanel;
+    JPanel overviewPanel;
+    JList<Person> nameList;
+    JScrollPane scrollPane;
+    TitledBorder title1;
+    TitledBorder title2;
+    JLabel nameLabel;
+    JTextField nameTextField;
+    JPanel uebersichtPanel;
+    JPanel abteilungPanel;
+    JLabel abteilungLabel1;
+    JTextField abteilungTextField;
+    JPanel bottomPanel;
+    JPanel sortierungPanel;
+    TitledBorder title3;
+    JPanel sortierungAuswahl;
+    JRadioButton radioButton1;
+    JRadioButton radioButton2;
+    JRadioButton radioButton3;
+    ButtonGroup group;
+    JLabel keine;
+    JLabel az;
+    JLabel za;
+    JPanel filterPanel;
+    TitledBorder title4;
+    JPanel filterAuswahl;
+    JLabel abteilungLabel;
+    JLabel funktionLabel;
+    JLabel teamLabel;
+    JComboBox<Department> abteilungCombobox;
+    JComboBox<String> funktionCombobox;
+    JComboBox<String> teamCombobox;
+    JPanel namePanel;
+    JLabel imageLabel;
+    JPanel scrollPanel;
+    JScrollPane scrollPane2;
+    JScrollPane scrollPane3;
+
+    /**
+     * An empty constructor
+     */
     public Uebersicht_View(){
-        JPanel mainPanel = new JPanel();
-
-        JLabel uebersicht = new JLabel("Übersicht:");
-        JPanel detailPanel = new JPanel();
-        JPanel overviewPanel = new JPanel();
-
-        JList<Person> nameList = new JList<>(new PersonListModel());
-        nameList.setLayoutOrientation(JList.VERTICAL);
-
-        JScrollPane scrollPane = new JScrollPane(nameList);
-        scrollPane.setPreferredSize(new Dimension(150,200));
-        scrollPane.setVerticalScrollBarPolicy(22); //Always on
-        scrollPane.setHorizontalScrollBarPolicy(31); //Never
-        overviewPanel.add(uebersicht);
-        overviewPanel.add(scrollPane);
-        mainPanel.add(overviewPanel);
-
-        TitledBorder title1 = BorderFactory.createTitledBorder("Person:");
-        mainPanel.setBorder(title1);
-
-        TitledBorder title2 = BorderFactory.createTitledBorder("Detail:");
-        detailPanel.setBorder(title2);
-        JLabel nameLabel = new JLabel("Name:");
-        JTextField nameTextField = new JTextField("Benak Alexander");
-        nameTextField.setEditable(false);
-        detailPanel.add(nameLabel);
-        detailPanel.add(nameTextField);
-
-
+       //empty
     }
 
-    public static void main(String[] args) {
-        new Uebersicht_View();
-    }
-
+    /**
+     * The createView method which holds all the components
+     * @return mainPanel
+     */
     public JPanel createView() {
-        JPanel mainPanel = new JPanel();
 
-        JLabel uebersicht = new JLabel("Übersicht:");
-        JPanel detailPanel = new JPanel();
-        JPanel uebersichtPanel = new JPanel();
+        //The main panels used with a JLabel
+        mainPanel = new JPanel();
+        uebersicht = new JLabel("Übersicht:");
+        detailPanel = new JPanel();
+        detailPanel.setLayout(new BoxLayout(detailPanel,BoxLayout.PAGE_AXIS));
+        uebersichtPanel = new JPanel();
 
-        JList<Person> nameList = new JList<>(new PersonListModel());
+        //Adds data into a list
+        nameList = new JList<>(new PersonListModel());
         nameList.setLayoutOrientation(JList.VERTICAL);
 
-        JScrollPane scrollPane = new JScrollPane(nameList);
+        //Creates the scrollpane
+        scrollPane = new JScrollPane(nameList);
         scrollPane.setPreferredSize(new Dimension(150,200));
         scrollPane.setVerticalScrollBarPolicy(22); //Always on
         scrollPane.setHorizontalScrollBarPolicy(31); //Never
@@ -70,44 +93,78 @@ public class Uebersicht_View extends JFrame {
         uebersichtPanel.add(scrollPane);
         mainPanel.add(uebersichtPanel);
 
-        TitledBorder title1 = BorderFactory.createTitledBorder("Person:");
+        //Creates the titled border
+        title1 = BorderFactory.createTitledBorder("Person:");
         mainPanel.setBorder(title1);
-
-        TitledBorder title2 = BorderFactory.createTitledBorder("Detail:");
+        title2 = BorderFactory.createTitledBorder("Detail:");
         detailPanel.setBorder(title2);
 
-        JLabel nameLabel = new JLabel("Name:");
-        JTextField nameTextField = new JTextField("Benak Alexander");
+        //Label and Textfield formatting
+        namePanel = new JPanel(new GridLayout(1,2));
+        nameLabel = new JLabel("Name:");
+        nameTextField = new JTextField("Benak Alexander");
         nameTextField.setEditable(false);
-        detailPanel.add(nameLabel);
-        detailPanel.add(nameTextField);
+        namePanel.add(nameLabel);
+        namePanel.add(nameTextField);
+        detailPanel.add(namePanel);
 
-        JPanel abteilungPanel = new JPanel(new GridLayout(1,2));
-        JLabel abteilungLabel1 = new JLabel("Abteilung:");
-        JTextField abteilungTextField = new JTextField("Finance");
+        //Creates the image
+        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("img.png")));
+        Image image = imageIcon.getImage();
+        Image newimg = image.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(newimg);
+        imageLabel = new JLabel(imageIcon);
+        detailPanel.add(imageLabel);
+
+        //Label and Textfield formatting
+        abteilungPanel = new JPanel(new GridLayout(1,2));
+        abteilungLabel1 = new JLabel("Abteilung:");
+        abteilungTextField = new JTextField("Finance");
         abteilungTextField.setEditable(false);
         abteilungPanel.add(abteilungLabel1);
         abteilungPanel.add(abteilungTextField);
+        detailPanel.add(abteilungPanel);
 
-        ////////////////////////////////////
+        //The panel for the scrollpanes
+        scrollPanel = new JPanel(new GridLayout(1,2));
 
-        JPanel bottomPanel = new JPanel(new GridLayout(1,2));
+        //First scrollpane of the  panel
+        scrollPane2 = new JScrollPane(nameList);
+        scrollPane2.setPreferredSize(new Dimension(150,200));
+        scrollPane2.setVerticalScrollBarPolicy(22); //Always on
+        scrollPane2.setHorizontalScrollBarPolicy(31); //Never
 
-        JPanel sortierungPanel = new JPanel();
-        TitledBorder title3 = BorderFactory.createTitledBorder("Sortierung:");
+        //Second scrollpane of the panel
+        scrollPane3 = new JScrollPane(nameList);
+        scrollPane3.setPreferredSize(new Dimension(150,200));
+        scrollPane3.setVerticalScrollBarPolicy(22); //Always on
+        scrollPane2.setHorizontalScrollBarPolicy(31); //Never
+
+        //Merge everything together
+        scrollPanel.add(scrollPane2);
+        scrollPanel.add(scrollPane3);
+        detailPanel.add(scrollPanel);
+
+        //Panel which belongs into the south of the borderlayout
+        bottomPanel = new JPanel(new GridLayout(1,2));
+
+        //Panel for the "Sortierung"
+        sortierungPanel = new JPanel();
+        title3 = BorderFactory.createTitledBorder("Sortierung:");
         sortierungPanel.setBorder(title3);
 
-        JPanel sortierungAuswahl = new JPanel(new GridLayout(3,2));
-        JRadioButton radioButton1 = new JRadioButton();
-        JRadioButton radioButton2 = new JRadioButton();
-        JRadioButton radioButton3 = new JRadioButton();
-        ButtonGroup group = new ButtonGroup();
+        //All the components of "Sortierung"
+        sortierungAuswahl = new JPanel(new GridLayout(3,2));
+        radioButton1 = new JRadioButton();
+        radioButton2 = new JRadioButton();
+        radioButton3 = new JRadioButton();
+        group = new ButtonGroup();
         group.add(radioButton1);
         group.add(radioButton2);
         group.add(radioButton3);
-        JLabel keine = new JLabel("keine");
-        JLabel az = new JLabel("A-Z");
-        JLabel za = new JLabel("Z-A");
+        keine = new JLabel("keine");
+        az = new JLabel("A-Z");
+        za = new JLabel("Z-A");
         sortierungAuswahl.add(keine);
         sortierungAuswahl.add(radioButton1);
         sortierungAuswahl.add(az);
@@ -115,23 +172,25 @@ public class Uebersicht_View extends JFrame {
         sortierungAuswahl.add(za);
         sortierungAuswahl.add(radioButton3);
 
+        //Add the components to a panel
         sortierungPanel.add(sortierungAuswahl);
         bottomPanel.add(sortierungPanel);
 
         radioButton1.addActionListener(e -> {new Uebersicht_View();});
-        ///////////////////////////////////////////
 
-        JPanel filterPanel = new JPanel();
-        TitledBorder title4 = BorderFactory.createTitledBorder("Filter:");
+        //Panel for "Filter"
+        filterPanel = new JPanel();
+        title4 = BorderFactory.createTitledBorder("Filter:");
         filterPanel.setBorder(title4);
 
-        JPanel filterAuswahl = new JPanel(new GridLayout(3,2));
-        JLabel abteilungLabel = new JLabel("Abteilung:");
-        JLabel funktionLabel = new JLabel("Funktion:");
-        JLabel teamLabel = new JLabel("Team:");
-        JComboBox<Department> abteilungCombobox = new JComboBox<>(new DepartmentComboboxModel());
-        JComboBox<String> funktionCombobox = new JComboBox<>(new JobFunctionsComboboxModel());
-        JComboBox<String> teamCombobox = new JComboBox<>(new TeamComboboxModel());
+        //All the components of "Filter"
+        filterAuswahl = new JPanel(new GridLayout(3,2));
+        abteilungLabel = new JLabel("Abteilung:");
+        funktionLabel = new JLabel("Funktion:");
+        teamLabel = new JLabel("Team:");
+        abteilungCombobox = new JComboBox<>(new DepartmentComboboxModel());
+        funktionCombobox = new JComboBox<>(new JobFunctionsComboboxModel());
+        teamCombobox = new JComboBox<>(new TeamComboboxModel());
         filterAuswahl.add(abteilungLabel);
         filterAuswahl.add(abteilungCombobox);
         filterAuswahl.add(funktionLabel);
@@ -139,13 +198,13 @@ public class Uebersicht_View extends JFrame {
         filterAuswahl.add(teamLabel);
         filterAuswahl.add(teamCombobox);
 
+        //Add the components to a panel
         filterPanel.add(filterAuswahl);
         bottomPanel.add(filterPanel);
 
+        //Merge everything together
         mainPanel.add(detailPanel);
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
-
-
 
         return mainPanel;
     }
