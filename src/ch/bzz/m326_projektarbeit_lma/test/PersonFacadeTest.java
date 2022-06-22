@@ -18,6 +18,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+/**
+ * Test class for testing the PersonFacade
+ *
+ * @author Lorenzo Giuntini (Medox36)
+ * @since 2022.06.22
+ * @version 1.0
+ */
 public class PersonFacadeTest {
     private byte[] originalFileContents;
 
