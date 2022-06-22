@@ -20,17 +20,33 @@ import java.awt.*;
  */
 public class Stammdaten_View extends JPanel {
     private JPanel stammDatenPanel;
+    SpringLayout springLayout;
+    JLabel firma;
+    JTextField firmaField;
+    JPanel firmaPanel;
+    JPanel abteilungsPanel;
+    JPanel abteilungsPanelBorder;
+    JLabel abteilung;
+    JList<?> abteilungsListe;
+    JButton addAbteilung;
+    JButton editAbteilung;
+    JButton deleteAbteilung;
+    JPanel buttonPanel;
+    JScrollPane scrollPane;
 
+    /**
+     * The constructor holding all the components
+     */
     public Stammdaten_View() {
         stammDatenPanel = new JPanel();
         stammDatenPanel.setPreferredSize(new Dimension(550,500));
         stammDatenPanel.setMaximumSize(new Dimension(550,500));
 
         stammDatenPanel = new JPanel(new GridLayout(4,1, 50,20));
-        SpringLayout springLayout = new SpringLayout();
-        JLabel firma = new JLabel("Firma:");
-        JTextField firmaField = new JTextField("Text eingeben");
-        JPanel firmaPanel = new JPanel();
+        springLayout = new SpringLayout();
+        firma = new JLabel("Firma:");
+        firmaField = new JTextField("Text eingeben");
+        firmaPanel = new JPanel();
         firmaPanel.setLayout(springLayout);
 
         springLayout.putConstraint(SpringLayout.WEST, firma,5, SpringLayout.WEST, firmaPanel);
@@ -55,11 +71,15 @@ public class Stammdaten_View extends JPanel {
         add(stammDatenPanel);
     }
 
+    /**
+     * The create component method that creates the scrollpanes and buttons
+     * @param name
+     * @param modelType
+     */
     public void createComponent(String name, int modelType) {
-        JPanel abteilungsPanel = new JPanel(new GridLayout(1, 1, 0, 500));
-        JPanel abteilungsPanelBorder = new JPanel(new BorderLayout());
-        JLabel abteilung = new JLabel(name);
-        JList<?> abteilungsListe;
+        abteilungsPanel = new JPanel(new GridLayout(1, 1, 0, 500));
+        abteilungsPanelBorder = new JPanel(new BorderLayout());
+        abteilung = new JLabel(name);
 
         switch (modelType) {
             case 0:
@@ -76,16 +96,16 @@ public class Stammdaten_View extends JPanel {
                 abteilungsListe = new JList<>(new DefaultListModel<>());
         }
 
-        JButton addAbteilung = new JButton("+");
-        JButton deleteAbteilung = new JButton("X");
-        JButton abteilungBearbeiten = new JButton("/");
+        addAbteilung = new JButton("+");
+        deleteAbteilung = new JButton("X");
+        editAbteilung = new JButton("/");
 
-        JPanel buttonPanel = new JPanel(new GridLayout(1, 3, 5, 5));
-        JScrollPane scrollPane = new JScrollPane(abteilungsListe, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        buttonPanel = new JPanel(new GridLayout(1, 3, 5, 5));
+        scrollPane = new JScrollPane(abteilungsListe, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         buttonPanel.add(addAbteilung);
         buttonPanel.add(deleteAbteilung);
-        buttonPanel.add(abteilungBearbeiten);
+        buttonPanel.add(editAbteilung);
 
         abteilungsPanel.add(abteilung);
         abteilungsPanel.add(abteilungsPanelBorder);
@@ -111,17 +131,17 @@ public class Stammdaten_View extends JPanel {
         }
         switch (modelType) {
             case 0:
-                abteilungBearbeiten.addActionListener(e -> {new AddDepartment(1, (Department) abteilungsListe.getSelectedValue());});
+                editAbteilung.addActionListener(e -> {new AddDepartment(1, (Department) abteilungsListe.getSelectedValue());});
                 break;
             case 1:
-                abteilungBearbeiten.addActionListener(e -> {new AddFunctions(1, (String) abteilungsListe.getSelectedValue());});
+                editAbteilung.addActionListener(e -> {new AddFunctions(1, (String) abteilungsListe.getSelectedValue());});
                 break;
             case 2:
-                abteilungBearbeiten.addActionListener(e -> {new AddTeam(1, (String) abteilungsListe.getSelectedValue());});
+                editAbteilung.addActionListener(e -> {new AddTeam(1, (String) abteilungsListe.getSelectedValue());});
                 break;
             default:
                 // default should never occur
-                abteilungBearbeiten.addActionListener(e -> {new Stammdaten_View();});
+                editAbteilung.addActionListener(e -> {new Stammdaten_View();});
         }
         switch (modelType) {
             case 0:
