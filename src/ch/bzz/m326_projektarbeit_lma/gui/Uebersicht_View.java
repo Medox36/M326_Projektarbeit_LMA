@@ -130,13 +130,13 @@ public class Uebersicht_View extends JFrame {
         scrollPanel = new JPanel(new GridLayout(1,2));
 
         //First scrollpane of the  panel
-        scrollPane2 = new JScrollPane(nameList);
+        scrollPane2 = new JScrollPane();
         scrollPane2.setPreferredSize(new Dimension(150,200));
         scrollPane2.setVerticalScrollBarPolicy(22); //Always on
         scrollPane2.setHorizontalScrollBarPolicy(31); //Never
 
         //Second scrollpane of the panel
-        scrollPane3 = new JScrollPane(nameList);
+        scrollPane3 = new JScrollPane();
         scrollPane3.setPreferredSize(new Dimension(150,200));
         scrollPane3.setVerticalScrollBarPolicy(22); //Always on
         scrollPane2.setHorizontalScrollBarPolicy(31); //Never
