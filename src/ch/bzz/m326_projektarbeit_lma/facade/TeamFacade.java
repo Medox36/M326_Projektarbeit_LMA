@@ -96,6 +96,19 @@ public class TeamFacade {
     }
 
     /**
+     * updates a team to the newValue by searching the position of the oldValue
+     *
+     * @param oldValue to get the index from
+     * @param newValue to set
+     */
+    public void updateTeam(String oldValue, String newValue) {
+        int index = company.getTeams().getAllTeams().indexOf(oldValue);
+        company.getTeams().setTeamAtIndex(newValue, index);
+        fireChangesOnAllTeamListModels();
+        fireChangesOnAllTeamComboboxModels();
+    }
+
+    /**
      * removes a given team
      *
      * @param name of team to be removed

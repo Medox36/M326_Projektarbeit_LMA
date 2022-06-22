@@ -118,6 +118,16 @@ public class DepartmentFacade {
     }
 
     /**
+     * updates the name of the department to the newValue
+     *
+     * @param department to change the name of
+     * @param newValue to set
+     */
+    public void updateDepartment(Department department, String newValue) {
+        department.setName(newValue);
+    }
+
+    /**
      * notifies all registered DepartmentComboboxModels of changes
      */
     private void fireChangesOnAllDepartmentComboboxModels() {

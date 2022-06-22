@@ -65,6 +65,16 @@ public class Teams {
     }
 
     /**
+     * updates the team at a given index
+     *
+     * @param value to set
+     * @param index of the team to update
+     */
+    public void setTeamAtIndex(String value, int index) {
+        designations.setElementAt(value, index);
+    }
+
+    /**
      * gets the number of all teams
      *
      * @return number of teams

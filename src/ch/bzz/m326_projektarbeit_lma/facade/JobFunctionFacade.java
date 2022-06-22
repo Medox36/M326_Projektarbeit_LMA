@@ -10,6 +10,8 @@ import java.util.Vector;
 /**
  * This Facade contains all the functionalities for managing JobFunctions
  *
+ * @apiNote job function and function is the same thing
+ *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.06.17
  * @version 1.4
@@ -92,6 +94,19 @@ public class JobFunctionFacade {
      */
     public void addFunction(String name) {
         company.getFunctions().addJobFunction(name);
+        fireChangesOnAllJobFunctionListModels();
+        fireChangesOnAllJobFunctionComboboxModels();
+    }
+
+    /**
+     * updates a job function to the newValue by searching the position of the oldValue
+     *
+     * @param oldValue to get the index from
+     * @param newValue to set
+     */
+    public void updateFunction(String oldValue, String newValue) {
+        int index = company.getFunctions().getAllFunctions().indexOf(oldValue);
+        company.getFunctions().setJobFunctionAtIndex(newValue, index);
         fireChangesOnAllJobFunctionListModels();
         fireChangesOnAllJobFunctionComboboxModels();
     }
