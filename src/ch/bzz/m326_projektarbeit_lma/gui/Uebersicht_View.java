@@ -101,6 +101,10 @@ public class Uebersicht_View extends JFrame {
         JRadioButton radioButton1 = new JRadioButton();
         JRadioButton radioButton2 = new JRadioButton();
         JRadioButton radioButton3 = new JRadioButton();
+        ButtonGroup group = new ButtonGroup();
+        group.add(radioButton1);
+        group.add(radioButton2);
+        group.add(radioButton3);
         JLabel keine = new JLabel("keine");
         JLabel az = new JLabel("A-Z");
         JLabel za = new JLabel("Z-A");
