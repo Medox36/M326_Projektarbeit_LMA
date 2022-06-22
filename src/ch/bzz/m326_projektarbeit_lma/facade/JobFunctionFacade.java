@@ -105,8 +105,9 @@ public class JobFunctionFacade {
      * @param newValue to set
      */
     public void updateFunction(String oldValue, String newValue) {
-        int index = company.getFunctions().getAllFunctions().indexOf(oldValue);
+        int index = getAllFunctions().indexOf(oldValue);
         company.getFunctions().setJobFunctionAtIndex(newValue, index);
+        PersonFacade.getInstance().fireAllFunctionChangesOnPersons();
         fireChangesOnAllJobFunctionListModels();
         fireChangesOnAllJobFunctionComboboxModels();
     }
@@ -118,6 +119,7 @@ public class JobFunctionFacade {
      */
     public void removeFunction(String name) {
         company.getFunctions().removeJobFunction(name);
+        PersonFacade.getInstance().removeFunctionOfAllPersons(name);
         fireChangesOnAllJobFunctionListModels();
         fireChangesOnAllJobFunctionComboboxModels();
     }

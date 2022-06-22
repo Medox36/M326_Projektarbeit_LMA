@@ -427,7 +427,7 @@ public class PersonFacade {
     public void addFunctionToPerson(Person person, String function) {
         person.getParticipation().addFunction(function);
         loggedInHRPerson.writeLogEntry(person, UserAction.SET_ASSIGNMENT);
-        fireChangesOnAllPersonFunctionComboboxModels();
+        fireAllFunctionChangesOnPersons();
     }
 
     /**
@@ -439,7 +439,7 @@ public class PersonFacade {
     public void removeFunctionOfPerson(Person person, String function) {
         person.getParticipation().removeJobFunction(function);
         loggedInHRPerson.writeLogEntry(person, UserAction.SET_ASSIGNMENT);
-        fireChangesOnAllPersonFunctionComboboxModels();
+        fireAllFunctionChangesOnPersons();
     }
 
     /**
@@ -451,7 +451,7 @@ public class PersonFacade {
     public void removeFunctionOfPerson(Person person, int index) {
         person.getParticipation().removeJobFunction(index);
         loggedInHRPerson.writeLogEntry(person, UserAction.SET_ASSIGNMENT);
-        fireChangesOnAllPersonFunctionComboboxModels();
+        fireAllFunctionChangesOnPersons();
     }
 
     /**
@@ -494,7 +494,7 @@ public class PersonFacade {
     public void addTeamToPerson(Person person, String team) {
         person.getParticipation().addTeam(team);
         loggedInHRPerson.writeLogEntry(person, UserAction.SET_ASSIGNMENT);
-        fireChangesOnAllPersonTeamComboboxModels();
+        fireAllTeamChangesOnPersons();
     }
 
     /**
@@ -506,7 +506,7 @@ public class PersonFacade {
     public void removeTeamOfPerson(Person person, int index) {
         person.getParticipation().removeTeam(index);
         loggedInHRPerson.writeLogEntry(person, UserAction.SET_ASSIGNMENT);
-        fireChangesOnAllPersonTeamComboboxModels();
+        fireAllTeamChangesOnPersons();
     }
 
     /**
@@ -518,7 +518,7 @@ public class PersonFacade {
     public void removeTeamOfPerson(Person person, String team) {
         person.getParticipation().removeTeam(team);
         loggedInHRPerson.writeLogEntry(person, UserAction.SET_ASSIGNMENT);
-        fireChangesOnAllPersonTeamComboboxModels();
+        fireAllTeamChangesOnPersons();
     }
 
     /**
@@ -616,8 +616,8 @@ public class PersonFacade {
         addPersonToDepartment(person, newDepartment);
         loggedInHRPerson.writeLogEntry(person, UserAction.SET_ASSIGNMENT);
         fireChangesOnAllPersonListModels();
-        fireChangesOnAllPersonTeamListModels();
-        fireChangesOnAllPersonFunctionListModels();
+        fireAllTeamChangesOnPersons();
+        fireAllFunctionChangesOnPersons();
     }
 
     /**
@@ -677,8 +677,54 @@ public class PersonFacade {
         loggedInHRPerson.writeLogEntry(hrPerson, UserAction.SET_ASSIGNMENT);
         fireChangesOnAllPersonListModels();
         fireChangesOnAllHRPersonComboboxModels();
+        fireAllTeamChangesOnPersons();
+        fireAllFunctionChangesOnPersons();
+    }
+
+    /**
+     * notifies all registered PersonTeamListModel and PersonTeamComboboxModel of changes
+     */
+    public void fireAllTeamChangesOnPersons() {
         fireChangesOnAllPersonTeamListModels();
+        fireChangesOnAllPersonTeamComboboxModels();
+    }
+
+    /**
+     * notifies all registered PersonFunctionListModel and PersonFunctionComboboxModel of changes
+     */
+    public void fireAllFunctionChangesOnPersons() {
         fireChangesOnAllPersonFunctionListModels();
+        fireChangesOnAllPersonFunctionComboboxModels();
+    }
+
+    /**
+     * removes a given function from all persons
+     *
+     * @param function to be removed
+     */
+    public void removeFunctionOfAllPersons(String function) {
+        for (Person person : getAllPersons()) {
+            if (getFunctionsOfPerson(person).contains(function)) {
+                removeFunctionOfPerson(person, function);
+            }
+        }
+        fireAllTeamChangesOnPersons();
+        fireAllFunctionChangesOnPersons();
+    }
+
+    /**
+     * removes a given team from all persons
+     *
+     * @param team to be removed
+     */
+    public void removeTeamFromAllPersons(String team) {
+        for (Person person : getAllPersons()) {
+            if (getTeamsOfPerson(person).contains(team)) {
+                removeTeamOfPerson(person, team);
+            }
+        }
+        fireAllTeamChangesOnPersons();
+        fireAllFunctionChangesOnPersons();
     }
 
     /**

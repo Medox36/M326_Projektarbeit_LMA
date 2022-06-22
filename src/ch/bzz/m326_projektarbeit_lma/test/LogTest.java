@@ -1,4 +1,4 @@
-package ch.bzz.m326_projektarbeit_lma;
+package ch.bzz.m326_projektarbeit_lma.test;
 
 import ch.bzz.m326_projektarbeit_lma.employees.HRPerson;
 import ch.bzz.m326_projektarbeit_lma.employees.Person;

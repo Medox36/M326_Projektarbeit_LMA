@@ -102,8 +102,9 @@ public class TeamFacade {
      * @param newValue to set
      */
     public void updateTeam(String oldValue, String newValue) {
-        int index = company.getTeams().getAllTeams().indexOf(oldValue);
+        int index = getAllTeams().indexOf(oldValue);
         company.getTeams().setTeamAtIndex(newValue, index);
+        PersonFacade.getInstance().fireAllTeamChangesOnPersons();
         fireChangesOnAllTeamListModels();
         fireChangesOnAllTeamComboboxModels();
     }
@@ -115,6 +116,7 @@ public class TeamFacade {
      */
     public void removeTeam(String name) {
         company.getTeams().removeTeam(name);
+        PersonFacade.getInstance().removeTeamFromAllPersons(name);
         fireChangesOnAllTeamListModels();
         fireChangesOnAllTeamComboboxModels();
     }
