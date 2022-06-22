@@ -2,6 +2,7 @@ package ch.bzz.m326_projektarbeit_lma.gui;
 
 import ch.bzz.m326_projektarbeit_lma.company.Department;
 import ch.bzz.m326_projektarbeit_lma.employees.Person;
+import ch.bzz.m326_projektarbeit_lma.facade.PersonFacade;
 import ch.bzz.m326_projektarbeit_lma.gui.model.DepartmentComboboxModel;
 import ch.bzz.m326_projektarbeit_lma.gui.model.JobFunctionsComboboxModel;
 import ch.bzz.m326_projektarbeit_lma.gui.model.PersonListModel;
@@ -206,6 +207,39 @@ public class Uebersicht_View extends JFrame {
         mainPanel.add(detailPanel);
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
 
+
+        radioButton1.addActionListener(e -> {PersonFacade.getInstance().getAllPersonWithFilter("","","","");});
+        radioButton2.addActionListener(e -> {PersonFacade.getInstance().getAllPersonWithFilter("","","","A");});
+        radioButton3.addActionListener(e -> {PersonFacade.getInstance().getAllPersonWithFilter("","","","D");});
+
+        abteilungCombobox.addActionListener(e -> {
+            if (abteilungCombobox.getSelectedItem() != null) {
+                PersonFacade.getInstance().getAllPersonWithFilter(((Department) abteilungCombobox.getSelectedItem()).getName(), "", "", "");
+            } else {
+                PersonFacade.getInstance().getAllPersonWithFilter("", "", "", "");
+            }
+        });
+        funktionCombobox.addActionListener(e -> {
+            if (abteilungCombobox.getSelectedItem() != null) {
+                PersonFacade.getInstance().getAllPersonWithFilter("",((String) abteilungCombobox.getSelectedItem()), "", "");
+            } else {
+                PersonFacade.getInstance().getAllPersonWithFilter("", "", "", "");
+            }
+        });
+        funktionCombobox.addActionListener(e -> {
+            if (funktionCombobox.getSelectedItem() != null) {
+                PersonFacade.getInstance().getAllPersonWithFilter("",((String) funktionCombobox.getSelectedItem()), "", "");
+            } else {
+                PersonFacade.getInstance().getAllPersonWithFilter("", "", "", "");
+            }
+        });
+        teamCombobox.addActionListener(e -> {
+            if (teamCombobox.getSelectedItem() != null) {
+                PersonFacade.getInstance().getAllPersonWithFilter("","", ((String) teamCombobox.getSelectedItem()), "");
+            } else {
+                PersonFacade.getInstance().getAllPersonWithFilter( "" , "", "","");
+            }
+        });
         return mainPanel;
     }
 }
