@@ -36,11 +36,11 @@ public class AddDepartment extends JDialog {
 
         speichernButton.addActionListener(
                 e -> {DepartmentFacade.getInstance().addDepartment(textField.getText());
-                    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         });
 
         abbrechenButton.addActionListener(e -> {
-            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         });
 
         setLocationRelativeTo(null);

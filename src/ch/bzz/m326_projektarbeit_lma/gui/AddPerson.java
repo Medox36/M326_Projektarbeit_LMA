@@ -13,6 +13,14 @@ public class AddPerson extends JDialog {
     private Checkbox administrator = new Checkbox();
 
     public AddPerson (){
+        setTitle("Person erfassen");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setResizable(true);
+        setSize(250,120);
 
+        JPanel obenGridPanel = new JPanel(new GridLayout(2,2,5,5));
+        JPanel mitteGridPanel = new JPanel(new GridLayout(2,2,5,5));
+        JPanel untenGridPanel = new JPanel(new GridLayout(2,1,5,5));
+        JPanel mainPanel = new JPanel(new BorderLayout(5,5));
     }
 }

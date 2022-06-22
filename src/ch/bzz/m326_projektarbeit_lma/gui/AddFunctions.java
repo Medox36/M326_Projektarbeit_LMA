@@ -36,11 +36,11 @@ public class AddFunctions extends JFrame {
         speichernButton.addActionListener(
                 e -> {
                     JobFunctionFacade.getInstance().addFunction(textField.getText());
-                    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 });
 
         abbrechenButton.addActionListener(e -> {
-            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         });
 
         setLocationRelativeTo(null);

@@ -1,5 +1,10 @@
 package ch.bzz.m326_projektarbeit_lma.gui;
 
+import ch.bzz.m326_projektarbeit_lma.company.Department;
+import ch.bzz.m326_projektarbeit_lma.company.JobFunctions;
+import ch.bzz.m326_projektarbeit_lma.facade.DepartmentFacade;
+import ch.bzz.m326_projektarbeit_lma.facade.JobFunctionFacade;
+import ch.bzz.m326_projektarbeit_lma.facade.TeamFacade;
 import ch.bzz.m326_projektarbeit_lma.gui.model.DepartmentListModel;
 import ch.bzz.m326_projektarbeit_lma.gui.model.JobFunctionsListModel;
 import ch.bzz.m326_projektarbeit_lma.gui.model.TeamListModel;
@@ -90,5 +95,50 @@ public class Stammdaten_View extends JPanel {
         abteilungsPanelBorder.add(buttonPanel, BorderLayout.SOUTH);
 
         stammDatenPanel.add(abteilungsPanel);
+
+        switch (modelType) {
+            case 0:
+                addAbteilung.addActionListener(e -> {new AddDepartment();});
+                break;
+            case 1:
+                addAbteilung.addActionListener(e -> {new AddFunctions();});
+                break;
+            case 2:
+                addAbteilung.addActionListener(e -> {new AddTeam();});
+                break;
+            default:
+                // default should never occur
+                addAbteilung.addActionListener(e -> {new Stammdaten_View();});
+        }
+        switch (modelType) {
+            case 0:
+                abteilungBearbeiten.addActionListener(e -> {new AddDepartment();});
+                break;
+            case 1:
+                abteilungBearbeiten.addActionListener(e -> {new AddFunctions();});
+                break;
+            case 2:
+                abteilungBearbeiten.addActionListener(e -> {new AddTeam();});
+                break;
+            default:
+                // default should never occur
+                abteilungBearbeiten.addActionListener(e -> {new Stammdaten_View();});
+        }
+        switch (modelType) {
+            case 0:
+                deleteAbteilung.addActionListener(e -> {
+                    DepartmentFacade.getInstance().removeDepartment((Department) abteilungsListe.getSelectedValue());
+                });
+                break;
+            case 1:
+                JobFunctionFacade.getInstance().removeFunction((String) abteilungsListe.getSelectedValue());
+                break;
+            case 2:
+                TeamFacade.getInstance().removeTeam((String) abteilungsListe.getSelectedValue());
+                break;
+            default:
+                // default should never occur
+                addAbteilung.addActionListener(e -> {new Stammdaten_View();});
+        }
     }
 }
