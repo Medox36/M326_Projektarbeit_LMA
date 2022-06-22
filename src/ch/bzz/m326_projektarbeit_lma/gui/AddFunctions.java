@@ -1,5 +1,6 @@
 package ch.bzz.m326_projektarbeit_lma.gui;
 
+import ch.bzz.m326_projektarbeit_lma.company.Department;
 import ch.bzz.m326_projektarbeit_lma.facade.DepartmentFacade;
 import ch.bzz.m326_projektarbeit_lma.facade.JobFunctionFacade;
 
@@ -12,7 +13,7 @@ public class AddFunctions extends JFrame {
     private JButton abbrechenButton = new JButton("Abbrechen");
     private JButton speichernButton = new JButton("Speichern");
 
-    public AddFunctions(){
+    public AddFunctions(int mode, String function){
         setTitle("Funktion erfassen/bearbeiten");
         setSize(200,100);
         setResizable(false);
@@ -33,14 +34,23 @@ public class AddFunctions extends JFrame {
         bigPanel.add(mainPanel, BorderLayout.CENTER);
         getContentPane().add(bigPanel, BorderLayout.CENTER);
 
-        speichernButton.addActionListener(
-                e -> {
-                    JobFunctionFacade.getInstance().addFunction(textField.getText());
-                    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                });
+        switch (mode){
+            case 0:
+                speichernButton.addActionListener(
+                        e -> {JobFunctionFacade.getInstance().addFunction(textField.getText());
+                            dispose();
+                        });
+                break;
+            case 1:
+                speichernButton.addActionListener(
+                        e -> {JobFunctionFacade.getInstance().updateFunction(function, textField.getText());
+                            dispose();
+                        });
+                break;
+        }
 
         abbrechenButton.addActionListener(e -> {
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            dispose();
         });
 
         setLocationRelativeTo(null);

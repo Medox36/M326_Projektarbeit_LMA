@@ -12,7 +12,7 @@ public class AddTeam extends JFrame {
     private JButton abbrechenButton = new JButton("Abbrechen");
     private JButton speichernButton = new JButton("Speichern");
 
-    public AddTeam(){
+    public AddTeam(int mode, String team){
         setTitle("Funktion erfassen/bearbeiten");
         setSize(200,100);
         setResizable(false);
@@ -33,14 +33,23 @@ public class AddTeam extends JFrame {
         bigPanel.add(mainPanel, BorderLayout.CENTER);
         getContentPane().add(bigPanel, BorderLayout.CENTER);
 
-        speichernButton.addActionListener(
-                e -> {
-                    TeamFacade.getInstance().addTeam(textField.getText());
-                    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                });
+        switch (mode){
+            case 0:
+                speichernButton.addActionListener(
+                        e -> {TeamFacade.getInstance().addTeam(textField.getText());
+                            dispose();
+                        });
+                break;
+            case 1:
+                speichernButton.addActionListener(
+                        e -> {TeamFacade.getInstance().updateTeam(team, textField.getText());
+                            dispose();
+                        });
+                break;
+        }
 
         abbrechenButton.addActionListener(e -> {
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            dispose();
         });
 
         setLocationRelativeTo(null);

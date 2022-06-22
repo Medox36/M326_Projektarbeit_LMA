@@ -1,5 +1,6 @@
 package ch.bzz.m326_projektarbeit_lma.gui;
 
+import ch.bzz.m326_projektarbeit_lma.company.Department;
 import ch.bzz.m326_projektarbeit_lma.facade.DepartmentFacade;
 
 import javax.swing.*;
@@ -13,7 +14,7 @@ public class AddDepartment extends JDialog {
     private JButton abbrechenButton = new JButton("Abbrechen");
     private JButton speichernButton = new JButton("Speichern");
 
-    public AddDepartment(){
+    public AddDepartment(int mode, Department department){
         setTitle("Funktion erfassen/bearbeiten");
         setSize(200,100);
         setResizable(false);
@@ -33,21 +34,26 @@ public class AddDepartment extends JDialog {
         mainPanel.add(downPanelGrid, BorderLayout.SOUTH);
         bigPanel.add(mainPanel, BorderLayout.CENTER);
         getContentPane().add(bigPanel, BorderLayout.CENTER);
-
-        speichernButton.addActionListener(
-                e -> {DepartmentFacade.getInstance().addDepartment(textField.getText());
-                    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        });
+        switch (mode){
+            case 0:
+                speichernButton.addActionListener(
+                        e -> {DepartmentFacade.getInstance().addDepartment(textField.getText());
+                            dispose();
+                        });
+                break;
+            case 1:
+                speichernButton.addActionListener(
+                        e -> {DepartmentFacade.getInstance().updateDepartment(department, textField.getText());
+                            dispose();
+                        });
+                break;
+        }
 
         abbrechenButton.addActionListener(e -> {
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            dispose();
         });
 
         setLocationRelativeTo(null);
         setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new AddDepartment();
     }
 }
