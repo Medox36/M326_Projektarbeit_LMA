@@ -11,7 +11,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 /**
- * @author Moustafa Hawi
+ * This JDialog is used to log in as a HRPerson
+ *
+ * @author Moustafa Hawi, Lorenzo Giuntini (Medox36)
  * @since 21.06.2022
  * @version 1.0
  */
@@ -19,7 +21,13 @@ public class LoginGUI extends JDialog {
     private int counter = 0;
     private JComboBox<HRPerson> nameCombobox = new JComboBox<>(new HRPersonComboboxModel());
 
-    //Konstruktor
+    /**
+     * constructor
+     *
+     * @param mainFrame as parent for this JDialog
+     * @param tabbedPane to change the selected tab
+     * @param newTabIndex to which the user wants to go to
+     */
     public LoginGUI(MainFrame mainFrame, JTabbedPane tabbedPane, int newTabIndex){
         super(mainFrame, true);
         //frame einstellen

@@ -20,9 +20,10 @@ import java.awt.event.KeyEvent;
 
 /**
  * The base data
- * @Author Alexander Benak, Moustafa Hawi, Lorenzo Giuntini
- * @Since 22.06.2022
- * @Version 1.5
+ *
+ * @author  Alexander Benak, Moustafa Hawi, Lorenzo Giuntini (Medox36)
+ * @since  22.06.2022
+ * @version  1.5
  */
 public class Stammdaten_View extends JPanel {
     private JPanel stammDatenPanel;
@@ -60,8 +61,9 @@ public class Stammdaten_View extends JPanel {
 
     /**
      * The create component method that creates the scrollpanes and buttons
-     * @param name
-     * @param modelType
+     *
+     * @param name of the label belonging to the JList
+     * @param modelType of the component
      */
     public void createComponent(String name, int modelType) {
         JPanel abteilungsPanel = new JPanel(new GridLayout(1, 1, 0, 500));

@@ -3,8 +3,22 @@ package ch.bzz.m326_projektarbeit_lma.gui;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * JDialog for telling the user the program is closing
+ * Closes the program, via a new Thread called Shutdown-Thread
+ *
+ * @author Moustafa Hawi, Lorenzo Giuntini (Medox36)
+ * @since 21.06.2022
+ * @version  1.0
+ */
 public class CloseProjectGui extends JDialog {
     private JLabel label = new JLabel("Das Programm wird heruntergefahren...");
+
+    /**
+     * constructor
+     *
+     * @param parent for JDialog
+     */
     public CloseProjectGui(LoginGUI parent){
         super(parent, true);
         setTitle("Error-Abbruch");

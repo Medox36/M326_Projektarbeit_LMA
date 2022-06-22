@@ -15,9 +15,10 @@ import java.util.Objects;
 
 /**
  * This class creates the "Übersicht" using a single Method -  the createView
- * @Author Alexander Benak, Lorenzo Giuntini
- * @Since 22.06.2022
- * @Version 1.4
+ *
+ * @author Alexander Benak, Lorenzo Giuntini (Medox36)
+ * @since 22.06.2022
+ * @version 1.4
  */
 public class Uebersicht_View extends JFrame {
 

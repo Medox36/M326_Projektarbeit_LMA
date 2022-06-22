@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * JDialog for adding a person
+ *
  * @author Moustafa Hawi
  * @since 21.06.2022
  * @version 1.0
@@ -21,6 +23,9 @@ public class AddPerson extends JDialog {
     private JButton abbrechenButton = new JButton("Abbrechen");
     private JButton speichernButton = new JButton("Speichern");
 
+    /**
+     * constructor
+     */
     public AddPerson (){
         setTitle("Person erfassen");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

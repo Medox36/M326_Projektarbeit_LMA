@@ -1,13 +1,13 @@
 package ch.bzz.m326_projektarbeit_lma.gui;
 
-import ch.bzz.m326_projektarbeit_lma.company.Department;
-import ch.bzz.m326_projektarbeit_lma.facade.DepartmentFacade;
 import ch.bzz.m326_projektarbeit_lma.facade.JobFunctionFacade;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
+ * JDialog for adding or updating a function
+ *
  * @author Moustafa Hawi
  * @since 21.06.2022
  * @version 1.0
@@ -18,6 +18,12 @@ public class AddFunctions extends JFrame {
     private JButton abbrechenButton = new JButton("Abbrechen");
     private JButton speichernButton = new JButton("Speichern");
 
+    /**
+     * constructor
+     *
+     * @param mode is this JDialog for adding od updating
+     * @param function to update
+     */
     public AddFunctions(int mode, String function){
         setTitle("Funktion erfassen/bearbeiten");
         setSize(200,100);

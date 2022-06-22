@@ -6,9 +6,10 @@ import java.awt.*;
 
 /**
  * This class creates the "Zuordnung" with a constructor
- * @Author Alexander Benak, Lorenzo Giuntini
- * @Since 21.06.2022
- * @Version 1.3
+ *
+ * @author  Alexander Benak, Lorenzo Giuntini (Medox36)
+ * @since  21.06.2022
+ * @version  1.3
  */
 public class Zuordnung_View extends JPanel {
 

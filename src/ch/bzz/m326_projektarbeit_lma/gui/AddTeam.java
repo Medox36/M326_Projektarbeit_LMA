@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * JDialog for adding of updating a Team
+ *
  * @author Moustafa Hawi
  * @since 21.06.2022
  * @version 1.0
@@ -17,6 +19,12 @@ public class AddTeam extends JFrame {
     private JButton abbrechenButton = new JButton("Abbrechen");
     private JButton speichernButton = new JButton("Speichern");
 
+    /**
+     * constructor
+     *
+     * @param mode is this JDialog for adding od updating
+     * @param team to update
+     */
     public AddTeam(int mode, String team){
         setTitle("Funktion erfassen/bearbeiten");
         setSize(200,100);

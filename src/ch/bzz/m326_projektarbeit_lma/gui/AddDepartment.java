@@ -9,9 +9,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * JDialog for adding or updating a new Department
+ *
  * @author Moustafa Hawi
  * @since 21.06.2022
- * @Version 1.0
+ * @version  1.0
  */
 public class AddDepartment extends JDialog {
     private JLabel label = new JLabel("Abteilung");
@@ -19,6 +21,12 @@ public class AddDepartment extends JDialog {
     private JButton abbrechenButton = new JButton("Abbrechen");
     private JButton speichernButton = new JButton("Speichern");
 
+    /**
+     * constructor
+     *
+     * @param mode is this JDialog for adding od updating
+     * @param department to update
+     */
     public AddDepartment(int mode, Department department){
         setTitle("Funktion erfassen/bearbeiten");
         setSize(200,100);

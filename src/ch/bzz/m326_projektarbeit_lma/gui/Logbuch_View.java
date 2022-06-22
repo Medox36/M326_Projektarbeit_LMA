@@ -7,9 +7,10 @@ import java.awt.*;
 
 /**
  * Creates the Logbook
- * @Author Alexander Benak, Lorenzo Giuntini
- * @Since 20.06.2022
- * @Version 1.1
+ *
+ * @author Alexander Benak, Lorenzo Giuntini (Medox36)
+ * @since 20.06.2022
+ * @version  1.1
  */
 public class Logbuch_View extends JPanel {
 
