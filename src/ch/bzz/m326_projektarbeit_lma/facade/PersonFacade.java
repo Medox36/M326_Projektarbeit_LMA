@@ -586,14 +586,7 @@ public class PersonFacade {
         String[] firstAndLastName = newFullName.split(" ");
         person.setFirstName(firstAndLastName[0]);
         person.setLastName(firstAndLastName[1]);
-        loggedInHRPerson.writeLogEntry(person, UserAction.CHANGE_VALUE);
-
-        removePersonFromDepartment(person);
-        addPersonToDepartment(person, newDepartment);
-        loggedInHRPerson.writeLogEntry(person, UserAction.SET_ASSIGNMENT);
-        fireChangesOnAllPersonListModels();
-        fireChangesOnAllPersonTeamListModels();
-        fireChangesOnAllPersonFunctionListModels();
+        subUpdatePerson(person, newDepartment);
     }
 
     /**
@@ -607,6 +600,16 @@ public class PersonFacade {
     public void updatePerson(Person person, String newFirstName, String newLastName, Department newDepartment) {
         person.setFirstName(newFirstName);
         person.setLastName(newLastName);
+        subUpdatePerson(person, newDepartment);
+    }
+
+    /**
+     * updates a given Person with the given parameter values
+     *
+     * @param person to be updated
+     * @param newDepartment of the person
+     */
+    private void subUpdatePerson(Person person, Department newDepartment) {
         loggedInHRPerson.writeLogEntry(person, UserAction.CHANGE_VALUE);
 
         removePersonFromDepartment(person);
@@ -634,16 +637,7 @@ public class PersonFacade {
         String[] firstAndLastName = newFullName.split(" ");
         hrPerson.setFirstName(firstAndLastName[0]);
         hrPerson.setLastName(firstAndLastName[1]);
-        hrPerson.setModus(newModus);
-        loggedInHRPerson.writeLogEntry(hrPerson, UserAction.CHANGE_VALUE);
-
-        removePersonFromDepartment(hrPerson);
-        addPersonToDepartment(hrPerson, newDepartment);
-        loggedInHRPerson.writeLogEntry(hrPerson, UserAction.SET_ASSIGNMENT);
-        fireChangesOnAllPersonListModels();
-        fireChangesOnAllHRPersonComboboxModels();
-        fireChangesOnAllPersonTeamListModels();
-        fireChangesOnAllPersonFunctionListModels();
+        subUpdateHRPerson(hrPerson, newDepartment, newModus);
     }
 
     /**
@@ -664,6 +658,17 @@ public class PersonFacade {
     ) {
         hrPerson.setFirstName(newFirstName);
         hrPerson.setLastName(newLastName);
+        subUpdateHRPerson(hrPerson, newDepartment, newModus);
+    }
+
+    /**
+     * updates a given HRPerson with the given parameter values
+     *
+     * @param hrPerson to be updated
+     * @param newDepartment of the hrPerson
+     * @param newModus of the hrPerson
+     */
+    private void subUpdateHRPerson(HRPerson hrPerson, Department newDepartment, int newModus) {
         hrPerson.setModus(newModus);
         loggedInHRPerson.writeLogEntry(hrPerson, UserAction.CHANGE_VALUE);
 
