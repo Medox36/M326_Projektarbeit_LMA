@@ -1,6 +1,7 @@
 package ch.bzz.m326_projektarbeit_lma.gui;
 
 import ch.bzz.m326_projektarbeit_lma.company.Department;
+import ch.bzz.m326_projektarbeit_lma.facade.CompanyFacade;
 import ch.bzz.m326_projektarbeit_lma.facade.DepartmentFacade;
 import ch.bzz.m326_projektarbeit_lma.facade.JobFunctionFacade;
 import ch.bzz.m326_projektarbeit_lma.facade.TeamFacade;
@@ -9,7 +10,13 @@ import ch.bzz.m326_projektarbeit_lma.gui.model.JobFunctionsListModel;
 import ch.bzz.m326_projektarbeit_lma.gui.model.TeamListModel;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 /**
  * The base data
@@ -30,14 +37,14 @@ public class Stammdaten_View extends JPanel {
         stammDatenPanel = new JPanel(new GridLayout(4,1, 50,20));
         SpringLayout springLayout = new SpringLayout();
         JLabel firma = new JLabel("Firma:");
-        JTextField firmaField = new JTextField("Text eingeben");
+        JTextField firmaField = new JTextField(CompanyFacade.getInstance().getCompanyName());
         JPanel firmaPanel = new JPanel();
         firmaPanel.setLayout(springLayout);
         springLayout.putConstraint(SpringLayout.WEST, firma,5, SpringLayout.WEST, firmaPanel);
         springLayout.putConstraint(SpringLayout.NORTH, firma,50, SpringLayout.NORTH, firmaPanel);
-        springLayout.putConstraint(SpringLayout.WEST, firmaField, 250, SpringLayout.EAST, firma);
+        springLayout.putConstraint(SpringLayout.WEST, firmaField, 170, SpringLayout.WEST, firma);
         springLayout.putConstraint(SpringLayout.NORTH, firmaField, 50, SpringLayout.NORTH, firmaPanel);
-        firmaField.setColumns(30);
+        firmaField.setColumns(18);
         firmaPanel.add(firma);
         firmaPanel.add(firmaField);
         firmaPanel.add(new JLabel());
