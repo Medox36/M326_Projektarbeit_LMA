@@ -43,6 +43,15 @@ public class Department {
     }
 
     /**
+     * sets the name
+     *
+     * @param name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
      * adds a member to the members
      *
      * @param member to be added

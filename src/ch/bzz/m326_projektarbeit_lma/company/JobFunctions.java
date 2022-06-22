@@ -9,6 +9,8 @@ import java.util.Vector;
 /**
  * The JobFunctions class stores all the functions
  *
+ * @apiNote job function and function is the same thing
+ *
  * @author Lorenzo Giuntini (Medox36)
  * @since 2022.06.01
  * @version 1.0
@@ -62,6 +64,16 @@ public class JobFunctions {
      */
     public void removeJobFunction(String jobFunction) {
         designations.remove(jobFunction);
+    }
+
+    /**
+     * updates the job function at a given index
+     *
+     * @param value to set
+     * @param index of the job function to update
+     */
+    public void setJobFunctionAtIndex(String value, int index) {
+        designations.setElementAt(value, index);
     }
 
     /**
