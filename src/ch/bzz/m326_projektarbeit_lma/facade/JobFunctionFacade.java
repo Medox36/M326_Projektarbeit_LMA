@@ -4,6 +4,7 @@ import ch.bzz.m326_projektarbeit_lma.company.Company;
 import ch.bzz.m326_projektarbeit_lma.data.JSONData;
 import ch.bzz.m326_projektarbeit_lma.gui.model.JobFunctionsComboboxModel;
 import ch.bzz.m326_projektarbeit_lma.gui.model.JobFunctionsListModel;
+import ch.bzz.m326_projektarbeit_lma.log.UserAction;
 
 import java.util.Vector;
 
@@ -96,6 +97,7 @@ public class JobFunctionFacade {
         company.getFunctions().addJobFunction(name);
         fireChangesOnAllJobFunctionListModels();
         fireChangesOnAllJobFunctionComboboxModels();
+        PersonFacade.getInstance().getLoggedInHRPerson().writeLogEntry(null, UserAction.CHANGED_BASE_DATA);
     }
 
     /**
@@ -108,6 +110,7 @@ public class JobFunctionFacade {
         int index = getAllFunctions().indexOf(oldValue);
         company.getFunctions().setJobFunctionAtIndex(newValue, index);
         PersonFacade.getInstance().fireAllFunctionChangesOnPersons();
+        PersonFacade.getInstance().getLoggedInHRPerson().writeLogEntry(null, UserAction.CHANGED_BASE_DATA);
         fireChangesOnAllJobFunctionListModels();
         fireChangesOnAllJobFunctionComboboxModels();
     }
@@ -120,6 +123,7 @@ public class JobFunctionFacade {
     public void removeFunction(String name) {
         company.getFunctions().removeJobFunction(name);
         PersonFacade.getInstance().removeFunctionOfAllPersons(name);
+        PersonFacade.getInstance().getLoggedInHRPerson().writeLogEntry(null, UserAction.CHANGED_BASE_DATA);
         fireChangesOnAllJobFunctionListModels();
         fireChangesOnAllJobFunctionComboboxModels();
     }

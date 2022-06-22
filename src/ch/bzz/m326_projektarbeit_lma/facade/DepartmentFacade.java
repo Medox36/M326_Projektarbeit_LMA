@@ -5,6 +5,7 @@ import ch.bzz.m326_projektarbeit_lma.company.Department;
 import ch.bzz.m326_projektarbeit_lma.data.JSONData;
 import ch.bzz.m326_projektarbeit_lma.gui.model.DepartmentComboboxModel;
 import ch.bzz.m326_projektarbeit_lma.gui.model.DepartmentListModel;
+import ch.bzz.m326_projektarbeit_lma.log.UserAction;
 
 import java.util.Vector;
 
@@ -102,6 +103,7 @@ public class DepartmentFacade {
      */
     public void addDepartment(String name) {
         company.addDepartment(new Department(name));
+        PersonFacade.getInstance().getLoggedInHRPerson().writeLogEntry(null, UserAction.CHANGED_BASE_DATA);
         fireChangesOnAllDepartmentComboboxModels();
         fireChangesOnAllDepartmentListModels();
     }
@@ -113,6 +115,7 @@ public class DepartmentFacade {
      */
     public void removeDepartment(Department department) {
         company.removeDepartment(department);
+        PersonFacade.getInstance().getLoggedInHRPerson().writeLogEntry(null, UserAction.CHANGED_BASE_DATA);
         fireChangesOnAllDepartmentComboboxModels();
         fireChangesOnAllDepartmentListModels();
     }
@@ -125,6 +128,7 @@ public class DepartmentFacade {
      */
     public void updateDepartment(Department department, String newValue) {
         department.setName(newValue);
+        PersonFacade.getInstance().getLoggedInHRPerson().writeLogEntry(null, UserAction.CHANGED_BASE_DATA);
         fireChangesOnAllDepartmentComboboxModels();
         fireChangesOnAllDepartmentListModels();
     }

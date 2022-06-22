@@ -2,8 +2,10 @@ package ch.bzz.m326_projektarbeit_lma.facade;
 
 import ch.bzz.m326_projektarbeit_lma.company.Company;
 import ch.bzz.m326_projektarbeit_lma.data.JSONData;
+import ch.bzz.m326_projektarbeit_lma.employees.HRPerson;
 import ch.bzz.m326_projektarbeit_lma.gui.model.TeamComboboxModel;
 import ch.bzz.m326_projektarbeit_lma.gui.model.TeamListModel;
+import ch.bzz.m326_projektarbeit_lma.log.UserAction;
 
 import java.util.Vector;
 
@@ -91,6 +93,7 @@ public class TeamFacade {
      */
     public void addTeam(String name) {
         company.getTeams().addTeam(name);
+        PersonFacade.getInstance().getLoggedInHRPerson().writeLogEntry(null, UserAction.CHANGED_BASE_DATA);
         fireChangesOnAllTeamListModels();
         fireChangesOnAllTeamComboboxModels();
     }
@@ -105,6 +108,7 @@ public class TeamFacade {
         int index = getAllTeams().indexOf(oldValue);
         company.getTeams().setTeamAtIndex(newValue, index);
         PersonFacade.getInstance().fireAllTeamChangesOnPersons();
+        PersonFacade.getInstance().getLoggedInHRPerson().writeLogEntry(null, UserAction.CHANGED_BASE_DATA);
         fireChangesOnAllTeamListModels();
         fireChangesOnAllTeamComboboxModels();
     }
@@ -117,6 +121,7 @@ public class TeamFacade {
     public void removeTeam(String name) {
         company.getTeams().removeTeam(name);
         PersonFacade.getInstance().removeTeamFromAllPersons(name);
+        PersonFacade.getInstance().getLoggedInHRPerson().writeLogEntry(null, UserAction.CHANGED_BASE_DATA);
         fireChangesOnAllTeamListModels();
         fireChangesOnAllTeamComboboxModels();
     }

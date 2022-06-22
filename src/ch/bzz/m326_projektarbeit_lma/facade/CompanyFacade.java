@@ -2,6 +2,9 @@ package ch.bzz.m326_projektarbeit_lma.facade;
 
 import ch.bzz.m326_projektarbeit_lma.company.Company;
 import ch.bzz.m326_projektarbeit_lma.data.JSONData;
+import ch.bzz.m326_projektarbeit_lma.log.UserAction;
+
+import javax.swing.*;
 
 /**
  * This Facade contains all the functionalities for managing the company
@@ -14,6 +17,7 @@ public class CompanyFacade {
 
     private Company company;
     private static CompanyFacade instance;
+    private JTextField companyNameField;
 
     /**
      * constructor
@@ -30,6 +34,8 @@ public class CompanyFacade {
      */
     public void setCompanyName(String name) {
         company.setCompanyName(name);
+        PersonFacade.getInstance().getLoggedInHRPerson().writeLogEntry(null, UserAction.CHANGED_BASE_DATA);
+        SwingUtilities.invokeLater(() -> companyNameField.setText(getCompanyName()));
     }
 
     /**
@@ -39,6 +45,15 @@ public class CompanyFacade {
      */
     public String getCompanyName() {
         return company.getCompanyName();
+    }
+
+    /**
+     * sets the companyNameField
+     *
+     * @param companyNameField to set
+     */
+    public void setCompanyNameField(JTextField companyNameField) {
+        this.companyNameField = companyNameField;
     }
 
 
