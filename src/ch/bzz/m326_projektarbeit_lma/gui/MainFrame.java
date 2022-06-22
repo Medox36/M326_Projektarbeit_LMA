@@ -4,6 +4,12 @@ import ch.bzz.m326_projektarbeit_lma.facade.PersonFacade;
 
 import javax.swing.*;
 
+/**
+ * This class adds all the components into a JTabbedPane and formats it
+ * @Author Alexander Benak, Moustafa Hawi, Lorenzo Giuntini
+ * @Since 21.06.2022
+ * @Version 1.1
+ */
 public class MainFrame extends JFrame {
 
     public MainFrame(){

@@ -4,6 +4,12 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
+/**
+ * This class creates the "Zuordnung" with a constructor
+ * @Author Alexander Benak, Lorenzo Giuntini
+ * @Since 21.06.2022
+ * @Version 1.3
+ */
 public class Zuordnung_View extends JPanel {
 
     String names[] = {
@@ -40,6 +46,9 @@ public class Zuordnung_View extends JPanel {
     JComboBox funktionCombo;
     JComboBox teamCombo;
 
+    /**
+     * The constructor which holds all the components
+     */
     public Zuordnung_View() {
 
         //The main panels with their layouts
