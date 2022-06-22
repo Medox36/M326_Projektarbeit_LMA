@@ -31,6 +31,8 @@ public class Logbuch_View extends JPanel {
 
         logPanel.add(scrollPane, BorderLayout.CENTER);
 
+        LogBook.getLogBookInstance().setLogbuch_view(this);
+
         add(logPanel);
     }
 
