@@ -19,8 +19,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class PersonFacadeTest {
-
-    private JSONData jsonData;
     private byte[] originalFileContents;
 
     /**
@@ -31,7 +29,7 @@ public class PersonFacadeTest {
     @Before
     public void init() throws IOException {
         originalFileContents = Files.readAllBytes(Paths.get("data.json"));
-        jsonData = JSONData.getInstance();
+        JSONData.getInstance();
     }
 
     /**
