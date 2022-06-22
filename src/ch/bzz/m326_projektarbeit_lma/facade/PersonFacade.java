@@ -5,10 +5,7 @@ import ch.bzz.m326_projektarbeit_lma.company.Department;
 import ch.bzz.m326_projektarbeit_lma.data.JSONData;
 import ch.bzz.m326_projektarbeit_lma.employees.HRPerson;
 import ch.bzz.m326_projektarbeit_lma.employees.Person;
-import ch.bzz.m326_projektarbeit_lma.gui.model.HRPersonComboboxModel;
-import ch.bzz.m326_projektarbeit_lma.gui.model.PersonFunctionComboboxModel;
-import ch.bzz.m326_projektarbeit_lma.gui.model.PersonListModel;
-import ch.bzz.m326_projektarbeit_lma.gui.model.PersonTeamComboboxModel;
+import ch.bzz.m326_projektarbeit_lma.gui.model.*;
 import ch.bzz.m326_projektarbeit_lma.log.UserAction;
 
 import java.awt.*;
@@ -32,7 +29,10 @@ public class PersonFacade {
     private Vector<PersonListModel> personListModels;
     private Vector<PersonFunctionComboboxModel> personFunctionComboboxModels;
     private Vector<PersonTeamComboboxModel> personTeamComboboxModels;
+    private Vector<PersonTeamListModel> personTeamListModels;
+    private Vector<PersonFunctionListModel> personFunctionListModels;
     private Vector<HRPersonComboboxModel> hrPersonComboboxModels;
+
 
     /**
      * constructor
@@ -44,6 +44,8 @@ public class PersonFacade {
         personFunctionComboboxModels = new Vector<>();
         personTeamComboboxModels = new Vector<>();
         hrPersonComboboxModels = new Vector<>();
+        personTeamListModels = new Vector<>();
+        personFunctionListModels = new Vector<>();
     }
 
     /**
@@ -98,6 +100,42 @@ public class PersonFacade {
      */
     public void removePersonTeamComboboxModel(PersonTeamComboboxModel personTeamComboboxModel) {
         personTeamComboboxModels.remove(personTeamComboboxModel);
+    }
+
+    /**
+     * adds a given PersonTeamListModel, so it is updated when the data changes
+     *
+     * @param personTeamListModel to be added
+     */
+    public void addPersonTeamListModel(PersonTeamListModel personTeamListModel) {
+        personTeamListModels.add(personTeamListModel);
+    }
+
+    /**
+     * removes a given PersonTeamListModel, so it won't get update notification on changes
+     *
+     * @param personTeamListModel to be removed
+     */
+    public void removePersonTeamListModel(PersonTeamListModel personTeamListModel) {
+        personTeamListModels.remove(personTeamListModel);
+    }
+
+    /**
+     * adds a given PersonFunctionListModel, so it is updated when the data changes
+     *
+     * @param personFunctionListModel to be added
+     */
+    public void addPersonFunctionListModel(PersonFunctionListModel personFunctionListModel) {
+        personFunctionListModels.add(personFunctionListModel);
+    }
+
+    /**
+     * removes a given PersonFunctionListModel, so it won't get update notification on changes
+     *
+     * @param personFunctionListModel to be removed
+     */
+    public void removePersonFunctionListModel(PersonFunctionListModel personFunctionListModel) {
+        personFunctionListModels.remove(personFunctionListModel);
     }
 
     /**
@@ -554,6 +592,8 @@ public class PersonFacade {
         addPersonToDepartment(person, newDepartment);
         loggedInHRPerson.writeLogEntry(person, UserAction.SET_ASSIGNMENT);
         fireChangesOnAllPersonListModels();
+        fireChangesOnAllPersonTeamListModels();
+        fireChangesOnAllPersonFunctionListModels();
     }
 
     /**
@@ -573,6 +613,8 @@ public class PersonFacade {
         addPersonToDepartment(person, newDepartment);
         loggedInHRPerson.writeLogEntry(person, UserAction.SET_ASSIGNMENT);
         fireChangesOnAllPersonListModels();
+        fireChangesOnAllPersonTeamListModels();
+        fireChangesOnAllPersonFunctionListModels();
     }
 
     /**
@@ -600,6 +642,8 @@ public class PersonFacade {
         loggedInHRPerson.writeLogEntry(hrPerson, UserAction.SET_ASSIGNMENT);
         fireChangesOnAllPersonListModels();
         fireChangesOnAllHRPersonComboboxModels();
+        fireChangesOnAllPersonTeamListModels();
+        fireChangesOnAllPersonFunctionListModels();
     }
 
     /**
@@ -628,6 +672,8 @@ public class PersonFacade {
         loggedInHRPerson.writeLogEntry(hrPerson, UserAction.SET_ASSIGNMENT);
         fireChangesOnAllPersonListModels();
         fireChangesOnAllHRPersonComboboxModels();
+        fireChangesOnAllPersonTeamListModels();
+        fireChangesOnAllPersonFunctionListModels();
     }
 
     /**
@@ -662,6 +708,24 @@ public class PersonFacade {
                     0,
                     getNumberOfFunctionsOfPerson(comboboxModel.getPerson())
             );
+        }
+    }
+
+    /**
+     * notifies all registered PersonTeamListModels of changes
+     */
+    private void fireChangesOnAllPersonTeamListModels() {
+        for (PersonTeamListModel listModel : personTeamListModels) {
+            listModel.fireContentsChanged(this, 0, getNumberOfTeamsOfPerson(listModel.getPerson()));
+        }
+    }
+
+    /**
+     * notifies all registered PersonFunctionListModels of changes
+     */
+    private void fireChangesOnAllPersonFunctionListModels() {
+        for (PersonFunctionListModel listModel : personFunctionListModels) {
+            listModel.fireContentsChanged(this, 0, getNumberOfFunctionsOfPerson(listModel.getPerson()));
         }
     }
 
