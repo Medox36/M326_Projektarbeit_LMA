@@ -1,18 +1,18 @@
 package ch.bzz.m326_projektarbeit_lma.gui;
 
 import ch.bzz.m326_projektarbeit_lma.facade.DepartmentFacade;
-import ch.bzz.m326_projektarbeit_lma.facade.JobFunctionFacade;
+import ch.bzz.m326_projektarbeit_lma.facade.TeamFacade;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class AddFunctions extends JFrame {
-    private JLabel label = new JLabel("Funktion:");
+public class AddTeam extends JFrame {
+    private JLabel label = new JLabel("Team");
     private JTextField textField = new JTextField("Text eingeben");
     private JButton abbrechenButton = new JButton("Abbrechen");
     private JButton speichernButton = new JButton("Speichern");
 
-    public AddFunctions(){
+    public AddTeam(){
         setTitle("Funktion erfassen/bearbeiten");
         setSize(200,100);
         setResizable(false);
@@ -35,7 +35,7 @@ public class AddFunctions extends JFrame {
 
         speichernButton.addActionListener(
                 e -> {
-                    JobFunctionFacade.getInstance().addFunction(textField.getText());
+                    TeamFacade.getInstance().addTeam(textField.getText());
                     setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 });
 
@@ -46,9 +46,4 @@ public class AddFunctions extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
-    public static void main(String[] args) {
-        new AddFunctions();
-    }
 }
-

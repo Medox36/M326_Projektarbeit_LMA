@@ -1,18 +1,19 @@
 package ch.bzz.m326_projektarbeit_lma.gui;
 
 import ch.bzz.m326_projektarbeit_lma.facade.DepartmentFacade;
-import ch.bzz.m326_projektarbeit_lma.facade.JobFunctionFacade;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class AddFunctions extends JFrame {
-    private JLabel label = new JLabel("Funktion:");
+public class AddDepartment extends JDialog {
+    private JLabel label = new JLabel("Abteilung");
     private JTextField textField = new JTextField("Text eingeben");
     private JButton abbrechenButton = new JButton("Abbrechen");
     private JButton speichernButton = new JButton("Speichern");
 
-    public AddFunctions(){
+    public AddDepartment(){
         setTitle("Funktion erfassen/bearbeiten");
         setSize(200,100);
         setResizable(false);
@@ -34,10 +35,9 @@ public class AddFunctions extends JFrame {
         getContentPane().add(bigPanel, BorderLayout.CENTER);
 
         speichernButton.addActionListener(
-                e -> {
-                    JobFunctionFacade.getInstance().addFunction(textField.getText());
+                e -> {DepartmentFacade.getInstance().addDepartment(textField.getText());
                     setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                });
+        });
 
         abbrechenButton.addActionListener(e -> {
             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -48,7 +48,6 @@ public class AddFunctions extends JFrame {
     }
 
     public static void main(String[] args) {
-        new AddFunctions();
+        new AddDepartment();
     }
 }
-
