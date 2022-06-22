@@ -29,6 +29,7 @@ public class JSONData {
 
     /**
      * constructor
+     * is private because of singleton pattern
      *
      * adds a ShutdownHook that assures, the data is being saved when the program is closed
      */

@@ -34,6 +34,7 @@ public class PersonFacade {
 
     /**
      * constructor
+     * is private because of singleton pattern
      */
     private PersonFacade() {
         company = JSONData.getInstance().getCompany();

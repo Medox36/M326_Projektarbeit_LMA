@@ -26,11 +26,13 @@ public class LogBook {
     private Logbuch_View logbuch_view;
 
     /**
-     * creates a LogBook
+     * constructor
      * is private because of singleton pattern
+     *
+     *  adds a ShutdownHook that assures, the LogBook is being closed when the program is closed
      */
     private LogBook() {
-        Runtime.getRuntime().addShutdownHook(new Thread(this::logBookClose, "Saving  Log-Data Shutdown-Thread"));
+        Runtime.getRuntime().addShutdownHook(new Thread(this::logBookClose, "Saving Log-Data Shutdown-Thread"));
         file = new File("logbook.log");
         try {
             if (!file.createNewFile()) {
@@ -88,10 +90,11 @@ public class LogBook {
         return entry;
     }
 
-    public Vector<String> getAllEntries() {
-        return entries;
-    }
-
+    /**
+     * gets all entries in one String so they can be shown in the LogBuch_View
+     * ,
+     * @return all entries in one String
+     */
     public String getEntries() {
         StringBuilder sb = new StringBuilder();
 
@@ -165,6 +168,11 @@ public class LogBook {
         }
     }
 
+    /**
+     * sets the Logbuch_View soe the logBook can notify the LogBuch_View when changes occur
+     *
+     * @param logbuch_view to be set
+     */
     public void setLogbuch_view(Logbuch_View logbuch_view) {
         this.logbuch_view = logbuch_view;
     }

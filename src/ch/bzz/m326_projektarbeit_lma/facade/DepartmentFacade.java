@@ -23,6 +23,7 @@ public class DepartmentFacade {
 
     /**
      * constructor
+     * is private because of singleton pattern
      */
     private DepartmentFacade() {
         company = JSONData.getInstance().getCompany();
