@@ -1,7 +1,6 @@
 package ch.bzz.m326_projektarbeit_lma.gui;
 
 import ch.bzz.m326_projektarbeit_lma.company.Department;
-import ch.bzz.m326_projektarbeit_lma.company.JobFunctions;
 import ch.bzz.m326_projektarbeit_lma.facade.DepartmentFacade;
 import ch.bzz.m326_projektarbeit_lma.facade.JobFunctionFacade;
 import ch.bzz.m326_projektarbeit_lma.facade.TeamFacade;
@@ -24,13 +23,13 @@ public class Stammdaten_View extends JPanel {
     JLabel firma;
     JTextField firmaField;
     JPanel firmaPanel;
-    JPanel abteilungsPanel;
-    JPanel abteilungsPanelBorder;
-    JLabel abteilung;
+    JPanel mainPanel;
+    JPanel panelBorder;
+    JLabel label;
     JList<?> abteilungsListe;
-    JButton addAbteilung;
-    JButton editAbteilung;
-    JButton deleteAbteilung;
+    JButton addButton;
+    JButton editButton;
+    JButton deleteButton;
     JPanel buttonPanel;
     JScrollPane scrollPane;
 
@@ -77,9 +76,9 @@ public class Stammdaten_View extends JPanel {
      * @param modelType
      */
     public void createComponent(String name, int modelType) {
-        abteilungsPanel = new JPanel(new GridLayout(1, 1, 0, 500));
-        abteilungsPanelBorder = new JPanel(new BorderLayout());
-        abteilung = new JLabel(name);
+        mainPanel = new JPanel(new GridLayout(1, 1, 0, 500));
+        panelBorder = new JPanel(new BorderLayout());
+        label = new JLabel(name);
 
         switch (modelType) {
             case 0:
@@ -96,56 +95,56 @@ public class Stammdaten_View extends JPanel {
                 abteilungsListe = new JList<>(new DefaultListModel<>());
         }
 
-        addAbteilung = new JButton("+");
-        deleteAbteilung = new JButton("X");
-        editAbteilung = new JButton("/");
+        addButton = new JButton("+");
+        deleteButton = new JButton("X");
+        editButton = new JButton("/");
 
         buttonPanel = new JPanel(new GridLayout(1, 3, 5, 5));
         scrollPane = new JScrollPane(abteilungsListe, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        buttonPanel.add(addAbteilung);
-        buttonPanel.add(deleteAbteilung);
-        buttonPanel.add(editAbteilung);
+        buttonPanel.add(addButton);
+        buttonPanel.add(deleteButton);
+        buttonPanel.add(editButton);
 
-        abteilungsPanel.add(abteilung);
-        abteilungsPanel.add(abteilungsPanelBorder);
+        mainPanel.add(label);
+        mainPanel.add(panelBorder);
 
-        abteilungsPanelBorder.add(scrollPane, BorderLayout.CENTER);
-        abteilungsPanelBorder.add(buttonPanel, BorderLayout.SOUTH);
+        panelBorder.add(scrollPane, BorderLayout.CENTER);
+        panelBorder.add(buttonPanel, BorderLayout.SOUTH);
 
-        stammDatenPanel.add(abteilungsPanel);
+        stammDatenPanel.add(mainPanel);
 
         switch (modelType) {
             case 0:
-                addAbteilung.addActionListener(e -> {new AddDepartment(0, (Department) abteilungsListe.getSelectedValue());});
+                addButton.addActionListener(e -> {new AddDepartment(0, (Department) abteilungsListe.getSelectedValue());});
                 break;
             case 1:
-                addAbteilung.addActionListener(e -> {new AddFunctions(0, (String) abteilungsListe.getSelectedValue());});
+                addButton.addActionListener(e -> {new AddFunctions(0, (String) abteilungsListe.getSelectedValue());});
                 break;
             case 2:
-                addAbteilung.addActionListener(e -> {new AddTeam(0, (String) abteilungsListe.getSelectedValue());});
+                addButton.addActionListener(e -> {new AddTeam(0, (String) abteilungsListe.getSelectedValue());});
                 break;
             default:
                 // default should never occur
-                addAbteilung.addActionListener(e -> {new Stammdaten_View();});
+                addButton.addActionListener(e -> {new Stammdaten_View();});
         }
         switch (modelType) {
             case 0:
-                editAbteilung.addActionListener(e -> {new AddDepartment(1, (Department) abteilungsListe.getSelectedValue());});
+                editButton.addActionListener(e -> {new AddDepartment(1, (Department) abteilungsListe.getSelectedValue());});
                 break;
             case 1:
-                editAbteilung.addActionListener(e -> {new AddFunctions(1, (String) abteilungsListe.getSelectedValue());});
+                editButton.addActionListener(e -> {new AddFunctions(1, (String) abteilungsListe.getSelectedValue());});
                 break;
             case 2:
-                editAbteilung.addActionListener(e -> {new AddTeam(1, (String) abteilungsListe.getSelectedValue());});
+                editButton.addActionListener(e -> {new AddTeam(1, (String) abteilungsListe.getSelectedValue());});
                 break;
             default:
                 // default should never occur
-                editAbteilung.addActionListener(e -> {new Stammdaten_View();});
+                editButton.addActionListener(e -> {new Stammdaten_View();});
         }
         switch (modelType) {
             case 0:
-                deleteAbteilung.addActionListener(e -> {
+                deleteButton.addActionListener(e -> {
                     DepartmentFacade.getInstance().removeDepartment((Department) abteilungsListe.getSelectedValue());
                 });
                 break;
@@ -157,7 +156,7 @@ public class Stammdaten_View extends JPanel {
                 break;
             default:
                 // default should never occur
-                addAbteilung.addActionListener(e -> {new Stammdaten_View();});
+                addButton.addActionListener(e -> {new Stammdaten_View();});
         }
     }
 }
