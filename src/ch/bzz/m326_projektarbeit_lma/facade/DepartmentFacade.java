@@ -125,6 +125,8 @@ public class DepartmentFacade {
      */
     public void updateDepartment(Department department, String newValue) {
         department.setName(newValue);
+        fireChangesOnAllDepartmentComboboxModels();
+        fireChangesOnAllDepartmentListModels();
     }
 
     /**

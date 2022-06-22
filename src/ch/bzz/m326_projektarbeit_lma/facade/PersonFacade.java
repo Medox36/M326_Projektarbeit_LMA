@@ -12,6 +12,8 @@ import ch.bzz.m326_projektarbeit_lma.gui.model.PersonTeamComboboxModel;
 import ch.bzz.m326_projektarbeit_lma.log.UserAction;
 
 import java.awt.*;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.Vector;
 
@@ -171,9 +173,16 @@ public class PersonFacade {
      * @param departmentName filter
      * @param function filter
      * @param team filter
+     * @param sortOrder in which the persons are sorted by their names
+     *                  (a or A for ascending, d or D for descending and empty for no sort)
      * @return Vector of type Person with Persons who match the given filters
      */
-    public Vector<Person> getAllPersonWithFilter(String departmentName, String function, String team) {
+    public Vector<Person> getAllPersonWithFilter(
+            String departmentName,
+            String function,
+            String team,
+            String sortOrder
+    ) {
         Vector<Person> persons = getAllPersons();
         if (!Objects.equals(departmentName, "")) {
             persons.removeIf(person -> getDepartmentNameOfPerson(person).equals(departmentName));
@@ -183,6 +192,13 @@ public class PersonFacade {
         }
         if (!Objects.equals(team, "")) {
             persons.removeIf(person -> !getTeamsOfPerson(person).contains(team));
+        }
+        if (!Objects.equals(sortOrder, "") && (sortOrder.equals("A") || sortOrder.equals("D"))) {
+            if (sortOrder.equalsIgnoreCase("A")) {
+                persons.sort(Comparator.comparing(Person::getFullName));
+            } else  {
+                persons.sort(Collections.reverseOrder(Comparator.comparing(Person::getFullName)));
+            }
         }
         return persons;
     }
