@@ -47,7 +47,7 @@ public class Zuordnung_View extends JPanel {
     JComboBox teamCombo;
 
     /**
-     * The constructor which holds all the components
+     * The constructor of Zuordnung which holds all the components
      */
     public Zuordnung_View() {
 

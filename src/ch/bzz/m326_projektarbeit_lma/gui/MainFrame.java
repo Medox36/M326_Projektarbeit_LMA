@@ -12,6 +12,9 @@ import javax.swing.*;
  */
 public class MainFrame extends JFrame {
 
+    /**
+     * The constructor of the MainFrame which basically holds all the content
+     */
     public MainFrame(){
         setTitle("I am looking for");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

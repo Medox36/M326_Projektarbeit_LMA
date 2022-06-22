@@ -10,13 +10,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
+/**
+ * This class adds all the components into a JTabbedPane and formats it
+ * @Author Alexander Benak, Lorenzo Giuntini
+ * @Since 21.06.2022
+ * @Version 1.3
+ */
 public class Person_View extends JPanel {
 
     /**
-     * This class adds all the components into a JTabbedPane and formats it
-     * @Author Alexander Benak, Lorenzo Giuntini
-     * @Since 21.06.2022
-     * @Version 1.3
+     * The constructor of the PersonView which holds all the components
      */
     public Person_View() {
 
