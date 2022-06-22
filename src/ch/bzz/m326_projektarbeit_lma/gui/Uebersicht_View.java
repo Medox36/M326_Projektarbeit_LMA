@@ -240,6 +240,8 @@ public class Uebersicht_View extends JFrame {
                 PersonFacade.getInstance().getAllPersonWithFilter( "" , "", "","");
             }
         });
+
+
         return mainPanel;
     }
 }

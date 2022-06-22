@@ -7,6 +7,11 @@ import ch.bzz.m326_projektarbeit_lma.facade.JobFunctionFacade;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Moustafa Hawi
+ * @since 21.06.2022
+ * @version 1.0
+ */
 public class AddFunctions extends JFrame {
     private JLabel label = new JLabel("Funktion:");
     private JTextField textField = new JTextField("Text eingeben");

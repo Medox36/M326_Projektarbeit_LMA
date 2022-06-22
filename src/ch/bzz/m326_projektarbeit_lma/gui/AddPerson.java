@@ -3,6 +3,11 @@ package ch.bzz.m326_projektarbeit_lma.gui;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Moustafa Hawi
+ * @since 21.06.2022
+ * @version 1.0
+ */
 public class AddPerson extends JDialog {
     private JLabel labelName = new JLabel("Name:");
     private JTextField textFieldName = new JTextField("Vorname Nachname");

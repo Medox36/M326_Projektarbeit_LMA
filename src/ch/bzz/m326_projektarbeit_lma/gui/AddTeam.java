@@ -6,6 +6,11 @@ import ch.bzz.m326_projektarbeit_lma.facade.TeamFacade;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Moustafa Hawi
+ * @since 21.06.2022
+ * @version 1.0
+ */
 public class AddTeam extends JFrame {
     private JLabel label = new JLabel("Team");
     private JTextField textField = new JTextField("Text eingeben");

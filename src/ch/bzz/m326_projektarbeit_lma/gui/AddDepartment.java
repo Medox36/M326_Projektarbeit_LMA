@@ -8,6 +8,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * @author Moustafa Hawi
+ * @since 21.06.2022
+ * @Version 1.0
+ */
 public class AddDepartment extends JDialog {
     private JLabel label = new JLabel("Abteilung");
     private JTextField textField = new JTextField("Text eingeben");
